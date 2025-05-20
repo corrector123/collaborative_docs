@@ -19,10 +19,11 @@
 ---
 
 ## 🛠️ 技术栈
-- **前端**: React + TypeScript + Quill.js + Tailwind CSS  
+- **前端**: vue3 + JavaScript + Quill.js
 - **协同算法**: Yjs (CRDT)  
 - **实时通信**: WebSocket + Socket.IO  
-- **后端**: Node.js + Express + Redis  
+- **后端**: Node.js + Express + Redis
+- **数据库**：MySQL
 - **部署**: Docker + Nginx + 云服务器  
 
 ---
