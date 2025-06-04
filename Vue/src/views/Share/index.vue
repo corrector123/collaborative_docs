@@ -194,8 +194,7 @@ onMounted(async () => {
   const res = await getPermissionFiles_API();
   if (res.code !== 200) return ElMessage.error(res.msg);
   else{
-    const cleanData = removeProxy(res.data.files);
-    permissionFiles.value = cleanData;
+    permissionFiles.value = removeProxy(res.data.files);
     console.log("显示内容：",permissionFiles);
   }
 });
