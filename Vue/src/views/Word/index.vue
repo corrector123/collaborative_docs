@@ -19,7 +19,7 @@
         @saveDocument="handleSaveDocument"
         @toggleSidebar="toggleSidebar"
         @showShareWindow="showShareWindow"
-        @open-Permission-Edit-Window="openPermissionEditWindow"
+        @open-permission-edit-window="openPermissionEditWindow"
       />
     </div>
 
