@@ -1,0 +1,1458 @@
+[2025-05-26 04:40:57 +08:00Z] [INFO] - 开始初始化 node 方法 
+[2025-05-26 04:40:57 +08:00Z] [SUCCESS] - Socket Server is running... 
+[2025-05-26 04:40:57 +08:00Z] [SUCCESS] - WS 服务初始化成功，连接地址：ws://localhost:9000 
+[2025-05-26 04:40:57 +08:00Z] [SUCCESS] - Node Serve is running at http://localhost:5000. 
+[2025-05-26 04:40:57 +08:00Z] [INFO] - 连接数据库成功！ 
+[2025-05-26 04:41:01 +08:00Z] [INFO] - SQL (direct): SELECT * FROM users WHERE userid='1'&&password='c4ca4238a0b923820dcc509a6f75849b' 
+[2025-05-26 04:41:01 +08:00Z] [DEBUG] - [status] 200 [msg] 登录成功 
+[2025-05-26 04:41:01 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-05-26 04:41:01 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-05-26 04:41:01 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 04:41:02 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 04:41:02 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=dfctd6l3xia 
+[2025-05-26 04:41:02 +08:00Z] [INFO] - 用户连接... 
+[2025-05-26 04:41:02 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["Kyv0pgp-6Tq2ZwBGtBGHx"] 
+[2025-05-26 04:41:02 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND OWNER ='1' 
+[2025-05-26 04:41:02 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-05-26 04:41:02 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-05-26 04:41:02 +08:00Z] [INFO] - 用户加入房间 Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 04:41:02 +08:00Z] [INFO] - SQL (direct): SELECT versions.content FROM files,versions WHERE files.fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND files.currenthead=versions.vid 
+[2025-05-26 04:41:02 +08:00Z] [DEBUG] - [status] 6003 [msg] 参数缺失 
+[2025-05-26 04:41:27 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='Kyv0pgp-6Tq2ZwBGtBGHx' 
+[2025-05-26 04:41:27 +08:00Z] [INFO] - SQL (parameterized): SELECT * FROM versions WHERE vid = ? -- Params: ["[object Object]"] 
+[2025-05-26 04:41:27 +08:00Z] [ERROR] - [saveVersion] 当前文件的版本头指向的版本未找到，fileid: Kyv0pgp-6Tq2ZwBGtBGHx, currenthead: [object Object] 
+[2025-05-26 04:41:27 +08:00Z] [WARN] - [saveVersion] 未找到currenthead [object Object] 的版本信息，将创建新版本 
+[2025-05-26 04:41:27 +08:00Z] [INFO] - SQL (parameterized): INSERT INTO versions(vid, fileid, content, lasteditor) VALUES(?, ?, ?, ?) -- Params: ["7K7jNaden72zeMBW4XYjG","Kyv0pgp-6Tq2ZwBGtBGHx","[{\"insert\":\"q青花山水\"},{\"attributes\":{\"header\":1},\"insert\":\"\\n\"}]","1"] 
+[2025-05-26 04:41:27 +08:00Z] [INFO] - SQL (direct): UPDATE files SET currenthead='7K7jNaden72zeMBW4XYjG' WHERE fileid='Kyv0pgp-6Tq2ZwBGtBGHx' 
+[2025-05-26 04:41:27 +08:00Z] [DEBUG] - [status] 200 [msg] 文件更新成功 
+[2025-05-26 04:41:31 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["xCDiTJ4uoREf-utpBacD5"] 
+[2025-05-26 04:41:31 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 04:41:34 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["_HY0FIyYibeoSY_X-DV-C"] 
+[2025-05-26 04:41:34 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 04:41:35 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=dfctd6l3xia 
+[2025-05-26 04:41:35 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 04:41:35 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=9n91jx3oc2i 
+[2025-05-26 04:41:38 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["xCDiTJ4uoREf-utpBacD5"] 
+[2025-05-26 04:41:38 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 04:41:40 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=9n91jx3oc2i 
+[2025-05-26 04:41:40 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 04:41:40 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=snd9ccoxn 
+[2025-05-26 04:41:40 +08:00Z] [INFO] - 用户连接... 
+[2025-05-26 04:41:40 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND OWNER ='1' 
+[2025-05-26 04:41:40 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["Kyv0pgp-6Tq2ZwBGtBGHx"] 
+[2025-05-26 04:41:40 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-05-26 04:41:40 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-05-26 04:41:40 +08:00Z] [INFO] - 用户加入房间 Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 04:41:40 +08:00Z] [INFO] - SQL (direct): SELECT versions.content FROM files,versions WHERE files.fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND files.currenthead=versions.vid 
+[2025-05-26 04:41:40 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 04:41:42 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["xCDiTJ4uoREf-utpBacD5"] 
+[2025-05-26 04:41:42 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 04:41:44 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["_HY0FIyYibeoSY_X-DV-C"] 
+[2025-05-26 04:41:44 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 04:41:48 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["_HY0FIyYibeoSY_X-DV-C"] 
+[2025-05-26 04:41:48 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 04:41:53 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["_HY0FIyYibeoSY_X-DV-C"] 
+[2025-05-26 04:41:53 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 04:41:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=snd9ccoxn 
+[2025-05-26 04:41:54 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 04:41:54 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=g3c98iath4e 
+[2025-05-26 04:41:54 +08:00Z] [INFO] - 用户连接... 
+[2025-05-26 04:41:54 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND OWNER ='1' 
+[2025-05-26 04:41:54 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["Kyv0pgp-6Tq2ZwBGtBGHx"] 
+[2025-05-26 04:41:54 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-05-26 04:41:54 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-05-26 04:41:54 +08:00Z] [INFO] - 用户加入房间 Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 04:41:54 +08:00Z] [INFO] - SQL (direct): SELECT versions.content FROM files,versions WHERE files.fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND files.currenthead=versions.vid 
+[2025-05-26 04:41:54 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 04:41:56 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["_HY0FIyYibeoSY_X-DV-C"] 
+[2025-05-26 04:41:56 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 04:41:57 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["xCDiTJ4uoREf-utpBacD5"] 
+[2025-05-26 04:41:57 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 04:42:00 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["xCDiTJ4uoREf-utpBacD5"] 
+[2025-05-26 04:42:00 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 04:42:02 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["_HY0FIyYibeoSY_X-DV-C"] 
+[2025-05-26 04:42:02 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 04:42:03 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=g3c98iath4e 
+[2025-05-26 04:42:03 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 04:42:03 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=3nzjnoek6vk 
+[2025-05-26 04:42:03 +08:00Z] [INFO] - 用户连接... 
+[2025-05-26 04:42:03 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND OWNER ='1' 
+[2025-05-26 04:42:03 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["Kyv0pgp-6Tq2ZwBGtBGHx"] 
+[2025-05-26 04:42:03 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-05-26 04:42:03 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-05-26 04:42:03 +08:00Z] [INFO] - 用户加入房间 Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 04:42:03 +08:00Z] [INFO] - SQL (direct): SELECT versions.content FROM files,versions WHERE files.fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND files.currenthead=versions.vid 
+[2025-05-26 04:42:03 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 04:42:05 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["xCDiTJ4uoREf-utpBacD5"] 
+[2025-05-26 04:42:05 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 04:42:07 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["_HY0FIyYibeoSY_X-DV-C"] 
+[2025-05-26 04:42:07 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 04:42:36 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=3nzjnoek6vk 
+[2025-05-26 04:42:36 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 04:42:36 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=la18xmgvxsj 
+[2025-05-26 04:43:07 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=la18xmgvxsj 
+[2025-05-26 04:43:08 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 04:43:08 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=aaov036urua 
+[2025-05-26 04:43:39 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=aaov036urua 
+[2025-05-26 04:43:39 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-05-26 04:43:39 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-05-26 04:43:39 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 04:43:47 +08:00Z] [INFO] - 用户加入房间 Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 04:43:47 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 04:43:47 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=op3s4a6fg2e 
+[2025-05-26 04:43:47 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND OWNER ='1' 
+[2025-05-26 04:43:47 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["Kyv0pgp-6Tq2ZwBGtBGHx"] 
+[2025-05-26 04:43:47 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-05-26 04:43:47 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-05-26 04:43:47 +08:00Z] [INFO] - SQL (direct): SELECT versions.content FROM files,versions WHERE files.fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND files.currenthead=versions.vid 
+[2025-05-26 04:43:47 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 04:44:18 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=op3s4a6fg2e 
+[2025-05-26 04:44:19 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 04:44:19 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=ntm4gmszxm8 
+[2025-05-26 04:44:51 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=ntm4gmszxm8 
+[2025-05-26 04:44:52 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 04:44:52 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=zobgbjphe5i 
+[2025-05-26 04:45:23 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=zobgbjphe5i 
+[2025-05-26 04:45:23 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 04:45:23 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=3feu96ltgm6 
+[2025-05-26 04:45:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=3feu96ltgm6 
+[2025-05-26 04:45:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 04:45:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=ku6tv201zns 
+[2025-05-26 04:46:27 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=ku6tv201zns 
+[2025-05-26 04:46:28 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 04:46:28 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=lkqee10eps8 
+[2025-05-26 04:47:00 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=lkqee10eps8 
+[2025-05-26 04:47:01 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 04:47:01 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=18ylq480v27 
+[2025-05-26 04:47:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=18ylq480v27 
+[2025-05-26 04:47:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 04:47:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=t0xovy0246 
+[2025-05-26 04:48:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=t0xovy0246 
+[2025-05-26 04:48:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 04:48:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=8mf459l6283 
+[2025-05-26 04:49:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=8mf459l6283 
+[2025-05-26 04:49:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 04:49:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=n1qu4iwaoxp 
+[2025-05-26 04:50:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=n1qu4iwaoxp 
+[2025-05-26 04:50:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 04:50:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=s7y33svbccg 
+[2025-05-26 04:51:27 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=s7y33svbccg 
+[2025-05-26 04:51:28 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 04:51:28 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=doreho83lak 
+[2025-05-26 04:52:00 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=doreho83lak 
+[2025-05-26 04:52:01 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 04:52:01 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=tg2jtvk1wg 
+[2025-05-26 04:52:16 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=tg2jtvk1wg 
+[2025-05-26 04:52:17 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 04:52:17 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=ie0awzjq6f 
+[2025-05-26 04:52:17 +08:00Z] [INFO] - 用户连接... 
+[2025-05-26 04:52:17 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND OWNER ='1' 
+[2025-05-26 04:52:17 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["Kyv0pgp-6Tq2ZwBGtBGHx"] 
+[2025-05-26 04:52:17 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-05-26 04:52:17 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-05-26 04:52:17 +08:00Z] [INFO] - 用户加入房间 Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 04:52:17 +08:00Z] [INFO] - SQL (direct): SELECT versions.content FROM files,versions WHERE files.fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND files.currenthead=versions.vid 
+[2025-05-26 04:52:17 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 04:52:33 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=ie0awzjq6f 
+[2025-05-26 04:52:51 +08:00Z] [INFO] - 开始初始化 node 方法 
+[2025-05-26 04:52:51 +08:00Z] [SUCCESS] - Socket Server is running... 
+[2025-05-26 04:52:51 +08:00Z] [SUCCESS] - WS 服务初始化成功，连接地址：ws://localhost:9000 
+[2025-05-26 04:52:51 +08:00Z] [SUCCESS] - Node Serve is running at http://localhost:5000. 
+[2025-05-26 04:52:51 +08:00Z] [INFO] - 连接数据库成功！ 
+[2025-05-26 04:52:57 +08:00Z] [INFO] - SQL (direct): SELECT * FROM users WHERE userid='1'&&password='c4ca4238a0b923820dcc509a6f75849b' 
+[2025-05-26 04:52:57 +08:00Z] [DEBUG] - [status] 200 [msg] 登录成功 
+[2025-05-26 04:52:57 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-05-26 04:52:57 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-05-26 04:52:57 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 04:52:58 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 04:52:58 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=enfv5s8lj0m 
+[2025-05-26 04:52:58 +08:00Z] [INFO] - 用户连接... 
+[2025-05-26 04:52:58 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND OWNER ='1' 
+[2025-05-26 04:52:58 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["Kyv0pgp-6Tq2ZwBGtBGHx"] 
+[2025-05-26 04:52:58 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-05-26 04:52:58 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-05-26 04:52:58 +08:00Z] [INFO] - 用户加入房间 Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 04:52:58 +08:00Z] [INFO] - SQL (direct): SELECT versions.content FROM files,versions WHERE files.fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND files.currenthead=versions.vid 
+[2025-05-26 04:52:58 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 04:53:29 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=enfv5s8lj0m 
+[2025-05-26 04:53:30 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 04:53:30 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=ditd999st8s 
+[2025-05-26 04:54:02 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=ditd999st8s 
+[2025-05-26 04:54:03 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 04:54:03 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=kqdfikx3gu 
+[2025-05-26 04:54:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=kqdfikx3gu 
+[2025-05-26 04:54:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 04:54:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=c4m0xqlmjl5 
+[2025-05-26 04:55:46 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=c4m0xqlmjl5 
+[2025-05-26 04:55:46 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 04:55:46 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=n52keeyhgom 
+[2025-05-26 04:56:17 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=n52keeyhgom 
+[2025-05-26 04:56:18 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 04:56:18 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=ip9h7xr5y3 
+[2025-05-26 04:56:50 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=ip9h7xr5y3 
+[2025-05-26 04:56:51 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 04:56:51 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=xkbz7rrtv9b 
+[2025-05-26 04:57:08 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=xkbz7rrtv9b 
+[2025-05-26 04:57:22 +08:00Z] [INFO] - 开始初始化 node 方法 
+[2025-05-26 04:57:22 +08:00Z] [SUCCESS] - Socket Server is running... 
+[2025-05-26 04:57:22 +08:00Z] [SUCCESS] - WS 服务初始化成功，连接地址：ws://localhost:9000 
+[2025-05-26 04:57:22 +08:00Z] [SUCCESS] - Node Serve is running at http://localhost:5000. 
+[2025-05-26 04:57:22 +08:00Z] [INFO] - 连接数据库成功！ 
+[2025-05-26 04:57:26 +08:00Z] [INFO] - SQL (direct): SELECT * FROM users WHERE userid='1'&&password='c4ca4238a0b923820dcc509a6f75849b' 
+[2025-05-26 04:57:26 +08:00Z] [DEBUG] - [status] 200 [msg] 登录成功 
+[2025-05-26 04:57:26 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-05-26 04:57:26 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-05-26 04:57:26 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 04:57:32 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 04:57:32 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=edd69rri7bu 
+[2025-05-26 04:57:32 +08:00Z] [INFO] - 用户连接... 
+[2025-05-26 04:57:32 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND OWNER ='1' 
+[2025-05-26 04:57:32 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["Kyv0pgp-6Tq2ZwBGtBGHx"] 
+[2025-05-26 04:57:32 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-05-26 04:57:32 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-05-26 04:57:32 +08:00Z] [INFO] - 用户加入房间 Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 04:57:32 +08:00Z] [INFO] - SQL (direct): SELECT versions.content FROM files,versions WHERE files.fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND files.currenthead=versions.vid 
+[2025-05-26 04:57:32 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 04:58:02 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=edd69rri7bu 
+[2025-05-26 04:58:03 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 04:58:03 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=fjtnz65fvyh 
+[2025-05-26 04:58:35 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=fjtnz65fvyh 
+[2025-05-26 04:58:36 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 04:58:36 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=ip7tyya1gw 
+[2025-05-26 04:59:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=ip7tyya1gw 
+[2025-05-26 04:59:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 04:59:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=w9fj3x9utu 
+[2025-05-26 05:00:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=w9fj3x9utu 
+[2025-05-26 05:00:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:00:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=q3fmrlbdg6a 
+[2025-05-26 05:01:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=q3fmrlbdg6a 
+[2025-05-26 05:01:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:01:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=161obrjkdf 
+[2025-05-26 05:02:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=161obrjkdf 
+[2025-05-26 05:02:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:02:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=2kx35epdvgh 
+[2025-05-26 05:03:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=2kx35epdvgh 
+[2025-05-26 05:03:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:03:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=3v5xmehl988 
+[2025-05-26 05:04:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=3v5xmehl988 
+[2025-05-26 05:04:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:04:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=pq7xfk8vbjr 
+[2025-05-26 05:05:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=pq7xfk8vbjr 
+[2025-05-26 05:05:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:05:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=xl0ehy6lpz9 
+[2025-05-26 05:06:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=xl0ehy6lpz9 
+[2025-05-26 05:06:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:06:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=y3wel8feywj 
+[2025-05-26 05:07:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=y3wel8feywj 
+[2025-05-26 05:07:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:07:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=d3rv98qhic 
+[2025-05-26 05:08:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=d3rv98qhic 
+[2025-05-26 05:08:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:08:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=lkx3orsyn3q 
+[2025-05-26 05:09:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=lkx3orsyn3q 
+[2025-05-26 05:09:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:09:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=g64e1ou5pz 
+[2025-05-26 05:10:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=g64e1ou5pz 
+[2025-05-26 05:10:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:10:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=qtmfcf738s8 
+[2025-05-26 05:11:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=qtmfcf738s8 
+[2025-05-26 05:11:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:11:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=q8roosg4coa 
+[2025-05-26 05:12:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=q8roosg4coa 
+[2025-05-26 05:12:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:12:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=9np5owflp4 
+[2025-05-26 05:13:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=9np5owflp4 
+[2025-05-26 05:13:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:13:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=gihzwmko56 
+[2025-05-26 05:14:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=gihzwmko56 
+[2025-05-26 05:14:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:14:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=96bo4rq8nab 
+[2025-05-26 05:15:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=96bo4rq8nab 
+[2025-05-26 05:15:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:15:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=2w6s4cf59bu 
+[2025-05-26 05:16:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=2w6s4cf59bu 
+[2025-05-26 05:16:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:16:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=35lg3ki5055 
+[2025-05-26 05:17:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=35lg3ki5055 
+[2025-05-26 05:17:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:17:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=l9tuju7gep 
+[2025-05-26 05:18:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=l9tuju7gep 
+[2025-05-26 05:18:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:18:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=jtuf21ui0ba 
+[2025-05-26 05:19:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=jtuf21ui0ba 
+[2025-05-26 05:19:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:19:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=yx1itx0gli 
+[2025-05-26 05:20:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=yx1itx0gli 
+[2025-05-26 05:20:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:20:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=zuqet7aszue 
+[2025-05-26 05:21:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=zuqet7aszue 
+[2025-05-26 05:21:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:21:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=0biq1jxbm5g 
+[2025-05-26 05:34:42 +08:00Z] [INFO] - 开始初始化 node 方法 
+[2025-05-26 05:34:42 +08:00Z] [SUCCESS] - Socket Server is running... 
+[2025-05-26 05:34:42 +08:00Z] [SUCCESS] - WS 服务初始化成功，连接地址：ws://localhost:9000 
+[2025-05-26 05:34:42 +08:00Z] [SUCCESS] - Node Serve is running at http://localhost:5000. 
+[2025-05-26 05:34:42 +08:00Z] [INFO] - 连接数据库成功！ 
+[2025-05-26 05:34:48 +08:00Z] [INFO] - SQL (direct): SELECT * FROM users WHERE userid='1'&&password='c4ca4238a0b923820dcc509a6f75849b' 
+[2025-05-26 05:34:48 +08:00Z] [DEBUG] - [status] 200 [msg] 登录成功 
+[2025-05-26 05:34:48 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-05-26 05:34:48 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-05-26 05:34:48 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 05:34:49 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:34:49 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=y1o4ukj7j4 
+[2025-05-26 05:34:49 +08:00Z] [INFO] - 用户连接... 
+[2025-05-26 05:34:49 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND OWNER ='1' 
+[2025-05-26 05:34:49 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["Kyv0pgp-6Tq2ZwBGtBGHx"] 
+[2025-05-26 05:34:49 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-05-26 05:34:49 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-05-26 05:34:49 +08:00Z] [INFO] - 用户加入房间 Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:34:49 +08:00Z] [INFO] - SQL (direct): SELECT versions.content FROM files,versions WHERE files.fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND files.currenthead=versions.vid 
+[2025-05-26 05:34:49 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 05:34:51 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["xCDiTJ4uoREf-utpBacD5"] 
+[2025-05-26 05:34:51 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 05:35:20 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=y1o4ukj7j4 
+[2025-05-26 05:35:21 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:35:21 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=a1y46wmsv2o 
+[2025-05-26 05:35:53 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=a1y46wmsv2o 
+[2025-05-26 05:35:54 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:35:54 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=cgbxbofz80p 
+[2025-05-26 05:43:39 +08:00Z] [INFO] - 开始初始化 node 方法 
+[2025-05-26 05:43:39 +08:00Z] [SUCCESS] - Socket Server is running... 
+[2025-05-26 05:43:39 +08:00Z] [SUCCESS] - WS 服务初始化成功，连接地址：ws://localhost:9000 
+[2025-05-26 05:43:39 +08:00Z] [SUCCESS] - Node Serve is running at http://localhost:5000. 
+[2025-05-26 05:43:39 +08:00Z] [INFO] - 连接数据库成功！ 
+[2025-05-26 05:43:40 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:43:40 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=5slh3xkfz6b 
+[2025-05-26 05:43:44 +08:00Z] [INFO] - 用户连接... 
+[2025-05-26 05:43:45 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=5slh3xkfz6b 
+[2025-05-26 05:43:48 +08:00Z] [INFO] - SQL (direct): SELECT * FROM users WHERE userid='1'&&password='c4ca4238a0b923820dcc509a6f75849b' 
+[2025-05-26 05:43:48 +08:00Z] [DEBUG] - [status] 200 [msg] 登录成功 
+[2025-05-26 05:43:48 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-05-26 05:43:48 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-05-26 05:43:48 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 05:43:50 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:43:50 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=2oavc5exy9o 
+[2025-05-26 05:43:50 +08:00Z] [INFO] - 用户连接... 
+[2025-05-26 05:43:50 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND OWNER ='1' 
+[2025-05-26 05:43:50 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["Kyv0pgp-6Tq2ZwBGtBGHx"] 
+[2025-05-26 05:43:50 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-05-26 05:43:50 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-05-26 05:43:50 +08:00Z] [INFO] - 用户加入房间 Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:43:50 +08:00Z] [INFO] - SQL (direct): SELECT versions.content FROM files,versions WHERE files.fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND files.currenthead=versions.vid 
+[2025-05-26 05:43:50 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 05:43:51 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["xCDiTJ4uoREf-utpBacD5"] 
+[2025-05-26 05:43:51 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 05:43:59 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["_HY0FIyYibeoSY_X-DV-C"] 
+[2025-05-26 05:43:59 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 05:44:21 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=2oavc5exy9o 
+[2025-05-26 05:44:22 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:44:22 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=q6au36a40a 
+[2025-05-26 05:44:46 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["xCDiTJ4uoREf-utpBacD5"] 
+[2025-05-26 05:44:46 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 05:44:53 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=q6au36a40a 
+[2025-05-26 05:44:53 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:44:53 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=z36g35p3u3 
+[2025-05-26 05:45:14 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["xCDiTJ4uoREf-utpBacD5"] 
+[2025-05-26 05:45:14 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 05:45:24 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=z36g35p3u3 
+[2025-05-26 05:45:25 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:45:25 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=la8lll02v9 
+[2025-05-26 05:45:57 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=la8lll02v9 
+[2025-05-26 05:45:58 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:45:58 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=sgv276udmls 
+[2025-05-26 05:46:51 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=sgv276udmls 
+[2025-05-26 05:46:51 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:46:51 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=hc025fmr1m6 
+[2025-05-26 05:46:57 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["xCDiTJ4uoREf-utpBacD5"] 
+[2025-05-26 05:46:57 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 05:47:24 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=hc025fmr1m6 
+[2025-05-26 05:47:25 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:47:25 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=xnwajd7fknq 
+[2025-05-26 05:47:54 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["xCDiTJ4uoREf-utpBacD5"] 
+[2025-05-26 05:47:54 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 05:47:56 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=xnwajd7fknq 
+[2025-05-26 05:47:56 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:47:56 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=fmyg33ohrz9 
+[2025-05-26 05:47:59 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["xCDiTJ4uoREf-utpBacD5"] 
+[2025-05-26 05:47:59 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 05:48:03 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=fmyg33ohrz9 
+[2025-05-26 05:48:22 +08:00Z] [INFO] - 开始初始化 node 方法 
+[2025-05-26 05:48:22 +08:00Z] [SUCCESS] - Socket Server is running... 
+[2025-05-26 05:48:22 +08:00Z] [SUCCESS] - WS 服务初始化成功，连接地址：ws://localhost:9000 
+[2025-05-26 05:48:22 +08:00Z] [SUCCESS] - Node Serve is running at http://localhost:5000. 
+[2025-05-26 05:48:22 +08:00Z] [INFO] - 连接数据库成功！ 
+[2025-05-26 05:48:26 +08:00Z] [INFO] - SQL (direct): SELECT * FROM users WHERE userid='1'&&password='c4ca4238a0b923820dcc509a6f75849b' 
+[2025-05-26 05:48:26 +08:00Z] [DEBUG] - [status] 200 [msg] 登录成功 
+[2025-05-26 05:48:27 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-05-26 05:48:27 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-05-26 05:48:27 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 05:48:28 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:48:28 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=9bi3sx286vl 
+[2025-05-26 05:48:28 +08:00Z] [INFO] - 用户连接... 
+[2025-05-26 05:48:28 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND OWNER ='1' 
+[2025-05-26 05:48:28 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["Kyv0pgp-6Tq2ZwBGtBGHx"] 
+[2025-05-26 05:48:28 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-05-26 05:48:28 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-05-26 05:48:28 +08:00Z] [INFO] - 用户加入房间 Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:48:28 +08:00Z] [INFO] - SQL (direct): SELECT versions.content FROM files,versions WHERE files.fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND files.currenthead=versions.vid 
+[2025-05-26 05:48:28 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 05:48:30 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["xCDiTJ4uoREf-utpBacD5"] 
+[2025-05-26 05:48:30 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 05:48:35 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["xCDiTJ4uoREf-utpBacD5"] 
+[2025-05-26 05:48:35 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 05:49:01 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=9bi3sx286vl 
+[2025-05-26 05:49:01 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:49:01 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=6d5if8y6lib 
+[2025-05-26 05:49:34 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=6d5if8y6lib 
+[2025-05-26 05:49:34 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:49:34 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=p7dz4ktgg6 
+[2025-05-26 05:49:39 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["xCDiTJ4uoREf-utpBacD5"] 
+[2025-05-26 05:49:39 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 05:49:46 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["xCDiTJ4uoREf-utpBacD5"] 
+[2025-05-26 05:49:46 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 05:50:05 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=p7dz4ktgg6 
+[2025-05-26 05:50:06 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:50:06 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=kedfgrxfcn 
+[2025-05-26 05:50:37 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=kedfgrxfcn 
+[2025-05-26 05:50:37 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:50:37 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=yhs140ew3j 
+[2025-05-26 05:51:08 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=yhs140ew3j 
+[2025-05-26 05:51:09 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:51:09 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=x0qqxib5p2c 
+[2025-05-26 05:51:40 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=x0qqxib5p2c 
+[2025-05-26 05:51:40 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:51:40 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=4yrh5fgqxql 
+[2025-05-26 05:52:11 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=4yrh5fgqxql 
+[2025-05-26 05:52:12 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:52:12 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=avsu0dj80ct 
+[2025-05-26 05:52:44 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=avsu0dj80ct 
+[2025-05-26 05:52:45 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:52:45 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=mhjvxna6n2o 
+[2025-05-26 05:53:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=mhjvxna6n2o 
+[2025-05-26 05:53:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:53:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=8glsu4uquq8 
+[2025-05-26 05:54:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=8glsu4uquq8 
+[2025-05-26 05:54:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:54:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=jlpzlsr38ja 
+[2025-05-26 05:55:56 +08:00Z] [INFO] - 开始初始化 node 方法 
+[2025-05-26 05:55:56 +08:00Z] [SUCCESS] - Socket Server is running... 
+[2025-05-26 05:55:56 +08:00Z] [SUCCESS] - WS 服务初始化成功，连接地址：ws://localhost:9000 
+[2025-05-26 05:55:57 +08:00Z] [SUCCESS] - Node Serve is running at http://localhost:5000. 
+[2025-05-26 05:55:57 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:55:57 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=x96g46m3w8 
+[2025-05-26 05:55:57 +08:00Z] [INFO] - 连接数据库成功！ 
+[2025-05-26 05:56:00 +08:00Z] [INFO] - 用户连接... 
+[2025-05-26 05:56:01 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=x96g46m3w8 
+[2025-05-26 05:56:03 +08:00Z] [INFO] - SQL (direct): SELECT * FROM users WHERE userid='1'&&password='c4ca4238a0b923820dcc509a6f75849b' 
+[2025-05-26 05:56:03 +08:00Z] [DEBUG] - [status] 200 [msg] 登录成功 
+[2025-05-26 05:56:03 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-05-26 05:56:03 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-05-26 05:56:03 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 05:56:04 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:56:04 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=tzh71ekuduj 
+[2025-05-26 05:56:04 +08:00Z] [INFO] - 用户连接... 
+[2025-05-26 05:56:04 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND OWNER ='1' 
+[2025-05-26 05:56:04 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["Kyv0pgp-6Tq2ZwBGtBGHx"] 
+[2025-05-26 05:56:04 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-05-26 05:56:04 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-05-26 05:56:04 +08:00Z] [INFO] - 用户加入房间 Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:56:04 +08:00Z] [INFO] - SQL (direct): SELECT versions.content FROM files,versions WHERE files.fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND files.currenthead=versions.vid 
+[2025-05-26 05:56:04 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 05:56:09 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["xCDiTJ4uoREf-utpBacD5"] 
+[2025-05-26 05:56:09 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 05:56:35 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=tzh71ekuduj 
+[2025-05-26 05:56:36 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:56:36 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=30n3fswftb7 
+[2025-05-26 05:57:08 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=30n3fswftb7 
+[2025-05-26 05:57:09 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:57:09 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=lf6diqazhbl 
+[2025-05-26 05:57:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=lf6diqazhbl 
+[2025-05-26 05:57:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:57:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=9na7lb5ryks 
+[2025-05-26 05:58:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=9na7lb5ryks 
+[2025-05-26 05:58:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:58:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=oynxaefxtf 
+[2025-05-26 05:59:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=oynxaefxtf 
+[2025-05-26 05:59:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 05:59:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=gbhj1p3my9v 
+[2025-05-26 06:00:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=gbhj1p3my9v 
+[2025-05-26 06:00:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 06:00:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=fsh3aptw5hi 
+[2025-05-26 06:01:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=fsh3aptw5hi 
+[2025-05-26 06:01:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 06:01:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=yvzzbs45hg 
+[2025-05-26 06:02:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=yvzzbs45hg 
+[2025-05-26 06:02:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 06:02:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=ntp95hsr8c 
+[2025-05-26 06:09:56 +08:00Z] [INFO] - 开始初始化 node 方法 
+[2025-05-26 06:09:56 +08:00Z] [SUCCESS] - Socket Server is running... 
+[2025-05-26 06:09:56 +08:00Z] [SUCCESS] - WS 服务初始化成功，连接地址：ws://localhost:9000 
+[2025-05-26 06:09:56 +08:00Z] [SUCCESS] - Node Serve is running at http://localhost:5000. 
+[2025-05-26 06:09:56 +08:00Z] [INFO] - 连接数据库成功！ 
+[2025-05-26 06:10:01 +08:00Z] [INFO] - SQL (direct): SELECT * FROM users WHERE userid='1'&&password='c4ca4238a0b923820dcc509a6f75849b' 
+[2025-05-26 06:10:01 +08:00Z] [DEBUG] - [status] 200 [msg] 登录成功 
+[2025-05-26 06:10:01 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-05-26 06:10:01 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-05-26 06:10:01 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 06:10:02 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 06:10:02 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=v1t7m7c3vbl 
+[2025-05-26 06:10:02 +08:00Z] [INFO] - 用户连接... 
+[2025-05-26 06:10:02 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND OWNER ='1' 
+[2025-05-26 06:10:02 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["Kyv0pgp-6Tq2ZwBGtBGHx"] 
+[2025-05-26 06:10:02 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-05-26 06:10:02 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-05-26 06:10:02 +08:00Z] [INFO] - 用户加入房间 Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 06:10:02 +08:00Z] [INFO] - SQL (direct): SELECT versions.content FROM files,versions WHERE files.fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND files.currenthead=versions.vid 
+[2025-05-26 06:10:02 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 06:10:06 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["xCDiTJ4uoREf-utpBacD5"] 
+[2025-05-26 06:10:06 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 06:10:22 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["xCDiTJ4uoREf-utpBacD5"] 
+[2025-05-26 06:10:22 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 06:10:32 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=v1t7m7c3vbl 
+[2025-05-26 06:10:32 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 06:10:32 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=z6l5vtgiug 
+[2025-05-26 06:11:03 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=z6l5vtgiug 
+[2025-05-26 06:11:04 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 06:11:04 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=ak288e6r38u 
+[2025-05-26 06:11:54 +08:00Z] [INFO] - 开始初始化 node 方法 
+[2025-05-26 06:11:54 +08:00Z] [SUCCESS] - Socket Server is running... 
+[2025-05-26 06:11:54 +08:00Z] [SUCCESS] - WS 服务初始化成功，连接地址：ws://localhost:9000 
+[2025-05-26 06:11:54 +08:00Z] [SUCCESS] - Node Serve is running at http://localhost:5000. 
+[2025-05-26 06:11:54 +08:00Z] [INFO] - 连接数据库成功！ 
+[2025-05-26 06:11:57 +08:00Z] [INFO] - SQL (direct): SELECT * FROM users WHERE userid='1'&&password='c4ca4238a0b923820dcc509a6f75849b' 
+[2025-05-26 06:11:58 +08:00Z] [DEBUG] - [status] 200 [msg] 登录成功 
+[2025-05-26 06:11:58 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-05-26 06:11:58 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-05-26 06:11:58 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 06:11:59 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 06:11:59 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=czssadiq0ah 
+[2025-05-26 06:11:59 +08:00Z] [INFO] - 用户连接... 
+[2025-05-26 06:11:59 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND OWNER ='1' 
+[2025-05-26 06:11:59 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["Kyv0pgp-6Tq2ZwBGtBGHx"] 
+[2025-05-26 06:11:59 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-05-26 06:11:59 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-05-26 06:11:59 +08:00Z] [INFO] - 用户加入房间 Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 06:11:59 +08:00Z] [INFO] - SQL (direct): SELECT versions.content FROM files,versions WHERE files.fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND files.currenthead=versions.vid 
+[2025-05-26 06:11:59 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 06:12:02 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["xCDiTJ4uoREf-utpBacD5"] 
+[2025-05-26 06:12:02 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 06:12:30 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=czssadiq0ah 
+[2025-05-26 06:12:31 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 06:12:31 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=sft47pg5c8m 
+[2025-05-26 06:13:03 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=sft47pg5c8m 
+[2025-05-26 06:13:04 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 06:13:04 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=az0hkkqu86k 
+[2025-05-26 06:53:22 +08:00Z] [INFO] - 开始初始化 node 方法 
+[2025-05-26 06:53:22 +08:00Z] [SUCCESS] - Socket Server is running... 
+[2025-05-26 06:53:22 +08:00Z] [SUCCESS] - WS 服务初始化成功，连接地址：ws://localhost:9000 
+[2025-05-26 06:53:22 +08:00Z] [SUCCESS] - Node Serve is running at http://localhost:5000. 
+[2025-05-26 06:53:22 +08:00Z] [INFO] - 连接数据库成功！ 
+[2025-05-26 06:53:23 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 06:53:23 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=jwf7tu1bd2q 
+[2025-05-26 06:53:26 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=jwf7tu1bd2q 
+[2025-05-26 06:53:30 +08:00Z] [INFO] - SQL (direct): SELECT * FROM users WHERE userid='1'&&password='c4ca4238a0b923820dcc509a6f75849b' 
+[2025-05-26 06:53:30 +08:00Z] [DEBUG] - [status] 200 [msg] 登录成功 
+[2025-05-26 06:53:30 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-05-26 06:53:30 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-05-26 06:53:30 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 06:53:31 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 06:53:31 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=xb1rvcq8t8a 
+[2025-05-26 06:53:31 +08:00Z] [INFO] - 用户连接... 
+[2025-05-26 06:53:31 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND OWNER ='1' 
+[2025-05-26 06:53:31 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["Kyv0pgp-6Tq2ZwBGtBGHx"] 
+[2025-05-26 06:53:31 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-05-26 06:53:31 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-05-26 06:53:31 +08:00Z] [INFO] - 用户加入房间 Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 06:53:31 +08:00Z] [INFO] - SQL (direct): SELECT versions.content FROM files,versions WHERE files.fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND files.currenthead=versions.vid 
+[2025-05-26 06:53:31 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 06:53:42 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["xCDiTJ4uoREf-utpBacD5"] 
+[2025-05-26 06:53:42 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 06:54:02 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=xb1rvcq8t8a 
+[2025-05-26 06:54:03 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 06:54:03 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=y143ao5v84p 
+[2025-05-26 06:54:35 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=y143ao5v84p 
+[2025-05-26 06:54:36 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 06:54:36 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=aslmoxyd9m 
+[2025-05-26 06:55:07 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=aslmoxyd9m 
+[2025-05-26 06:55:07 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 06:55:07 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=4s5bk2tzf47 
+[2025-05-26 06:55:10 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["_HY0FIyYibeoSY_X-DV-C"] 
+[2025-05-26 06:55:10 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 06:55:15 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["_HY0FIyYibeoSY_X-DV-C"] 
+[2025-05-26 06:55:15 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 06:55:30 +08:00Z] [INFO] - SQL (parameterized): INSERT INTO versions(vid, fileid, snapshot, description, lasteditor) VALUES(?, ?, ?, ?, ?) -- Params: ["hWQeanz06oaV0HP4xwHJ_","Kyv0pgp-6Tq2ZwBGtBGHx",{"type":"Buffer","data":[1,1,251,244,207,246,8,0,4,1,5,113,117,105,108,108,13,113,233,157,146,232,138,177,229,177,177,230,176,180,0]},"444","1"] 
+[2025-05-26 06:55:30 +08:00Z] [INFO] - SQL (direct): UPDATE files SET currenthead='[object Object]' WHERE fileid='Kyv0pgp-6Tq2ZwBGtBGHx' 
+[2025-05-26 06:55:30 +08:00Z] [DEBUG] - [status] 200 [msg] 版本创建成功 
+[2025-05-26 06:55:30 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["Kyv0pgp-6Tq2ZwBGtBGHx"] 
+[2025-05-26 06:55:30 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-05-26 06:55:37 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=4s5bk2tzf47 
+[2025-05-26 06:55:37 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 06:55:37 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=lu1skzstmam 
+[2025-05-26 06:55:38 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["hWQeanz06oaV0HP4xwHJ_"] 
+[2025-05-26 06:55:38 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 06:55:55 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["_HY0FIyYibeoSY_X-DV-C"] 
+[2025-05-26 06:55:55 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 06:55:57 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["xCDiTJ4uoREf-utpBacD5"] 
+[2025-05-26 06:55:57 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 06:55:59 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["hWQeanz06oaV0HP4xwHJ_"] 
+[2025-05-26 06:55:59 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 06:56:02 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["hWQeanz06oaV0HP4xwHJ_"] 
+[2025-05-26 06:56:02 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 06:56:05 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["hWQeanz06oaV0HP4xwHJ_"] 
+[2025-05-26 06:56:05 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 06:56:07 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["xCDiTJ4uoREf-utpBacD5"] 
+[2025-05-26 06:56:07 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 06:56:09 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=lu1skzstmam 
+[2025-05-26 06:56:10 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 06:56:10 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=30eospomq13 
+[2025-05-26 06:56:10 +08:00Z] [INFO] - 用户连接... 
+[2025-05-26 06:56:10 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND OWNER ='1' 
+[2025-05-26 06:56:10 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["Kyv0pgp-6Tq2ZwBGtBGHx"] 
+[2025-05-26 06:56:10 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-05-26 06:56:10 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-05-26 06:56:10 +08:00Z] [INFO] - 用户加入房间 Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 06:56:10 +08:00Z] [INFO] - SQL (direct): SELECT versions.content FROM files,versions WHERE files.fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND files.currenthead=versions.vid 
+[2025-05-26 06:56:10 +08:00Z] [DEBUG] - [status] 6003 [msg] 参数缺失 
+[2025-05-26 06:56:12 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["hWQeanz06oaV0HP4xwHJ_"] 
+[2025-05-26 06:56:12 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 06:56:43 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=30eospomq13 
+[2025-05-26 06:56:43 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 06:56:43 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=7c3j6nv5n 
+[2025-05-26 06:57:11 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-05-26 06:57:11 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-05-26 06:57:11 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 06:57:13 +08:00Z] [INFO] - canvas-editor 客户端连接 
+[2025-05-26 06:57:15 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-05-26 06:57:15 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-05-26 06:57:15 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 06:57:16 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=7c3j6nv5n 
+[2025-05-26 06:57:16 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 06:57:16 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=mymnepz80u 
+[2025-05-26 06:57:42 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE state=1 AND  filename='222' AND filetype='txt' AND filesuffix='txt' AND owner='1' 
+[2025-05-26 06:57:42 +08:00Z] [INFO] - SQL (direct): INSERT INTO files(fileid,filename,filetype,filesuffix,owner) 
+         VALUES('axWqornH63L7Vyswn-fVR','222','txt','txt','1') 
+[2025-05-26 06:57:42 +08:00Z] [DEBUG] - [status] 200 [msg] 文件创建成功 
+[2025-05-26 06:57:44 +08:00Z] [INFO] - 用户加入房间 axWqornH63L7Vyswn-fVR 
+[2025-05-26 06:57:44 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 06:57:44 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=ivu5y9jvd6m 
+[2025-05-26 06:57:44 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='axWqornH63L7Vyswn-fVR' AND OWNER ='1' 
+[2025-05-26 06:57:44 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["axWqornH63L7Vyswn-fVR"] 
+[2025-05-26 06:57:44 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-05-26 06:57:44 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-05-26 06:57:44 +08:00Z] [INFO] - SQL (direct): SELECT versions.content FROM files,versions WHERE files.fileid='axWqornH63L7Vyswn-fVR' AND files.currenthead=versions.vid 
+[2025-05-26 06:57:44 +08:00Z] [DEBUG] - [status] 6003 [msg] 参数缺失 
+[2025-05-26 06:57:49 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=mymnepz80u 
+[2025-05-26 06:57:49 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 06:57:49 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=jcip9998hi 
+[2025-05-26 06:57:51 +08:00Z] [INFO] - SQL (parameterized): INSERT INTO versions(vid, fileid, snapshot, description, lasteditor) VALUES(?, ?, ?, ?, ?) -- Params: ["e4A_vkZOsbjWETB_E6_G0","axWqornH63L7Vyswn-fVR",{"type":"Buffer","data":[1,2,195,160,252,206,9,0,1,1,5,113,117,105,108,108,5,68,195,160,252,206,9,0,9,229,147,136,229,147,136,229,147,136,1,195,160,252,206,9,1,0,5]},"3","1"] 
+[2025-05-26 06:57:51 +08:00Z] [INFO] - SQL (direct): UPDATE files SET currenthead='[object Object]' WHERE fileid='axWqornH63L7Vyswn-fVR' 
+[2025-05-26 06:57:51 +08:00Z] [DEBUG] - [status] 200 [msg] 版本创建成功 
+[2025-05-26 06:57:51 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["axWqornH63L7Vyswn-fVR"] 
+[2025-05-26 06:57:51 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-05-26 06:57:54 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='axWqornH63L7Vyswn-fVR' 
+[2025-05-26 06:57:54 +08:00Z] [INFO] - SQL (parameterized): SELECT * FROM versions WHERE vid = ? -- Params: ["[object Object]"] 
+[2025-05-26 06:57:54 +08:00Z] [ERROR] - [saveVersion] 当前文件的版本头指向的版本未找到，fileid: axWqornH63L7Vyswn-fVR, currenthead: [object Object] 
+[2025-05-26 06:57:54 +08:00Z] [WARN] - [saveVersion] 未找到currenthead [object Object] 的版本信息，将创建新版本 
+[2025-05-26 06:57:54 +08:00Z] [INFO] - SQL (parameterized): INSERT INTO versions(vid, fileid, content, lasteditor) VALUES(?, ?, ?, ?) -- Params: ["T4jC7elo_T0tvrQLQjVMt","axWqornH63L7Vyswn-fVR","[{\"insert\":\"哈哈哈\\n\"}]","1"] 
+[2025-05-26 06:57:54 +08:00Z] [INFO] - SQL (direct): UPDATE files SET currenthead='T4jC7elo_T0tvrQLQjVMt' WHERE fileid='axWqornH63L7Vyswn-fVR' 
+[2025-05-26 06:57:54 +08:00Z] [DEBUG] - [status] 200 [msg] 文件更新成功 
+[2025-05-26 06:57:57 +08:00Z] [INFO] - SQL (parameterized): INSERT INTO versions(vid, fileid, snapshot, description, lasteditor) VALUES(?, ?, ?, ?, ?) -- Params: ["FzWsdJRTiaQ0mf1JRtT56","axWqornH63L7Vyswn-fVR",{"type":"Buffer","data":[1,2,195,160,252,206,9,0,1,1,5,113,117,105,108,108,5,68,195,160,252,206,9,0,9,229,147,136,229,147,136,229,147,136,1,195,160,252,206,9,1,0,5]},"444","1"] 
+[2025-05-26 06:57:57 +08:00Z] [INFO] - SQL (direct): UPDATE files SET currenthead='[object Object]' WHERE fileid='axWqornH63L7Vyswn-fVR' 
+[2025-05-26 06:57:57 +08:00Z] [DEBUG] - [status] 200 [msg] 版本创建成功 
+[2025-05-26 06:57:57 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["axWqornH63L7Vyswn-fVR"] 
+[2025-05-26 06:57:57 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-05-26 06:57:59 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=jcip9998hi 
+[2025-05-26 06:57:59 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=ivu5y9jvd6m 
+[2025-05-26 06:57:59 +08:00Z] [WARN] - canvas-editor 用户关闭连接 
+[2025-05-26 06:57:59 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 06:57:59 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=b8thl349pr6 
+[2025-05-26 06:57:59 +08:00Z] [INFO] - 用户连接... 
+[2025-05-26 06:57:59 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='axWqornH63L7Vyswn-fVR' AND OWNER ='1' 
+[2025-05-26 06:57:59 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["axWqornH63L7Vyswn-fVR"] 
+[2025-05-26 06:57:59 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-05-26 06:57:59 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-05-26 06:57:59 +08:00Z] [INFO] - 用户加入房间 axWqornH63L7Vyswn-fVR 
+[2025-05-26 06:57:59 +08:00Z] [INFO] - SQL (direct): SELECT versions.content FROM files,versions WHERE files.fileid='axWqornH63L7Vyswn-fVR' AND files.currenthead=versions.vid 
+[2025-05-26 06:57:59 +08:00Z] [DEBUG] - [status] 6003 [msg] 参数缺失 
+[2025-05-26 06:58:03 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["FzWsdJRTiaQ0mf1JRtT56"] 
+[2025-05-26 06:58:03 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 06:58:08 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-05-26 06:58:08 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-05-26 06:58:08 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 06:58:25 +08:00Z] [INFO] - SQL (direct): SELECT *  FROM filestates AS fs,files AS fl 
+    WHERE fs.editor='1' AND fl.fileid=fs.fileid 
+[2025-05-26 06:58:25 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 06:58:26 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-05-26 06:58:26 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-05-26 06:58:26 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 06:58:29 +08:00Z] [INFO] - SQL (direct): SELECT *  FROM filestates AS fs,files AS fl 
+    WHERE fs.editor='1' AND fl.fileid=fs.fileid 
+[2025-05-26 06:58:29 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 06:58:29 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-05-26 06:58:29 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-05-26 06:58:29 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 06:58:32 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=b8thl349pr6 
+[2025-05-26 06:58:32 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 06:58:32 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=0o088qye0lds 
+[2025-05-26 06:58:42 +08:00Z] [INFO] - SQL (direct): SELECT * FROM users WHERE userid='2'&&password='c81e728d9d4c2f636f067f89cc14862c' 
+[2025-05-26 06:58:42 +08:00Z] [DEBUG] - [status] 200 [msg] 登录成功 
+[2025-05-26 06:58:42 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='2' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-05-26 06:58:42 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='2' AND state=1 AND ISNULL(parentfolderid) 
+[2025-05-26 06:58:42 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 06:58:44 +08:00Z] [INFO] - SQL (direct): SELECT *  FROM filestates AS fs,files AS fl 
+    WHERE fs.editor='2' AND fl.fileid=fs.fileid 
+[2025-05-26 06:58:44 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 06:58:46 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 06:58:46 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=onz1yd9lub7 
+[2025-05-26 06:58:46 +08:00Z] [INFO] - 用户连接... 
+[2025-05-26 06:58:46 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='Kyv0pgp-6Tq2ZwBGtBGHx?fileid=Kyv0pgp-6Tq2ZwBGtBGHx&editor=2&favor&top&createtime=2025-05-21&filename=test&filetype=markdown&filesuffix=md&owner=1' AND OWNER ='2' 
+[2025-05-26 06:58:46 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["Kyv0pgp-6Tq2ZwBGtBGHx"] 
+[2025-05-26 06:58:46 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-05-26 06:58:46 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-05-26 06:58:46 +08:00Z] [INFO] - 用户加入房间 Kyv0pgp-6Tq2ZwBGtBGHx?fileid=Kyv0pgp-6Tq2ZwBGtBGHx&editor=2&favor&top&createtime=2025-05-21&filename=test&filetype=markdown&filesuffix=md&owner=1 
+[2025-05-26 06:58:47 +08:00Z] [INFO] - SQL (direct): SELECT versions.content FROM files,versions WHERE files.fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND files.currenthead=versions.vid 
+[2025-05-26 06:58:47 +08:00Z] [DEBUG] - [status] 6003 [msg] 参数缺失 
+[2025-05-26 06:58:48 +08:00Z] [INFO] - 用户加入房间 Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 06:58:48 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND OWNER ='1' 
+[2025-05-26 06:58:48 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["Kyv0pgp-6Tq2ZwBGtBGHx"] 
+[2025-05-26 06:58:48 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 06:58:48 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=f52qpbx5o38 
+[2025-05-26 06:58:48 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-05-26 06:58:48 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-05-26 06:58:48 +08:00Z] [INFO] - SQL (direct): SELECT versions.content FROM files,versions WHERE files.fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND files.currenthead=versions.vid 
+[2025-05-26 06:58:48 +08:00Z] [DEBUG] - [status] 6003 [msg] 参数缺失 
+[2025-05-26 06:59:05 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='Kyv0pgp-6Tq2ZwBGtBGHx' 
+[2025-05-26 06:59:05 +08:00Z] [INFO] - SQL (parameterized): DELETE FROM versions WHERE vid = ? -- Params: ["_HY0FIyYibeoSY_X-DV-C"] 
+[2025-05-26 06:59:05 +08:00Z] [DEBUG] - [status] 200 [msg] 版本删除成功 
+[2025-05-26 06:59:05 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["Kyv0pgp-6Tq2ZwBGtBGHx"] 
+[2025-05-26 06:59:05 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-05-26 06:59:05 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=0o088qye0lds 
+[2025-05-26 06:59:05 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 06:59:05 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=976um4lquf 
+[2025-05-26 06:59:06 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=976um4lquf 
+[2025-05-26 06:59:06 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=f52qpbx5o38 
+[2025-05-26 06:59:06 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 06:59:06 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=oiarzhbjl3 
+[2025-05-26 06:59:06 +08:00Z] [INFO] - 用户连接... 
+[2025-05-26 06:59:06 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND OWNER ='1' 
+[2025-05-26 06:59:07 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["Kyv0pgp-6Tq2ZwBGtBGHx"] 
+[2025-05-26 06:59:07 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-05-26 06:59:07 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-05-26 06:59:07 +08:00Z] [INFO] - 用户加入房间 Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 06:59:07 +08:00Z] [INFO] - SQL (direct): SELECT versions.content FROM files,versions WHERE files.fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND files.currenthead=versions.vid 
+[2025-05-26 06:59:07 +08:00Z] [DEBUG] - [status] 6003 [msg] 参数缺失 
+[2025-05-26 06:59:41 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=onz1yd9lub7 
+[2025-05-26 06:59:48 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-05-26 06:59:48 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-05-26 06:59:48 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 06:59:49 +08:00Z] [INFO] - canvas-editor 客户端连接 
+[2025-05-26 06:59:51 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-05-26 06:59:51 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-05-26 06:59:51 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 07:00:13 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=oiarzhbjl3 
+[2025-05-26 07:00:14 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:00:14 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=muat8n8faj 
+[2025-05-26 07:00:23 +08:00Z] [INFO] - canvas-editor 客户端连接 
+[2025-05-26 07:00:27 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-05-26 07:00:27 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-05-26 07:00:27 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 07:00:46 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=muat8n8faj 
+[2025-05-26 07:00:47 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:00:47 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=8ea6wddneb3 
+[2025-05-26 07:01:19 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=8ea6wddneb3 
+[2025-05-26 07:01:20 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:01:20 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=30gquu358vc 
+[2025-05-26 07:01:42 +08:00Z] [INFO] - 用户加入房间 Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:01:42 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:01:42 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=10pwi8e3ym2c 
+[2025-05-26 07:01:42 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND OWNER ='1' 
+[2025-05-26 07:01:42 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["Kyv0pgp-6Tq2ZwBGtBGHx"] 
+[2025-05-26 07:01:42 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-05-26 07:01:42 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-05-26 07:01:42 +08:00Z] [INFO] - SQL (direct): SELECT versions.content FROM files,versions WHERE files.fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND files.currenthead=versions.vid 
+[2025-05-26 07:01:42 +08:00Z] [DEBUG] - [status] 6003 [msg] 参数缺失 
+[2025-05-26 07:01:45 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='Kyv0pgp-6Tq2ZwBGtBGHx' 
+[2025-05-26 07:01:45 +08:00Z] [INFO] - SQL (parameterized): SELECT * FROM versions WHERE vid = ? -- Params: ["[object Object]"] 
+[2025-05-26 07:01:45 +08:00Z] [ERROR] - [saveVersion] 当前文件的版本头指向的版本未找到，fileid: Kyv0pgp-6Tq2ZwBGtBGHx, currenthead: [object Object] 
+[2025-05-26 07:01:45 +08:00Z] [WARN] - [saveVersion] 未找到currenthead [object Object] 的版本信息，将创建新版本 
+[2025-05-26 07:01:45 +08:00Z] [INFO] - SQL (parameterized): INSERT INTO versions(vid, fileid, content, lasteditor) VALUES(?, ?, ?, ?) -- Params: ["wDr1OQzYnCKmoYX6XPR7L","Kyv0pgp-6Tq2ZwBGtBGHx","[{\"insert\":\"\\n\"}]","1"] 
+[2025-05-26 07:01:45 +08:00Z] [INFO] - SQL (direct): UPDATE files SET currenthead='wDr1OQzYnCKmoYX6XPR7L' WHERE fileid='Kyv0pgp-6Tq2ZwBGtBGHx' 
+[2025-05-26 07:01:45 +08:00Z] [DEBUG] - [status] 200 [msg] 文件更新成功 
+[2025-05-26 07:01:51 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='Kyv0pgp-6Tq2ZwBGtBGHx' 
+[2025-05-26 07:01:51 +08:00Z] [INFO] - SQL (parameterized): SELECT * FROM versions WHERE vid = ? -- Params: ["wDr1OQzYnCKmoYX6XPR7L"] 
+[2025-05-26 07:01:51 +08:00Z] [INFO] - [saveVersion] 未超过版本控制时限，更新版本内容，vid: wDr1OQzYnCKmoYX6XPR7L, fileid: Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:01:51 +08:00Z] [INFO] - SQL (parameterized): UPDATE versions SET content = ? WHERE fileid = ? AND vid = ? -- Params: ["[{\"insert\":\"哈哈哈\\n\"}]","Kyv0pgp-6Tq2ZwBGtBGHx","wDr1OQzYnCKmoYX6XPR7L"] 
+[2025-05-26 07:01:51 +08:00Z] [DEBUG] - [status] 200 [msg] 已更新文件内容 
+[2025-05-26 07:01:52 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-05-26 07:01:52 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-05-26 07:01:52 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 07:01:53 +08:00Z] [INFO] - 用户加入房间 Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:01:53 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:01:53 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=ev6weg8xdfu 
+[2025-05-26 07:01:53 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND OWNER ='1' 
+[2025-05-26 07:01:53 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["Kyv0pgp-6Tq2ZwBGtBGHx"] 
+[2025-05-26 07:01:53 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-05-26 07:01:53 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-05-26 07:01:54 +08:00Z] [WARN] - canvas-editor 用户关闭连接 
+[2025-05-26 07:01:54 +08:00Z] [WARN] - canvas-editor 用户关闭连接 
+[2025-05-26 07:01:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=ev6weg8xdfu 
+[2025-05-26 07:01:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=10pwi8e3ym2c 
+[2025-05-26 07:01:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=30gquu358vc 
+[2025-05-26 07:01:54 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:01:54 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=1knl3dso7gy 
+[2025-05-26 07:01:54 +08:00Z] [INFO] - 用户连接... 
+[2025-05-26 07:01:54 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND OWNER ='1' 
+[2025-05-26 07:01:54 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["Kyv0pgp-6Tq2ZwBGtBGHx"] 
+[2025-05-26 07:01:54 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-05-26 07:01:54 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-05-26 07:01:55 +08:00Z] [INFO] - 用户加入房间 Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:01:55 +08:00Z] [INFO] - SQL (direct): SELECT versions.content FROM files,versions WHERE files.fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND files.currenthead=versions.vid 
+[2025-05-26 07:01:55 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 07:01:57 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["xCDiTJ4uoREf-utpBacD5"] 
+[2025-05-26 07:01:57 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 07:01:59 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["hWQeanz06oaV0HP4xwHJ_"] 
+[2025-05-26 07:01:59 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 07:02:07 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-05-26 07:02:07 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-05-26 07:02:07 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 07:02:14 +08:00Z] [INFO] - 用户加入房间 Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:02:14 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND OWNER ='1' 
+[2025-05-26 07:02:14 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:02:14 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=cljz7xi7bp6 
+[2025-05-26 07:02:14 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-05-26 07:02:14 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["Kyv0pgp-6Tq2ZwBGtBGHx"] 
+[2025-05-26 07:02:14 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-05-26 07:02:15 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-05-26 07:02:15 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-05-26 07:02:15 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 07:02:17 +08:00Z] [INFO] - 用户加入房间 Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:02:17 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:02:17 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=jk4rtjkg47f 
+[2025-05-26 07:02:17 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND OWNER ='1' 
+[2025-05-26 07:02:17 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["Kyv0pgp-6Tq2ZwBGtBGHx"] 
+[2025-05-26 07:02:17 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-05-26 07:02:17 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-05-26 07:02:24 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-05-26 07:02:24 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-05-26 07:02:24 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 07:02:33 +08:00Z] [INFO] - 用户加入房间 Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:02:33 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:02:33 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=tecat6vhryd 
+[2025-05-26 07:02:33 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND OWNER ='1' 
+[2025-05-26 07:02:33 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["Kyv0pgp-6Tq2ZwBGtBGHx"] 
+[2025-05-26 07:02:33 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-05-26 07:02:33 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-05-26 07:02:36 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-05-26 07:02:36 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-05-26 07:02:36 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 07:02:37 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=cljz7xi7bp6 
+[2025-05-26 07:02:37 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=1knl3dso7gy 
+[2025-05-26 07:02:37 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=tecat6vhryd 
+[2025-05-26 07:02:37 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=jk4rtjkg47f 
+[2025-05-26 07:02:37 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-05-26 07:02:37 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-05-26 07:02:37 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 07:02:38 +08:00Z] [INFO] - 用户连接... 
+[2025-05-26 07:02:38 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND OWNER ='1' 
+[2025-05-26 07:02:38 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["Kyv0pgp-6Tq2ZwBGtBGHx"] 
+[2025-05-26 07:02:38 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:02:38 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=0qiy8yedokw 
+[2025-05-26 07:02:38 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-05-26 07:02:38 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-05-26 07:02:38 +08:00Z] [INFO] - 用户加入房间 Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:02:38 +08:00Z] [INFO] - SQL (direct): SELECT versions.content FROM files,versions WHERE files.fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND files.currenthead=versions.vid 
+[2025-05-26 07:02:38 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 07:02:41 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-05-26 07:02:41 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-05-26 07:02:41 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 07:02:42 +08:00Z] [INFO] - 用户加入房间 Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:02:42 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:02:42 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=tuc9e6tc5dn 
+[2025-05-26 07:02:42 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND OWNER ='1' 
+[2025-05-26 07:02:42 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["Kyv0pgp-6Tq2ZwBGtBGHx"] 
+[2025-05-26 07:02:42 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-05-26 07:02:42 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-05-26 07:02:50 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-05-26 07:02:50 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-05-26 07:02:50 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 07:04:08 +08:00Z] [INFO] - 用户加入房间 axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:04:08 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:04:08 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=7g98hx9ef3v 
+[2025-05-26 07:04:08 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='axWqornH63L7Vyswn-fVR' AND OWNER ='1' 
+[2025-05-26 07:04:08 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["axWqornH63L7Vyswn-fVR"] 
+[2025-05-26 07:04:08 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-05-26 07:04:08 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-05-26 07:04:08 +08:00Z] [INFO] - SQL (direct): SELECT versions.content FROM files,versions WHERE files.fileid='axWqornH63L7Vyswn-fVR' AND files.currenthead=versions.vid 
+[2025-05-26 07:04:08 +08:00Z] [DEBUG] - [status] 6003 [msg] 参数缺失 
+[2025-05-26 07:04:10 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["FzWsdJRTiaQ0mf1JRtT56"] 
+[2025-05-26 07:04:10 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 07:04:15 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["FzWsdJRTiaQ0mf1JRtT56"] 
+[2025-05-26 07:04:15 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 07:04:17 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-05-26 07:04:17 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-05-26 07:04:17 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 07:04:21 +08:00Z] [INFO] - SQL (direct): SELECT *  FROM filestates AS fs,files AS fl 
+    WHERE fs.editor='1' AND fl.fileid=fs.fileid 
+[2025-05-26 07:04:21 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 07:04:22 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-05-26 07:04:22 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-05-26 07:04:22 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 07:04:40 +08:00Z] [INFO] - canvas-editor 客户端连接 
+[2025-05-26 07:04:41 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=7g98hx9ef3v 
+[2025-05-26 07:04:41 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:04:41 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=9hdfq0reqpm 
+[2025-05-26 07:05:12 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=9hdfq0reqpm 
+[2025-05-26 07:05:13 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:05:13 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=k5hy2qrhz8l 
+[2025-05-26 07:05:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=k5hy2qrhz8l 
+[2025-05-26 07:05:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:05:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=ygfu13w7u4r 
+[2025-05-26 07:06:54 +08:00Z] [WARN] - canvas-editor 用户关闭连接 
+[2025-05-26 07:06:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=0qiy8yedokw 
+[2025-05-26 07:06:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=ygfu13w7u4r 
+[2025-05-26 07:06:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=tuc9e6tc5dn 
+[2025-05-26 07:06:55 +08:00Z] [INFO] - canvas-editor 客户端连接 
+[2025-05-26 07:06:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:06:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=9rocwl18py 
+[2025-05-26 07:06:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:06:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=ut809kixbh 
+[2025-05-26 07:06:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:06:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=jxll5g229w 
+[2025-05-26 07:07:54 +08:00Z] [WARN] - canvas-editor 用户关闭连接 
+[2025-05-26 07:07:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=ut809kixbh 
+[2025-05-26 07:07:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=9rocwl18py 
+[2025-05-26 07:07:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=jxll5g229w 
+[2025-05-26 07:07:55 +08:00Z] [INFO] - canvas-editor 客户端连接 
+[2025-05-26 07:07:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:07:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=0gkzi8wiayv 
+[2025-05-26 07:07:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:07:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=6e0gjl0i267 
+[2025-05-26 07:07:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:07:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=s2bh6ztimd 
+[2025-05-26 07:08:54 +08:00Z] [WARN] - canvas-editor 用户关闭连接 
+[2025-05-26 07:08:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=0gkzi8wiayv 
+[2025-05-26 07:08:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=s2bh6ztimd 
+[2025-05-26 07:08:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=6e0gjl0i267 
+[2025-05-26 07:08:55 +08:00Z] [INFO] - canvas-editor 客户端连接 
+[2025-05-26 07:08:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:08:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=oj7yol8ojzn 
+[2025-05-26 07:08:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:08:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=kuglyvw7da 
+[2025-05-26 07:08:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:08:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=rgg015rxg5 
+[2025-05-26 07:09:54 +08:00Z] [WARN] - canvas-editor 用户关闭连接 
+[2025-05-26 07:09:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=oj7yol8ojzn 
+[2025-05-26 07:09:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=kuglyvw7da 
+[2025-05-26 07:09:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=rgg015rxg5 
+[2025-05-26 07:09:55 +08:00Z] [INFO] - canvas-editor 客户端连接 
+[2025-05-26 07:09:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:09:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=kxblwlx5smn 
+[2025-05-26 07:09:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:09:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=j8mvti4lv9k 
+[2025-05-26 07:09:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:09:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=np2qb0z2c1 
+[2025-05-26 07:10:42 +08:00Z] [WARN] - canvas-editor 用户关闭连接 
+[2025-05-26 07:10:42 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=np2qb0z2c1 
+[2025-05-26 07:10:42 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=kxblwlx5smn 
+[2025-05-26 07:10:42 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=j8mvti4lv9k 
+[2025-05-26 07:10:42 +08:00Z] [INFO] - canvas-editor 客户端连接 
+[2025-05-26 07:10:42 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:10:42 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=ggxfd7rdbmq 
+[2025-05-26 07:10:42 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:10:42 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=p4wnexuyzz 
+[2025-05-26 07:10:42 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:10:42 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=8xx5r6nttmx 
+[2025-05-26 07:10:46 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-05-26 07:10:46 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-05-26 07:10:46 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 07:11:15 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=ggxfd7rdbmq 
+[2025-05-26 07:11:16 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:11:16 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=tafz6lpfub 
+[2025-05-26 07:11:48 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=tafz6lpfub 
+[2025-05-26 07:11:49 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:11:49 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=3pecl1aqxfz 
+[2025-05-26 07:12:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=p4wnexuyzz 
+[2025-05-26 07:12:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=3pecl1aqxfz 
+[2025-05-26 07:12:54 +08:00Z] [WARN] - canvas-editor 用户关闭连接 
+[2025-05-26 07:12:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=8xx5r6nttmx 
+[2025-05-26 07:12:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:12:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=rug0pmf71p 
+[2025-05-26 07:12:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:12:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=w8yw2ds05fj 
+[2025-05-26 07:12:55 +08:00Z] [INFO] - canvas-editor 客户端连接 
+[2025-05-26 07:12:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:12:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=8mu3kxov2tn 
+[2025-05-26 07:13:54 +08:00Z] [WARN] - canvas-editor 用户关闭连接 
+[2025-05-26 07:13:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=8mu3kxov2tn 
+[2025-05-26 07:13:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=w8yw2ds05fj 
+[2025-05-26 07:13:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=rug0pmf71p 
+[2025-05-26 07:13:55 +08:00Z] [INFO] - canvas-editor 客户端连接 
+[2025-05-26 07:13:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:13:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=vkcagsj6xqg 
+[2025-05-26 07:13:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:13:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=nt6z9x0afk 
+[2025-05-26 07:13:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:13:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=mo58d3wucts 
+[2025-05-26 07:14:54 +08:00Z] [WARN] - canvas-editor 用户关闭连接 
+[2025-05-26 07:14:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=nt6z9x0afk 
+[2025-05-26 07:14:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=mo58d3wucts 
+[2025-05-26 07:14:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=vkcagsj6xqg 
+[2025-05-26 07:14:55 +08:00Z] [INFO] - canvas-editor 客户端连接 
+[2025-05-26 07:14:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:14:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=4ifg9bna5a5 
+[2025-05-26 07:14:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:14:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=4v9bb3wz9pm 
+[2025-05-26 07:14:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:14:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=l5k8b9r3tco 
+[2025-05-26 07:15:54 +08:00Z] [WARN] - canvas-editor 用户关闭连接 
+[2025-05-26 07:15:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=l5k8b9r3tco 
+[2025-05-26 07:15:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=4v9bb3wz9pm 
+[2025-05-26 07:15:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=4ifg9bna5a5 
+[2025-05-26 07:15:55 +08:00Z] [INFO] - canvas-editor 客户端连接 
+[2025-05-26 07:15:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:15:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=5kkdhkmv4cu 
+[2025-05-26 07:15:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:15:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=49e7k43amii 
+[2025-05-26 07:15:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:15:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=btfv5xbfelr 
+[2025-05-26 07:16:54 +08:00Z] [WARN] - canvas-editor 用户关闭连接 
+[2025-05-26 07:16:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=49e7k43amii 
+[2025-05-26 07:16:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=btfv5xbfelr 
+[2025-05-26 07:16:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=5kkdhkmv4cu 
+[2025-05-26 07:16:55 +08:00Z] [INFO] - canvas-editor 客户端连接 
+[2025-05-26 07:16:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:16:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=rofjmgscg5n 
+[2025-05-26 07:16:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:16:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=i6y6rssoxx9 
+[2025-05-26 07:16:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:16:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=nfxpbs1ec39 
+[2025-05-26 07:17:54 +08:00Z] [WARN] - canvas-editor 用户关闭连接 
+[2025-05-26 07:17:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=nfxpbs1ec39 
+[2025-05-26 07:17:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=i6y6rssoxx9 
+[2025-05-26 07:17:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=rofjmgscg5n 
+[2025-05-26 07:17:55 +08:00Z] [INFO] - canvas-editor 客户端连接 
+[2025-05-26 07:17:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:17:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=4fjezl4l48 
+[2025-05-26 07:17:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:17:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=84e6au3gdyc 
+[2025-05-26 07:17:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:17:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=t0cyyaakno 
+[2025-05-26 07:18:01 +08:00Z] [INFO] - 用户加入房间 Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:18:01 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:18:01 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=kpupb9srtcd 
+[2025-05-26 07:18:01 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND OWNER ='1' 
+[2025-05-26 07:18:01 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["Kyv0pgp-6Tq2ZwBGtBGHx"] 
+[2025-05-26 07:18:01 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-05-26 07:18:01 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-05-26 07:18:11 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-05-26 07:18:11 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-05-26 07:18:11 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 07:18:27 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=84e6au3gdyc 
+[2025-05-26 07:18:28 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:18:28 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=bmug1tym2o 
+[2025-05-26 07:19:00 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=bmug1tym2o 
+[2025-05-26 07:19:01 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:19:01 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=c9ljtcc82yc 
+[2025-05-26 07:19:33 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=c9ljtcc82yc 
+[2025-05-26 07:19:34 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:19:34 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=bn2sg1kirum 
+[2025-05-26 07:20:06 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=bn2sg1kirum 
+[2025-05-26 07:20:07 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:20:07 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=cau8z5qlhni 
+[2025-05-26 07:20:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=cau8z5qlhni 
+[2025-05-26 07:20:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=t0cyyaakno 
+[2025-05-26 07:20:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=kpupb9srtcd 
+[2025-05-26 07:20:54 +08:00Z] [WARN] - canvas-editor 用户关闭连接 
+[2025-05-26 07:20:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=4fjezl4l48 
+[2025-05-26 07:20:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:20:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=0h0rhhjrodpi 
+[2025-05-26 07:20:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:20:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=hdovtsya99 
+[2025-05-26 07:20:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:20:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=0k4xbwqosyil 
+[2025-05-26 07:20:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:20:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=mze1l9l31e 
+[2025-05-26 07:20:55 +08:00Z] [INFO] - canvas-editor 客户端连接 
+[2025-05-26 07:21:26 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=0h0rhhjrodpi 
+[2025-05-26 07:21:26 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:21:26 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=kfvevuoe5i 
+[2025-05-26 07:21:27 +08:00Z] [INFO] - canvas-editor 客户端连接 
+[2025-05-26 07:21:59 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=kfvevuoe5i 
+[2025-05-26 07:21:59 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:21:59 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=igs1nxv6l3m 
+[2025-05-26 07:22:32 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=igs1nxv6l3m 
+[2025-05-26 07:22:32 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:22:32 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=d72vasnklfd 
+[2025-05-26 07:23:05 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=d72vasnklfd 
+[2025-05-26 07:23:05 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:23:05 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=nk9cmbea0bp 
+[2025-05-26 07:23:38 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=nk9cmbea0bp 
+[2025-05-26 07:23:38 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:23:38 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=a4ysmd4lnic 
+[2025-05-26 07:24:11 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=a4ysmd4lnic 
+[2025-05-26 07:24:11 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:24:11 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=kk3l4f647j 
+[2025-05-26 07:24:44 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=kk3l4f647j 
+[2025-05-26 07:24:44 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:24:44 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=d34g5rrdu8 
+[2025-05-26 07:25:17 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=d34g5rrdu8 
+[2025-05-26 07:25:17 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:25:17 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=f0cgkgv52qq 
+[2025-05-26 07:25:50 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=f0cgkgv52qq 
+[2025-05-26 07:25:50 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:25:50 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=t6pb8ii3x2m 
+[2025-05-26 07:26:23 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=t6pb8ii3x2m 
+[2025-05-26 07:26:23 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:26:23 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=zceakm4l09o 
+[2025-05-26 07:26:56 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=zceakm4l09o 
+[2025-05-26 07:26:56 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:26:56 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=eyop34anv9n 
+[2025-05-26 07:27:29 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=eyop34anv9n 
+[2025-05-26 07:27:29 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:27:29 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=clv4zfa1wba 
+[2025-05-26 07:28:02 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=clv4zfa1wba 
+[2025-05-26 07:28:02 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:28:02 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=c1gmolws2nh 
+[2025-05-26 07:28:35 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=c1gmolws2nh 
+[2025-05-26 07:28:35 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:28:35 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=jwmmm8hmbs 
+[2025-05-26 07:29:06 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=jwmmm8hmbs 
+[2025-05-26 07:29:07 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:29:07 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=yvkax2h6run 
+[2025-05-26 07:29:39 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=yvkax2h6run 
+[2025-05-26 07:29:40 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:29:40 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=x02qd9ptzo 
+[2025-05-26 07:30:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=hdovtsya99 
+[2025-05-26 07:30:54 +08:00Z] [WARN] - canvas-editor 用户关闭连接 
+[2025-05-26 07:30:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=0k4xbwqosyil 
+[2025-05-26 07:30:54 +08:00Z] [WARN] - canvas-editor 用户关闭连接 
+[2025-05-26 07:30:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=mze1l9l31e 
+[2025-05-26 07:30:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=x02qd9ptzo 
+[2025-05-26 07:30:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:30:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=urx4u2k8e8 
+[2025-05-26 07:30:55 +08:00Z] [INFO] - canvas-editor 客户端连接 
+[2025-05-26 07:30:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:30:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=reo91dqv297 
+[2025-05-26 07:30:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:30:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=7fcjtqqxqee 
+[2025-05-26 07:30:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:30:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=k0ko6ekvbza 
+[2025-05-26 07:30:55 +08:00Z] [INFO] - canvas-editor 客户端连接 
+[2025-05-26 07:31:26 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=7fcjtqqxqee 
+[2025-05-26 07:31:26 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:31:26 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=9i8m1zqcasf 
+[2025-05-26 07:31:57 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=9i8m1zqcasf 
+[2025-05-26 07:31:58 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:31:58 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=ne3bslndz4 
+[2025-05-26 07:32:30 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=ne3bslndz4 
+[2025-05-26 07:32:30 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:32:30 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=aumfbea20cd 
+[2025-05-26 07:33:03 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=aumfbea20cd 
+[2025-05-26 07:33:03 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:33:03 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=twhedjgftg 
+[2025-05-26 07:33:35 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=twhedjgftg 
+[2025-05-26 07:33:35 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:33:35 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=v8gfi7i3nu9 
+[2025-05-26 07:34:06 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=v8gfi7i3nu9 
+[2025-05-26 07:34:07 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:34:07 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=4itun8d17b5 
+[2025-05-26 07:34:39 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=4itun8d17b5 
+[2025-05-26 07:34:40 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:34:40 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=qx1o4ta8zi 
+[2025-05-26 07:35:12 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=qx1o4ta8zi 
+[2025-05-26 07:35:13 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:35:13 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=05l6oxku5417 
+[2025-05-26 07:35:45 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=05l6oxku5417 
+[2025-05-26 07:35:46 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:35:46 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=7n0ob4kng2f 
+[2025-05-26 07:36:35 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=7n0ob4kng2f 
+[2025-05-26 07:36:35 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=k0ko6ekvbza 
+[2025-05-26 07:36:35 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=reo91dqv297 
+[2025-05-26 07:36:35 +08:00Z] [WARN] - canvas-editor 用户关闭连接 
+[2025-05-26 07:36:35 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=urx4u2k8e8 
+[2025-05-26 07:36:35 +08:00Z] [WARN] - canvas-editor 用户关闭连接 
+[2025-05-26 07:36:35 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:36:35 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=a8br3cdj0mq 
+[2025-05-26 07:36:35 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:36:35 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=7b909b2y09d 
+[2025-05-26 07:36:35 +08:00Z] [INFO] - canvas-editor 客户端连接 
+[2025-05-26 07:36:35 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:36:35 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=1atsxwmazgt 
+[2025-05-26 07:36:35 +08:00Z] [INFO] - canvas-editor 客户端连接 
+[2025-05-26 07:36:35 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:36:35 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=j6vstpro9w 
+[2025-05-26 07:37:06 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=a8br3cdj0mq 
+[2025-05-26 07:37:07 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/axWqornH63L7Vyswn-fVR 
+[2025-05-26 07:37:07 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=axWqornH63L7Vyswn-fVR, wid=zd0d399b7k 
+[2025-05-26 07:37:14 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=j6vstpro9w 
+[2025-05-26 07:37:14 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=1atsxwmazgt 
+[2025-05-26 07:37:14 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=7b909b2y09d 
+[2025-05-26 07:37:14 +08:00Z] [WARN] - canvas-editor 用户关闭连接 
+[2025-05-26 07:37:14 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=axWqornH63L7Vyswn-fVR, wid=zd0d399b7k 
+[2025-05-26 07:37:14 +08:00Z] [WARN] - canvas-editor 用户关闭连接 
+[2025-05-26 07:37:51 +08:00Z] [INFO] - 开始初始化 node 方法 
+[2025-05-26 07:37:52 +08:00Z] [SUCCESS] - Socket Server is running... 
+[2025-05-26 07:37:52 +08:00Z] [SUCCESS] - WS 服务初始化成功，连接地址：ws://localhost:9000 
+[2025-05-26 07:37:52 +08:00Z] [SUCCESS] - Node Serve is running at http://localhost:5000. 
+[2025-05-26 07:37:52 +08:00Z] [INFO] - 连接数据库成功！ 
+[2025-05-26 07:37:56 +08:00Z] [INFO] - SQL (direct): SELECT * FROM users WHERE userid='1'&&password='c4ca4238a0b923820dcc509a6f75849b' 
+[2025-05-26 07:37:56 +08:00Z] [DEBUG] - [status] 200 [msg] 登录成功 
+[2025-05-26 07:37:56 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-05-26 07:37:56 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-05-26 07:37:56 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 07:37:57 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:37:57 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=oq0f3enxclh 
+[2025-05-26 07:37:57 +08:00Z] [INFO] - 用户连接... 
+[2025-05-26 07:37:57 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND OWNER ='1' 
+[2025-05-26 07:37:57 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["Kyv0pgp-6Tq2ZwBGtBGHx"] 
+[2025-05-26 07:37:57 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-05-26 07:37:57 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-05-26 07:37:57 +08:00Z] [INFO] - 用户加入房间 Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 07:37:57 +08:00Z] [INFO] - SQL (direct): SELECT versions.content FROM files,versions WHERE files.fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND files.currenthead=versions.vid 
+[2025-05-26 07:37:57 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 07:37:59 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-05-26 07:37:59 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-05-26 07:37:59 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 07:38:01 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=oq0f3enxclh 
+[2025-05-26 07:38:59 +08:00Z] [INFO] - 开始初始化 node 方法 
+[2025-05-26 07:38:59 +08:00Z] [SUCCESS] - Socket Server is running... 
+[2025-05-26 07:38:59 +08:00Z] [SUCCESS] - WS 服务初始化成功，连接地址：ws://localhost:9000 
+[2025-05-26 07:38:59 +08:00Z] [SUCCESS] - Node Serve is running at http://localhost:5000. 
+[2025-05-26 07:38:59 +08:00Z] [INFO] - 连接数据库成功！ 
+[2025-05-26 07:39:03 +08:00Z] [INFO] - SQL (direct): SELECT * FROM users WHERE userid='1'&&password='c4ca4238a0b923820dcc509a6f75849b' 
+[2025-05-26 07:39:03 +08:00Z] [DEBUG] - [status] 200 [msg] 登录成功 
+[2025-05-26 07:39:03 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-05-26 07:39:03 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-05-26 07:39:03 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 07:39:05 +08:00Z] [INFO] - canvas-editor 客户端连接 
+[2025-05-26 07:41:43 +08:00Z] [WARN] - canvas-editor 用户关闭连接 
+[2025-05-26 07:41:43 +08:00Z] [INFO] - canvas-editor 客户端连接 
+[2025-05-26 07:41:55 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-05-26 07:41:55 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-05-26 07:41:55 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 07:45:53 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE state=1 AND  filename='README' AND filetype='markdown' AND filesuffix='md' AND owner='1' 
+[2025-05-26 07:45:53 +08:00Z] [INFO] - SQL (direct): INSERT INTO files(fileid,filename,filetype,filesuffix,owner) 
+         VALUES('kMXvDPe2A4kwfc0UTtaNm','README','markdown','md','1') 
+[2025-05-26 07:45:53 +08:00Z] [DEBUG] - [status] 200 [msg] 文件创建成功 
+[2025-05-26 07:45:53 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='kMXvDPe2A4kwfc0UTtaNm' 
+[2025-05-26 07:45:53 +08:00Z] [INFO] - [saveVersion] 文件无currenthead，创建第一个版本，fileid: kMXvDPe2A4kwfc0UTtaNm 
+[2025-05-26 07:45:53 +08:00Z] [INFO] - SQL (parameterized): INSERT INTO versions(vid, fileid, content, lasteditor) VALUES(?, ?, ?, ?) -- Params: ["jvI_mWky6GkLgvWsgEzzD","kMXvDPe2A4kwfc0UTtaNm","[{\"insert\":\" 多人协同编辑器项目说明\\r\",\"attributes\":{\"header\":1}},{\"insert\":\"\\r\"},{\"insert\":\" 免责声明\\r\",\"attributes\":{\"header\":2}},{\"insert\":\"\\r\"},{\"insert\":\"本项目仅作为学习项目，仅供学习交流，目前还没达到应用生产的能力；\\r\"},{\"insert\":\"\\r\"},{\"insert\":\"markdown 协同中，Delta 数据结构存储仍采用 JSON.stringify 存储全量数据；canvas-editor 数据存储部分未开发；\\r\"},{\"insert\":\"\\r\"},{\"insert\":\"项目为本人一人开发，在架构设计、代码可阅读性、可维护性上可能存在缺陷，功能上存在不完整部分；个人精力确实有限，望大家谅解；后续项目的维护会持续跟进 issues 问题，帮忙解决大家的疑惑。（也可加V：18276861941）\\r\"},{\"insert\":\"\\r\"},{\"insert\":\"如果大家数据库导入失败，可以看看 [#IAKJJI: sql有外键依赖，可以按照这个顺序，原mysql中的顺序直接执行会有错误](https://gitee.com/wfeng0/mpoe/issues/IAKJJI)\\r\",\"attributes\":{\"header\":null}},{\"insert\":\"\\r\"},{\"insert\":\" Luckysheet 协同\\r\",\"attributes\":{\"header\":2}},{\"insert\":\"luckysheet 已实现全功能协同，包括图表、图片、sheet新建、删除、复制等，因其工作量较大，不在本项目中追加，为独立的项目，请移步：\\r\"},{\"insert\":\"\\r\"},{\"insert\":\"> [Luckysheet 协同增强版（全功能实现）](https://gitee.com/wfeng0/luckysheet-crdt)\\r\",\"attributes\":{\"header\":null}},{\"insert\":\"\\r\"},{\"insert\":\"**整体效果**\\r\",\"attributes\":{\"header\":null}},{\"insert\":\"<img src=#[s]#https://gitee.com/wfeng0/luckysheet-crdt/raw/master/public/result.gif#[s]# />\\r\"},{\"insert\":\"\\r\"},{\"insert\":\"\\r\"},{\"insert\":\"**图表协同**\\r\",\"attributes\":{\"header\":null}},{\"insert\":\"<img src=#[s]#/public/chartmix.gif#[s]# />\\r\"},{\"insert\":\"\\r\"},{\"insert\":\"**图片协同**\\r\",\"attributes\":{\"header\":null}},{\"insert\":\"<img src=#[s]#/public/image.gif#[s]# />\\r\"},{\"insert\":\"\\r\"},{\"insert\":\" 项目目录结构\\r\",\"attributes\":{\"header\":2}},{\"insert\":\"\\r\"},{\"insert\":\"<p align=#[s]#center#[s]#>\\r\"},{\"insert\":\"    <img src=#[d]#./public/catalog.png#[d]#/>\\r\"},{\"insert\":\"</p>\\r\"},{\"insert\":\"\\r\"},{\"insert\":\"\\r\"},{\"insert\":\"\\r\"},{\"insert\":\" 项目端口说明\\r\",\"attributes\":{\"header\":2}},{\"insert\":\"\\r\"},{\"insert\":\"~~~javascript\\r\",\"attributes\":{\"header\":null}},{\"insert\":\"/** node/base.config.js*/\\r\"},{\"insert\":\"// 业务端口\\r\"},{\"insert\":\"const server_port = 5000;\\r\"},{\"insert\":\"\\r\"},{\"insert\":\"// ws 统一端口\\r\"},{\"insert\":\"const ws_port = 9000;\\r\"},{\"insert\":\"\\r\"},{\"insert\":\"/** Vue/default.config.js */\\r\"},{\"insert\":\"// ws 协同服务地址\\r\"},{\"insert\":\"export const ws_server_url = #[s]#ws://localhost:9000#[s]#;\\r\"},{\"insert\":\"\\r\"},{\"insert\":\"// node http 服务地址\\r\"},{\"insert\":\"export const http_server_url = #[s]#http://localhost:5000#[s]#;\\r\"},{\"insert\":\"\\r\"},{\"insert\":\"// socket.io 服务地址\\r\"},{\"insert\":\"export const socket_server_url = #[s]#http://localhost:5000#[s]#;\\r\"},{\"insert\":\"\\r\"},{\"insert\":\"地址已经给大家封装好了，直接修改上面的地址即可。\\r\"},{\"insert\":\"~~~\\r\",\"attributes\":{\"header\":null}},{\"insert\":\"\\r\"},{\"insert\":\"\\r\"},{\"insert\":\"\\r\"},{\"insert\":\" 项目启动方式**【必看】**\\r\",\"attributes\":{\"header\":2}},{\"insert\":\"\\r\"},{\"insert\":\"> 1. *** 下列命令均是在项目根目录执行【根目录  D:\\\\MPOE>  MPOE结尾】\\r\"},{\"insert\":\">\\r\"},{\"insert\":\"> 2. *** 下列命令均是在项目根目录执行【根目录  D:\\\\MPOE>  MPOE结尾】\\r\"},{\"insert\":\">\\r\"},{\"insert\":\"> 3. *** 下列命令均是在项目根目录执行【根目录  D:\\\\MPOE>  MPOE结尾】\\r\"},{\"insert\":\">\\r\"},{\"insert\":\"> 4. node 版本说明：**本应用基于 node v14**,其他版本如若报错，可以自行搭建其他版本的应用\\r\",\"attributes\":{\"header\":null}},{\"insert\":\">\\r\"},{\"insert\":\"> 5. 命令说明：\\r\"},{\"insert\":\">\\r\"},{\"insert\":\">    1. 执行的命令均是为大家封装好的，如果大家懂得原理，也可以自行操作\\r\"},{\"insert\":\">\\r\"},{\"insert\":\"> 6. 依赖下载方式：\\r\"},{\"insert\":\">\\r\"},{\"insert\":\">    1. npm run installVue ：下载Vue相关依赖\\r\"},{\"insert\":\">    2. npm run installNode ：下载 node 相关依赖\\r\"},{\"insert\":\">\\r\"},{\"insert\":\"> 7. 启动方式：\\r\"},{\"insert\":\">\\r\"},{\"insert\":\">    1. 协同服务：\\r\"},{\"insert\":\">\\r\"},{\"insert\":\">       ```javascript\\r\"},{\"insert\":\">       1. **推荐使用 Websocket 的协同方式**\\r\",\"attributes\":{\"header\":null}},{\"insert\":\">           正常启动 node 即可支持 y-websocket 协同服务\\r\"},{\"insert\":\">       ```\\r\"},{\"insert\":\">\\r\"},{\"insert\":\">    2. （方式一）npm run node\\r\"},{\"insert\":\">\\r\"},{\"insert\":\">       1. 上述方式启动的是Node服务器，地址为 [http://localhost:5000](http://localhost:5000) ，该方式**运行的是Vue打包后的dist文件**\\r\",\"attributes\":{\"header\":null}},{\"insert\":\">\\r\"},{\"insert\":\">    3. （方式二）npm run dev\\r\"},{\"insert\":\">\\r\"},{\"insert\":\">       1. 上述启动的是vue的开发环境，也可以使用\\r\"},{\"insert\":\">       2. 调试后，请重新打包放在 node服务上(打包的dist输出目录已经自动设置到node/public下)\\r\"},{\"insert\":\">\\r\"},{\"insert\":\">    4. 几个注意事项：\\r\"},{\"insert\":\">\\r\"},{\"insert\":\">       1. 请确保数据库服务正常开启，在Mysql文价夹下，有当前文件的数据库表说明文件：README.md 以及项目数据库文件 mysql.sql,如果对项目数据结构有疑问，请先查看相关数据结构说明文档哈\\r\"},{\"insert\":\">\\r\"},{\"insert\":\">       2. 文件上传的路径问题，mvc -> controller -> file -> uploadFile 中有一个mv()方法，传入的是当前执行命令的根路径，如果在协同编辑中文件上传出现问题，可以看看这里；\\r\"},{\"insert\":\">\\r\"},{\"insert\":\">       3. node采用较强的模块化思想，每个单独的模块都会独立导出 index.js ，因此，node有很多的 index.js，注意区分;\\r\"},{\"insert\":\">\\r\"},{\"insert\":\">       4. 重新打包后（vue项目包、luckysheet二开包），luckysheet 文件的处理：\\r\"},{\"insert\":\">       5. 将luckysheet的dist放到node项目下，确保 index.html 引用正确的 luckysheet 即可。\\r\"},{\"insert\":\">       6. socket.io 在服务端有一个跨域的配置，在 Node/socket/index.js 中，这是聊天用的，大家根据实际情况配置即可。\\r\"},{\"insert\":\"```js\\r\"},{\"insert\":\"  const io = socketIO(http, {\\r\"},{\"insert\":\"    allowEIO3: true,\\r\"},{\"insert\":\"    cors: {\\r\"},{\"insert\":\"      origin: [\\r\"},{\"insert\":\"        #[s]#http://localhost:3000#[s]#,\\r\"},{\"insert\":\"        #[s]#http://127.0.0.1:3000#[s]#,\\r\"},{\"insert\":\"        #[s]#http://localhost:3001#[s]#,\\r\"},{\"insert\":\"        #[s]#http://127.0.0.1:3001#[s]#,\\r\"},{\"insert\":\"      ],\\r\"},{\"insert\":\"      methods: [#[s]#GET#[s]#, #[s]#POST#[s]#],\\r\"},{\"insert\":\"      credentials: true,\\r\"},{\"insert\":\"    },\\r\"},{\"insert\":\"  });\\r\"},{\"insert\":\"```\\r\"},{\"insert\":\"\\r\"},{\"insert\":\"\\r\"},{\"insert\":\"\\r\"},{\"insert\":\" 打包后文件处理\\r\",\"attributes\":{\"header\":2}},{\"insert\":\"\\r\"},{\"insert\":\"```javascript\\r\"},{\"insert\":\"1. 打包命令\\r\"},{\"insert\":\"    npm run build\\r\"},{\"insert\":\"    \\r\"},{\"insert\":\"2. 生成 dist 目录，将自动放置到 node/public 下\\r\"},{\"insert\":\"\\r\"},{\"insert\":\"3. 检查并调整script引用地址为node结构下的luckysheet地址\\r\"},{\"insert\":\"    <!-- 引入 luckySheet（下列两个地址需要重新定位，确保文件引入正确） -->\\r\"},{\"insert\":\"    <script src=#[s]#../libs/luckysheet/plugins/js/plugin.js#[s]#></script>\\r\"},{\"insert\":\"    <script src=#[s]#../libs/luckysheet/luckysheet.umd.js#[s]#></script>\\r\"},{\"insert\":\"\\r\"},{\"insert\":\"4. 打包后，public 下的libs目录会一起打包到 dist 中，luckysheet 如果没有复制到node中，则引的是当前目录下的 libs 即可\\r\"},{\"insert\":\"```\\r\"},{\"insert\":\"\\r\"},{\"insert\":\"\\r\"},{\"insert\":\" 项目地址\\r\",\"attributes\":{\"header\":2}},{\"insert\":\"\\r\"},{\"insert\":\"gitee: [https://gitee.com/wfeng0/mpoe](https://gitee.com/wfeng0/mpoe)\\r\",\"attributes\":{\"header\":null}},{\"insert\":\"\\r\"},{\"insert\":\"\\r\"},{\"insert\":\"\\r\"},{\"insert\":\" 文章地址\\r\",\"attributes\":{\"header\":2}},{\"insert\":\"\\r\"},{\"insert\":\"yjs+quill协同: [https://blog.csdn.net/weixin_47746452/article/details/132402713?spm=1001.2014.3001.5501](https://blog.csdn.net/weixin_47746452/article/details/132402713?spm=1001.2014.3001.5501)\\r\",\"attributes\":{\"header\":null}},{\"insert\":\"\\r\"},{\"insert\":\"luckysheet协同：[https://blog.csdn.net/weixin_47746452/article/details/134240905?spm=1001.2014.3001.5501](https://blog.csdn.net/weixin_47746452/article/details/134240905?spm=1001.2014.3001.5501)\\r\",\"attributes\":{\"header\":null}},{\"insert\":\"\\r\"},{\"insert\":\"掘金：[https://juejin.cn/post/7298170736480485376](https://juejin.cn/post/7298170736480485376)\\r\",\"attributes\":{\"header\":null}},{\"insert\":\"\\r\"},{\"insert\":\"\\r\"},{\"insert\":\"\\r\"},{\"insert\":\" B站视频\\r\",\"attributes\":{\"header\":2}},{\"insert\":\"\\r\"},{\"insert\":\"B站：[https://www.bilibili.com/video/BV1Sj41117v4/?spm_id_from=333.999.0.0&vd_source=604a25c77e296b4ce29b1e6e6cf03ea6](https://www.bilibili.com/video/BV1Sj41117v4/?spm_id_from=333.999.0.0&vd_source=604a25c77e296b4ce29b1e6e6cf03ea6)\",\"attributes\":{\"header\":null}}]","1"] 
+[2025-05-26 07:45:53 +08:00Z] [INFO] - SQL (direct): UPDATE files SET currenthead='jvI_mWky6GkLgvWsgEzzD' WHERE fileid='kMXvDPe2A4kwfc0UTtaNm' 
+[2025-05-26 07:45:53 +08:00Z] [DEBUG] - [status] 200 [msg] 文件更新成功 
+[2025-05-26 07:45:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/kMXvDPe2A4kwfc0UTtaNm 
+[2025-05-26 07:45:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=kMXvDPe2A4kwfc0UTtaNm, wid=85xiw0b74yr 
+[2025-05-26 07:45:55 +08:00Z] [INFO] - 用户连接... 
+[2025-05-26 07:45:55 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='kMXvDPe2A4kwfc0UTtaNm?filename=README&filesuffix=md&filetype=markdown&owner=1' AND OWNER ='1' 
+[2025-05-26 07:45:55 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["kMXvDPe2A4kwfc0UTtaNm"] 
+[2025-05-26 07:45:55 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-05-26 07:45:55 +08:00Z] [INFO] - 用户加入房间 kMXvDPe2A4kwfc0UTtaNm?filename=README&filesuffix=md&filetype=markdown&owner=1 
+[2025-05-26 07:45:55 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-05-26 07:45:55 +08:00Z] [INFO] - SQL (direct): SELECT versions.content FROM files,versions WHERE files.fileid='kMXvDPe2A4kwfc0UTtaNm' AND files.currenthead=versions.vid 
+[2025-05-26 07:45:55 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 07:46:28 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=kMXvDPe2A4kwfc0UTtaNm, wid=85xiw0b74yr 
+[2025-05-26 07:46:28 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/kMXvDPe2A4kwfc0UTtaNm 
+[2025-05-26 07:46:28 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=kMXvDPe2A4kwfc0UTtaNm, wid=2q5nyqozfro 
+[2025-05-26 07:46:31 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-05-26 07:46:31 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-05-26 07:46:31 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 07:46:34 +08:00Z] [INFO] - 用户加入房间 kMXvDPe2A4kwfc0UTtaNm 
+[2025-05-26 07:46:34 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/kMXvDPe2A4kwfc0UTtaNm 
+[2025-05-26 07:46:34 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=kMXvDPe2A4kwfc0UTtaNm, wid=x3tn2nef5y8 
+[2025-05-26 07:46:34 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='kMXvDPe2A4kwfc0UTtaNm' AND OWNER ='1' 
+[2025-05-26 07:46:34 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["kMXvDPe2A4kwfc0UTtaNm"] 
+[2025-05-26 07:46:34 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-05-26 07:46:34 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-05-26 07:46:36 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-05-26 07:46:36 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-05-26 07:46:36 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 07:48:23 +08:00Z] [WARN] - canvas-editor 用户关闭连接 
+[2025-05-26 07:48:23 +08:00Z] [INFO] - canvas-editor 客户端连接 
+[2025-05-26 07:48:31 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/kMXvDPe2A4kwfc0UTtaNm 
+[2025-05-26 07:48:31 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=kMXvDPe2A4kwfc0UTtaNm, wid=ty2zarzjj3l 
+[2025-05-26 07:48:31 +08:00Z] [INFO] - 用户加入房间 kMXvDPe2A4kwfc0UTtaNm 
+[2025-05-26 07:48:31 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='kMXvDPe2A4kwfc0UTtaNm' AND OWNER ='1' 
+[2025-05-26 07:48:31 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["kMXvDPe2A4kwfc0UTtaNm"] 
+[2025-05-26 07:48:31 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-05-26 07:48:31 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-05-26 07:48:40 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='kMXvDPe2A4kwfc0UTtaNm' 
+[2025-05-26 07:48:40 +08:00Z] [INFO] - SQL (parameterized): SELECT * FROM versions WHERE vid = ? -- Params: ["jvI_mWky6GkLgvWsgEzzD"] 
+[2025-05-26 07:48:40 +08:00Z] [INFO] - [saveVersion] 未超过版本控制时限，更新版本内容，vid: jvI_mWky6GkLgvWsgEzzD, fileid: kMXvDPe2A4kwfc0UTtaNm 
+[2025-05-26 07:48:40 +08:00Z] [INFO] - SQL (parameterized): UPDATE versions SET content = ? WHERE fileid = ? AND vid = ? -- Params: ["[{\"insert\":\"多人协同编辑器项目说明免责声明本项目仅作为学习项目，仅供学习交流，目前还没达到应用生产的能力；\\nmarkdown 协同中，Delta 数据结构存储仍采用 JSON.stringify 存储全量数据；canvas-editor 数据存储部分未开发；项目为本人一人开发，在架构设计、代码可阅读性、可维护性上可能存在缺陷，功能上存在不完整部分；个人精力确实有限，望大家谅解；后续项目的维护会持续跟进 issues 问题，帮忙解决大家的疑惑。（也可加V：18276861941）如果大家数据库导入失败，可以看看 [#IAKJJI: sql有外键依赖，可以按照这个顺序，原mysql中的顺序直接执行会有错误](https://gitee.com/wfeng0/mpoe/issues/IAKJJI)Luckysheet 协同luckysheet 已实现全功能协同，包括图表、图片、sheet新建、删除、复制等，因其工作量较大，不在本项目中追加，为独立的项目，请移步：> [Luckysheet 协同增强版（全功能实现）](https://gitee.com/wfeng0/luckysheet-crdt)**整体效果**<img src=#[s]#https://gitee.com/wfeng0/luckysheet-crdt/raw/master/public/result.gif#[s]# />**图表协同**<img src=#[s]#/public/chartmix.gif#[s]# />**图片协同**<img src=#[s]#/public/image.gif#[s]# />项目目录结构<p align=#[s]#center#[s]#><img src=#[d]#./public/catalog.png#[d]#/></p>项目端口说明~~~javascript/** node/base.config.js*/// 业务端口const server_port = 5000;// ws 统一端口const ws_port = 9000;/** Vue/default.config.js */// ws 协同服务地址export const ws_server_url = #[s]#ws://localhost:9000#[s]#;// node http 服务地址export const http_server_url = #[s]#http://localhost:5000#[s]#;// socket.io 服务地址export const socket_server_url = #[s]#http://localhost:5000#[s]#;地址已经给大家封装好了，直接修改上面的地址即可。~~~项目启动方式**【必看】**> 1. *** 下列命令均是在项目根目录执行【根目录  D:\\\\MPOE>  MPOE结尾】>> 2. *** 下列命令均是在项目根目录执行【根目录  D:\\\\MPOE>  MPOE结尾】>> 3. *** 下列命令均是在项目根目录执行【根目录  D:\\\\MPOE>  MPOE结尾】>> 4. node 版本说明：**本应用基于 node v14**,其他版本如若报错，可以自行搭建其他版本的应用>> 5. 命令说明：>>    1. 执行的命令均是为大家封装好的，如果大家懂得原理，也可以自行操作>> 6. 依赖下载方式：>>    1. npm run installVue ：下载Vue相关依赖>    2. npm run installNode ：下载 node 相关依赖>> 7. 启动方式：>>    1. 协同服务：>>       ```javascript>       1. **推荐使用 Websocket 的协同方式**>           正常启动 node 即可支持 y-websocket 协同服务>       ```>>    2. （方式一）npm run node>>       1. 上述方式启动的是Node服务器，地址为 [http://localhost:5000](http://localhost:5000) ，该方式**运行的是Vue打包后的dist文件**>>    3. （方式二）npm run dev>>       1. 上述启动的是vue的开发环境，也可以使用>       2. 调试后，请重新打包放在 node服务上(打包的dist输出目录已经自动设置到node/public下)>>    4. 几个注意事项：>>       1. 请确保数据库服务正常开启，在Mysql文价夹下，有当前文件的数据库表说明文件：README.md 以及项目数据库文件 mysql.sql,如果对项目数据结构有疑问，请先查看相关数据结构说明文档哈>>       2. 文件上传的路径问题，mvc -> controller -> file -> uploadFile 中有一个mv()方法，传入的是当前执行命令的根路径，如果在协同编辑中文件上传出现问题，可以看看这里；>>       3. node采用较强的模块化思想，每个单独的模块都会独立导出 index.js ，因此，node有很多的 index.js，注意区分;>>       4. 重新打包后（vue项目包、luckysheet二开包），luckysheet 文件的处理：>       5. 将luckysheet的dist放到node项目下，确保 index.html 引用正确的 luckysheet 即可。>       6. socket.io 在服务端有一个跨域的配置，在 Node/socket/index.js 中，这是聊天用的，大家根据实际情况配置即可。```jsconst io = socketIO(http, {allowEIO3: true,cors: {origin: [#[s]#http://localhost:3000#[s]#,#[s]#http://127.0.0.1:3000#[s]#,#[s]#http://localhost:3001#[s]#,#[s]#http://127.0.0.1:3001#[s]#,],methods: [#[s]#GET#[s]#, #[s]#POST#[s]#],credentials: true,},});```打包后文件处理```javascript1. 打包命令npm run build2. 生成 dist 目录，将自动放置到 node/public 下3. 检查并调整script引用地址为node结构下的luckysheet地址<!-- 引入 luckySheet（下列两个地址需要重新定位，确保文件引入正确） --><script src=#[s]#../libs/luckysheet/plugins/js/plugin.js#[s]#></script><script src=#[s]#../libs/luckysheet/luckysheet.umd.js#[s]#></script>4. 打包后，public 下的libs目录会一起打包到 dist 中，luckysheet 如果没有复制到node中，则引的是当前目录下的 libs 即可```项目地址gitee: [https://gitee.com/wfeng0/mpoe](https://gitee.com/wfeng0/mpoe)文章地址yjs+quill协同: [https://blog.csdn.net/weixin_47746452/article/details/132402713?spm=1001.2014.3001.5501](https://blog.csdn.net/weixin_47746452/article/details/132402713?spm=1001.2014.3001.5501)luckysheet协同：[https://blog.csdn.net/weixin_47746452/article/details/134240905?spm=1001.2014.3001.5501](https://blog.csdn.net/weixin_47746452/article/details/134240905?spm=1001.2014.3001.5501)掘金：[https://juejin.cn/post/7298170736480485376](https://juejin.cn/post/7298170736480485376)B站视频B站：[https://www.bilibili.com/video/BV1Sj41117v4/?spm_id_from=333.999.0.0&vd_source=604a25c77e296b4ce29b1e6e6cf03ea6](https://www.bilibili.com/video/BV1Sj41117v4/?spm_id_from=333.999.0.0&vd_source=604a25c77e296b4ce29b1e6e6cf03ea6)\\n\"}]","kMXvDPe2A4kwfc0UTtaNm","jvI_mWky6GkLgvWsgEzzD"] 
+[2025-05-26 07:48:40 +08:00Z] [DEBUG] - [status] 200 [msg] 已更新文件内容 
+[2025-05-26 07:48:50 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-05-26 07:48:50 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-05-26 07:48:50 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 07:50:12 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=kMXvDPe2A4kwfc0UTtaNm, wid=x3tn2nef5y8 
+[2025-05-26 07:50:12 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=kMXvDPe2A4kwfc0UTtaNm, wid=ty2zarzjj3l 
+[2025-05-26 07:50:12 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=kMXvDPe2A4kwfc0UTtaNm, wid=2q5nyqozfro 
+[2025-05-26 07:50:12 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/kMXvDPe2A4kwfc0UTtaNm 
+[2025-05-26 07:50:12 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=kMXvDPe2A4kwfc0UTtaNm, wid=s90je5bqj2s 
+[2025-05-26 07:50:12 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/kMXvDPe2A4kwfc0UTtaNm 
+[2025-05-26 07:50:12 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=kMXvDPe2A4kwfc0UTtaNm, wid=yxjudkcivzg 
+[2025-05-26 07:50:12 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/kMXvDPe2A4kwfc0UTtaNm 
+[2025-05-26 07:50:12 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=kMXvDPe2A4kwfc0UTtaNm, wid=gw5s0stc19 
+[2025-05-26 07:50:13 +08:00Z] [INFO] - canvas-editor 客户端连接 
+[2025-05-26 08:10:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=kMXvDPe2A4kwfc0UTtaNm, wid=gw5s0stc19 
+[2025-05-26 08:10:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=kMXvDPe2A4kwfc0UTtaNm, wid=s90je5bqj2s 
+[2025-05-26 08:10:54 +08:00Z] [WARN] - canvas-editor 用户关闭连接 
+[2025-05-26 08:10:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=kMXvDPe2A4kwfc0UTtaNm, wid=yxjudkcivzg 
+[2025-05-26 08:10:54 +08:00Z] [WARN] - canvas-editor 用户关闭连接 
+[2025-05-26 08:10:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/kMXvDPe2A4kwfc0UTtaNm 
+[2025-05-26 08:10:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=kMXvDPe2A4kwfc0UTtaNm, wid=i0sgcswxsx 
+[2025-05-26 08:10:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/kMXvDPe2A4kwfc0UTtaNm 
+[2025-05-26 08:10:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=kMXvDPe2A4kwfc0UTtaNm, wid=nqonkw1n5tp 
+[2025-05-26 08:10:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/kMXvDPe2A4kwfc0UTtaNm 
+[2025-05-26 08:10:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=kMXvDPe2A4kwfc0UTtaNm, wid=6dhc1l2ts0i 
+[2025-05-26 08:10:55 +08:00Z] [INFO] - canvas-editor 客户端连接 
+[2025-05-26 08:10:55 +08:00Z] [INFO] - canvas-editor 客户端连接 
+[2025-05-26 08:12:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=kMXvDPe2A4kwfc0UTtaNm, wid=6dhc1l2ts0i 
+[2025-05-26 08:12:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=kMXvDPe2A4kwfc0UTtaNm, wid=i0sgcswxsx 
+[2025-05-26 08:12:54 +08:00Z] [WARN] - canvas-editor 用户关闭连接 
+[2025-05-26 08:12:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=kMXvDPe2A4kwfc0UTtaNm, wid=nqonkw1n5tp 
+[2025-05-26 08:12:54 +08:00Z] [WARN] - canvas-editor 用户关闭连接 
+[2025-05-26 08:12:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/kMXvDPe2A4kwfc0UTtaNm 
+[2025-05-26 08:12:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=kMXvDPe2A4kwfc0UTtaNm, wid=xbakx9wr8q 
+[2025-05-26 08:12:55 +08:00Z] [INFO] - canvas-editor 客户端连接 
+[2025-05-26 08:12:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/kMXvDPe2A4kwfc0UTtaNm 
+[2025-05-26 08:12:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=kMXvDPe2A4kwfc0UTtaNm, wid=veayf72xmbs 
+[2025-05-26 08:12:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/kMXvDPe2A4kwfc0UTtaNm 
+[2025-05-26 08:12:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=kMXvDPe2A4kwfc0UTtaNm, wid=3ykq8sjadyh 
+[2025-05-26 08:12:55 +08:00Z] [INFO] - canvas-editor 客户端连接 
+[2025-05-26 08:13:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=kMXvDPe2A4kwfc0UTtaNm, wid=veayf72xmbs 
+[2025-05-26 08:13:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=kMXvDPe2A4kwfc0UTtaNm, wid=xbakx9wr8q 
+[2025-05-26 08:13:54 +08:00Z] [WARN] - canvas-editor 用户关闭连接 
+[2025-05-26 08:13:54 +08:00Z] [WARN] - canvas-editor 用户关闭连接 
+[2025-05-26 08:13:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=kMXvDPe2A4kwfc0UTtaNm, wid=3ykq8sjadyh 
+[2025-05-26 08:13:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/kMXvDPe2A4kwfc0UTtaNm 
+[2025-05-26 08:13:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=kMXvDPe2A4kwfc0UTtaNm, wid=tmo1zr560x9 
+[2025-05-26 08:13:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/kMXvDPe2A4kwfc0UTtaNm 
+[2025-05-26 08:13:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=kMXvDPe2A4kwfc0UTtaNm, wid=gi8hcvvsw8r 
+[2025-05-26 08:13:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/kMXvDPe2A4kwfc0UTtaNm 
+[2025-05-26 08:13:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=kMXvDPe2A4kwfc0UTtaNm, wid=s45arc9zkzm 
+[2025-05-26 08:13:55 +08:00Z] [INFO] - canvas-editor 客户端连接 
+[2025-05-26 08:13:55 +08:00Z] [INFO] - canvas-editor 客户端连接 
+[2025-05-26 08:14:50 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=kMXvDPe2A4kwfc0UTtaNm, wid=gi8hcvvsw8r 
+[2025-05-26 08:14:50 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=kMXvDPe2A4kwfc0UTtaNm, wid=tmo1zr560x9 
+[2025-05-26 08:14:50 +08:00Z] [WARN] - canvas-editor 用户关闭连接 
+[2025-05-26 08:14:50 +08:00Z] [WARN] - canvas-editor 用户关闭连接 
+[2025-05-26 08:14:50 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=kMXvDPe2A4kwfc0UTtaNm, wid=s45arc9zkzm 
+[2025-05-26 08:14:50 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/kMXvDPe2A4kwfc0UTtaNm 
+[2025-05-26 08:14:50 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=kMXvDPe2A4kwfc0UTtaNm, wid=fe5w7mkk3n4 
+[2025-05-26 08:14:50 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/kMXvDPe2A4kwfc0UTtaNm 
+[2025-05-26 08:14:50 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=kMXvDPe2A4kwfc0UTtaNm, wid=h2dfettqgt7 
+[2025-05-26 08:14:50 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/kMXvDPe2A4kwfc0UTtaNm 
+[2025-05-26 08:14:50 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=kMXvDPe2A4kwfc0UTtaNm, wid=oavjrxweg4 
+[2025-05-26 08:14:50 +08:00Z] [INFO] - canvas-editor 客户端连接 
+[2025-05-26 08:14:50 +08:00Z] [INFO] - canvas-editor 客户端连接 
+[2025-05-26 09:27:56 +08:00Z] [INFO] - 开始初始化 node 方法 
+[2025-05-26 09:27:56 +08:00Z] [SUCCESS] - Socket Server is running... 
+[2025-05-26 09:27:56 +08:00Z] [SUCCESS] - WS 服务初始化成功，连接地址：ws://localhost:9000 
+[2025-05-26 09:27:56 +08:00Z] [SUCCESS] - Node Serve is running at http://localhost:5000. 
+[2025-05-26 09:27:56 +08:00Z] [INFO] - 连接数据库成功！ 
+[2025-05-26 09:28:28 +08:00Z] [INFO] - SQL (direct): SELECT * FROM users WHERE userid='1'&&password='c4ca4238a0b923820dcc509a6f75849b' 
+[2025-05-26 09:28:28 +08:00Z] [DEBUG] - [status] 200 [msg] 登录成功 
+[2025-05-26 09:28:28 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-05-26 09:28:28 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-05-26 09:28:28 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 09:28:30 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 09:28:30 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=nxjx5mll0n 
+[2025-05-26 09:28:30 +08:00Z] [INFO] - 用户连接... 
+[2025-05-26 09:28:30 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND OWNER ='1' 
+[2025-05-26 09:28:30 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["Kyv0pgp-6Tq2ZwBGtBGHx"] 
+[2025-05-26 09:28:30 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-05-26 09:28:30 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-05-26 09:28:30 +08:00Z] [INFO] - 用户加入房间 Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 09:28:30 +08:00Z] [INFO] - SQL (direct): SELECT versions.content FROM files,versions WHERE files.fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND files.currenthead=versions.vid 
+[2025-05-26 09:28:30 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 09:29:03 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=nxjx5mll0n 
+[2025-05-26 09:29:03 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 09:29:03 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=4ofbwzoz4s 
+[2025-05-26 09:29:18 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["hWQeanz06oaV0HP4xwHJ_"] 
+[2025-05-26 09:29:18 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 09:29:23 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["hWQeanz06oaV0HP4xwHJ_"] 
+[2025-05-26 09:29:23 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 09:29:27 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["xCDiTJ4uoREf-utpBacD5"] 
+[2025-05-26 09:29:27 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 09:29:33 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["hWQeanz06oaV0HP4xwHJ_"] 
+[2025-05-26 09:29:33 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 09:29:36 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=4ofbwzoz4s 
+[2025-05-26 09:29:36 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 09:29:36 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=kworg78gb5n 
+[2025-05-26 09:29:38 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-05-26 09:29:38 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-05-26 09:29:38 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 09:30:07 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=kworg78gb5n 
+[2025-05-26 09:30:08 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 09:30:08 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=4kmqd2prtoy 
+[2025-05-26 09:30:40 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=4kmqd2prtoy 
+[2025-05-26 09:30:41 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 09:30:41 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=unln91gp6b 
+[2025-05-26 09:31:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=unln91gp6b 
+[2025-05-26 09:31:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 09:31:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=a3andzwz20t 
+[2025-05-26 09:32:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=a3andzwz20t 
+[2025-05-26 09:32:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 09:32:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=o54l9q7p7h 
+[2025-05-26 09:33:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=o54l9q7p7h 
+[2025-05-26 09:33:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 09:33:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=77y2quddp8v 
+[2025-05-26 09:34:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=77y2quddp8v 
+[2025-05-26 09:34:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 09:34:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=6l9j5q1hchu 
+[2025-05-26 09:35:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=6l9j5q1hchu 
+[2025-05-26 09:35:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 09:35:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=z8a023enpw 
+[2025-05-26 09:36:44 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=z8a023enpw 
+[2025-05-26 09:36:44 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 09:36:44 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=gy3u584xgda 
+[2025-05-26 09:37:16 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=gy3u584xgda 
+[2025-05-26 09:37:17 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 09:37:17 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=rmwoqngy9ms 
+[2025-05-26 09:37:49 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=rmwoqngy9ms 
+[2025-05-26 09:37:50 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 09:37:50 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=d4dzvon4ca6 
+[2025-05-26 09:38:54 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=d4dzvon4ca6 
+[2025-05-26 09:38:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 09:38:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=1kvhg76xath 
+[2025-05-26 09:38:57 +08:00Z] [INFO] - 用户加入房间 Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 09:38:57 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-26 09:38:57 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=3vo1f0o987p 
+[2025-05-26 09:38:57 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND OWNER ='1' 
+[2025-05-26 09:38:57 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["Kyv0pgp-6Tq2ZwBGtBGHx"] 
+[2025-05-26 09:38:57 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-05-26 09:38:57 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-05-26 09:38:57 +08:00Z] [INFO] - SQL (direct): SELECT versions.content FROM files,versions WHERE files.fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND files.currenthead=versions.vid 
+[2025-05-26 09:38:57 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 09:38:58 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["hWQeanz06oaV0HP4xwHJ_"] 
+[2025-05-26 09:38:58 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 09:39:04 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["xCDiTJ4uoREf-utpBacD5"] 
+[2025-05-26 09:39:04 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 09:39:22 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["hWQeanz06oaV0HP4xwHJ_"] 
+[2025-05-26 09:39:22 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 09:39:27 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["xCDiTJ4uoREf-utpBacD5"] 
+[2025-05-26 09:39:27 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 09:39:30 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-05-26 09:39:30 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-05-26 09:39:30 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 09:39:31 +08:00Z] [INFO] - 用户加入房间 kMXvDPe2A4kwfc0UTtaNm 
+[2025-05-26 09:39:31 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/kMXvDPe2A4kwfc0UTtaNm 
+[2025-05-26 09:39:31 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=kMXvDPe2A4kwfc0UTtaNm, wid=yaevcra6kc 
+[2025-05-26 09:39:31 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='kMXvDPe2A4kwfc0UTtaNm' AND OWNER ='1' 
+[2025-05-26 09:39:31 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["kMXvDPe2A4kwfc0UTtaNm"] 
+[2025-05-26 09:39:31 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-05-26 09:39:31 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-05-26 09:39:31 +08:00Z] [INFO] - SQL (direct): SELECT versions.content FROM files,versions WHERE files.fileid='kMXvDPe2A4kwfc0UTtaNm' AND files.currenthead=versions.vid 
+[2025-05-26 09:39:31 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 09:39:41 +08:00Z] [INFO] - SQL (parameterized): INSERT INTO versions(vid, fileid, snapshot, description, lasteditor) VALUES(?, ?, ?, ?, ?) -- Params: ["muTIuO45fcEO08TyHoGBs","kMXvDPe2A4kwfc0UTtaNm",{"type":"Buffer","data":[1,3,175,208,148,220,1,0,4,1,5,113,117,105,108,108,179,17,229,164,154,228,186,186,229,141,143,229,144,140,231,188,150,232,190,145,229,153,168,233,161,185,231,155,174,232,175,180,230,152,142,229,133,141,232,180,163,229,163,176,230,152,142,230,156,172,233,161,185,231,155,174,228,187,133,228,189,156,228,184,186,229,173,166,228,185,160,233,161,185,231,155,174,239,188,140,228,187,133,228,190,155,229,173,166,228,185,160,228,186,164,230,181,129,239,188,140,231,155,174,229,137,141,232,191,152,230,178,161,232,190,190,229,136,176,229,186,148,231,148,168,231,148,159,228,186,167,231,154,132,232,131,189,229,138,155,239,188,155,10,109,97,114,107,100,111,119,110,32,229,141,143,229,144,140,228,184,173,239,188,140,68,101,108,116,97,32,230,149,176,230,141,174,231,187,147,230,158,132,229,173,152,229,130,168,228,187,141,233,135,135,231,148,168,32,74,83,79,78,46,115,116,114,105,110,103,105,102,121,32,229,173,152,229,130,168,229,133,168,233,135,143,230,149,176,230,141,174,239,188,155,99,97,110,118,97,115,45,101,100,105,116,111,114,32,230,149,176,230,141,174,229,173,152,229,130,168,233,131,168,229,136,134,230,156,170,229,188,128,229,143,145,239,188,155,233,161,185,231,155,174,228,184,186,230,156,172,228,186,186,228,184,128,228,186,186,229,188,128,229,143,145,239,188,140,229,156,168,230,158,182,230,158,132,232,174,190,232,174,161,227,128,129,228,187,163,231,160,129,229,143,175,233,152,133,232,175,187,230,128,167,227,128,129,229,143,175,231,187,180,230,138,164,230,128,167,228,184,138,229,143,175,232,131,189,229,173,152,229,156,168,231,188,186,233,153,183,239,188,140,229,138,159,232,131,189,228,184,138,229,173,152,229,156,168,228,184,141,229,174,140,230,149,180,233,131,168,229,136,134,239,188,155,228,184,170,228,186,186,231,178,190,229,138,155,231,161,174,229,174,158,230,156,137,233,153,144,239,188,140,230,156,155,229,164,167,229,174,182,232,176,133,232,167,163,239,188,155,229,144,142,231,187,173,233,161,185,231,155,174,231,154,132,231,187,180,230,138,164,228,188,154,230,140,129,231,187,173,232,183,159,232,191,155,32,105,115,115,117,101,115,32,233,151,174,233,162,152,239,188,140,229,184,174,229,191,153,232,167,163,229,134,179,229,164,167,229,174,182,231,154,132,231,150,145,230,131,145,227,128,130,239,188,136,228,185,159,229,143,175,229,138,160,86,239,188,154,49,56,50,55,54,56,54,49,57,52,49,239,188,137,229,166,130,230,158,156,229,164,167,229,174,182,230,149,176,230,141,174,229,186,147,229,175,188,229,133,165,229,164,177,232,180,165,239,188,140,229,143,175,228,187,165,231,156,139,231,156,139,32,91,35,73,65,75,74,74,73,58,32,115,113,108,230,156,137,229,164,150,233,148,174,228,190,157,232,181,150,239,188,140,229,143,175,228,187,165,230,140,137,231,133,167,232,191,153,228,184,170,233,161,186,229,186,143,239,188,140,229,142,159,109,121,115,113,108,228,184,173,231,154,132,233,161,186,229,186,143,231,155,180,230,142,165,230,137,167,232,161,140,228,188,154,230,156,137,233,148,153,232,175,175,93,40,104,116,116,112,115,58,47,47,103,105,116,101,101,46,99,111,109,47,119,102,101,110,103,48,47,109,112,111,101,47,105,115,115,117,101,115,47,73,65,75,74,74,73,41,76,117,99,107,121,115,104,101,101,116,32,229,141,143,229,144,140,108,117,99,107,121,115,104,101,101,116,32,229,183,178,229,174,158,231,142,176,229,133,168,229,138,159,232,131,189,229,141,143,229,144,140,239,188,140,229,140,133,230,139,172,229,155,190,232,161,168,227,128,129,229,155,190,231,137,135,227,128,129,115,104,101,101,116,230,150,176,229,187,186,227,128,129,229,136,160,233,153,164,227,128,129,229,164,141,229,136,182,231,173,137,239,188,140,229,155,160,229,133,182,229,183,165,228,189,156,233,135,143,232,190,131,229,164,167,239,188,140,228,184,141,229,156,168,230,156,172,233,161,185,231,155,174,228,184,173,232,191,189,229,138,160,239,188,140,228,184,186,231,139,172,231,171,139,231,154,132,233,161,185,231,155,174,239,188,140,232,175,183,231,167,187,230,173,165,239,188,154,62,32,91,76,117,99,107,121,115,104,101,101,116,32,229,141,143,229,144,140,229,162,158,229,188,186,231,137,136,239,188,136,229,133,168,229,138,159,232,131,189,229,174,158,231,142,176,239,188,137,93,40,104,116,116,112,115,58,47,47,103,105,116,101,101,46,99,111,109,47,119,102,101,110,103,48,47,108,117,99,107,121,115,104,101,101,116,45,99,114,100,116,41,42,42,230,149,180,228,189,147,230,149,136,230,158,156,42,42,60,105,109,103,32,115,114,99,61,35,91,115,93,35,104,116,116,112,115,58,47,47,103,105,116,101,101,46,99,111,109,47,119,102,101,110,103,48,47,108,117,99,107,121,115,104,101,101,116,45,99,114,100,116,47,114,97,119,47,109,97,115,116,101,114,47,112,117,98,108,105,99,47,114,101,115,117,108,116,46,103,105,102,35,91,115,93,35,32,47,62,42,42,229,155,190,232,161,168,229,141,143,229,144,140,42,42,60,105,109,103,32,115,114,99,61,35,91,115,93,35,47,112,117,98,108,105,99,47,99,104,97,114,116,109,105,120,46,103,105,102,35,91,115,93,35,32,47,62,42,42,229,155,190,231,137,135,229,141,143,229,144,140,42,42,60,105,109,103,32,115,114,99,61,35,91,115,93,35,47,112,117,98,108,105,99,47,105,109,97,103,101,46,103,105,102,35,91,115,93,35,32,47,62,233,161,185,231,155,174,231,155,174,229,189,149,231,187,147,230,158,132,60,112,32,97,108,105,103,110,61,35,91,115,93,35,99,101,110,116,101,114,35,91,115,93,35,62,60,105,109,103,32,115,114,99,61,35,91,100,93,35,46,47,112,117,98,108,105,99,47,99,97,116,97,108,111,103,46,112,110,103,35,91,100,93,35,47,62,60,47,112,62,233,161,185,231,155,174,231,171,175,229,143,163,232,175,180,230,152,142,126,126,126,106,97,118,97,115,99,114,105,112,116,47,42,42,32,110,111,100,101,47,98,97,115,101,46,99,111,110,102,105,103,46,106,115,42,47,47,47,32,228,184,154,229,138,161,231,171,175,229,143,163,99,111,110,115,116,32,115,101,114,118,101,114,95,112,111,114,116,32,61,32,53,48,48,48,59,47,47,32,119,115,32,231,187,159,228,184,128,231,171,175,229,143,163,99,111,110,115,116,32,119,115,95,112,111,114,116,32,61,32,57,48,48,48,59,47,42,42,32,86,117,101,47,100,101,102,97,117,108,116,46,99,111,110,102,105,103,46,106,115,32,42,47,47,47,32,119,115,32,229,141,143,229,144,140,230,156,141,229,138,161,229,156,176,229,157,128,101,120,112,111,114,116,32,99,111,110,115,116,32,119,115,95,115,101,114,118,101,114,95,117,114,108,32,61,32,35,91,115,93,35,119,115,58,47,47,108,111,99,97,108,104,111,115,116,58,57,48,48,48,35,91,115,93,35,59,47,47,32,110,111,100,101,32,104,116,116,112,32,230,156,141,229,138,161,229,156,176,229,157,128,101,120,112,111,114,116,32,99,111,110,115,116,32,104,116,116,112,95,115,101,114,118,101,114,95,117,114,108,32,61,32,35,91,115,93,35,104,116,116,112,58,47,47,108,111,99,97,108,104,111,115,116,58,53,48,48,48,35,91,115,93,35,59,47,47,32,115,111,99,107,101,116,46,105,111,32,230,156,141,229,138,161,229,156,176,229,157,128,101,120,112,111,114,116,32,99,111,110,115,116,32,115,111,99,107,101,116,95,115,101,114,118,101,114,95,117,114,108,32,61,32,35,91,115,93,35,104,116,116,112,58,47,47,108,111,99,97,108,104,111,115,116,58,53,48,48,48,35,91,115,93,35,59,229,156,176,229,157,128,229,183,178,231,187,143,231,187,153,229,164,167,229,174,182,229,176,129,232,163,133,229,165,189,228,186,134,239,188,140,231,155,180,230,142,165,228,191,174,230,148,185,228,184,138,233,157,162,231,154,132,229,156,176,229,157,128,229,141,179,229,143,175,227,128,130,126,126,126,233,161,185,231,155,174,229,144,175,229,138,168,230,150,185,229,188,143,42,42,227,128,144,229,191,133,231,156,139,227,128,145,42,42,62,32,49,46,32,42,42,42,32,228,184,139,229,136,151,229,145,189,228,187,164,229,157,135,230,152,175,229,156,168,233,161,185,231,155,174,230,160,185,231,155,174,229,189,149,230,137,167,232,161,140,227,128,144,230,160,185,231,155,174,229,189,149,32,32,68,58,92,77,80,79,69,62,32,32,77,80,79,69,231,187,147,229,176,190,227,128,145,62,62,32,50,46,32,42,42,42,32,228,184,139,229,136,151,229,145,189,228,187,164,229,157,135,230,152,175,229,156,168,233,161,185,231,155,174,230,160,185,231,155,174,229,189,149,230,137,167,232,161,140,227,128,144,230,160,185,231,155,174,229,189,149,32,32,68,58,92,77,80,79,69,62,32,32,77,80,79,69,231,187,147,229,176,190,227,128,145,62,62,32,51,46,32,42,42,42,32,228,184,139,229,136,151,229,145,189,228,187,164,229,157,135,230,152,175,229,156,168,233,161,185,231,155,174,230,160,185,231,155,174,229,189,149,230,137,167,232,161,140,227,128,144,230,160,185,231,155,174,229,189,149,32,32,68,58,92,77,80,79,69,62,32,32,77,80,79,69,231,187,147,229,176,190,227,128,145,62,62,32,52,46,32,110,111,100,101,32,231,137,136,230,156,172,232,175,180,230,152,142,239,188,154,42,42,230,156,172,229,186,148,231,148,168,229,159,186,228,186,142,32,110,111,100,101,32,118,49,52,42,42,44,229,133,182,129,175,208,148,220,1,202,10,188,19,132,175,208,148,220,1,134,30,160,28,228,187,150,231,137,136,230,156,172,229,166,130,232,139,165,230,138,165,233,148,153,239,188,140,229,143,175,228,187,165,232,135,170,232,161,140,230,144,173,229,187,186,229,133,182,228,187,150,231,137,136,230,156,172,231,154,132,229,186,148,231,148,168,62,62,32,53,46,32,229,145,189,228,187,164,232,175,180,230,152,142,239,188,154,62,62,32,32,32,32,49,46,32,230,137,167,232,161,140,231,154,132,229,145,189,228,187,164,229,157,135,230,152,175,228,184,186,229,164,167,229,174,182,229,176,129,232,163,133,229,165,189,231,154,132,239,188,140,229,166,130,230,158,156,229,164,167,229,174,182,230,135,130,229,190,151,229,142,159,231,144,134,239,188,140,228,185,159,229,143,175,228,187,165,232,135,170,232,161,140,230,147,141,228,189,156,62,62,32,54,46,32,228,190,157,232,181,150,228,184,139,232,189,189,230,150,185,229,188,143,239,188,154,62,62,32,32,32,32,49,46,32,110,112,109,32,114,117,110,32,105,110,115,116,97,108,108,86,117,101,32,239,188,154,228,184,139,232,189,189,86,117,101,231,155,184,229,133,179,228,190,157,232,181,150,62,32,32,32,32,50,46,32,110,112,109,32,114,117,110,32,105,110,115,116,97,108,108,78,111,100,101,32,239,188,154,228,184,139,232,189,189,32,110,111,100,101,32,231,155,184,229,133,179,228,190,157,232,181,150,62,62,32,55,46,32,229,144,175,229,138,168,230,150,185,229,188,143,239,188,154,62,62,32,32,32,32,49,46,32,229,141,143,229,144,140,230,156,141,229,138,161,239,188,154,62,62,32,32,32,32,32,32,32,96,96,96,106,97,118,97,115,99,114,105,112,116,62,32,32,32,32,32,32,32,49,46,32,42,42,230,142,168,232,141,144,228,189,191,231,148,168,32,87,101,98,115,111,99,107,101,116,32,231,154,132,229,141,143,229,144,140,230,150,185,229,188,143,42,42,62,32,32,32,32,32,32,32,32,32,32,32,230,173,163,229,184,184,229,144,175,229,138,168,32,110,111,100,101,32,229,141,179,229,143,175,230,148,175,230,140,129,32,121,45,119,101,98,115,111,99,107,101,116,32,229,141,143,229,144,140,230,156,141,229,138,161,62,32,32,32,32,32,32,32,96,96,96,62,62,32,32,32,32,50,46,32,239,188,136,230,150,185,229,188,143,228,184,128,239,188,137,110,112,109,32,114,117,110,32,110,111,100,101,62,62,32,32,32,32,32,32,32,49,46,32,228,184,138,232,191,176,230,150,185,229,188,143,229,144,175,229,138,168,231,154,132,230,152,175,78,111,100,101,230,156,141,229,138,161,229,153,168,239,188,140,229,156,176,229,157,128,228,184,186,32,91,104,116,116,112,58,47,47,108,111,99,97,108,104,111,115,116,58,53,48,48,48,93,40,104,116,116,112,58,47,47,108,111,99,97,108,104,111,115,116,58,53,48,48,48,41,32,239,188,140,232,175,165,230,150,185,229,188,143,42,42,232,191,144,232,161,140,231,154,132,230,152,175,86,117,101,230,137,147,229,140,133,229,144,142,231,154,132,100,105,115,116,230,150,135,228,187,182,42,42,62,62,32,32,32,32,51,46,32,239,188,136,230,150,185,229,188,143,228,186,140,239,188,137,110,112,109,32,114,117,110,32,100,101,118,62,62,32,32,32,32,32,32,32,49,46,32,228,184,138,232,191,176,229,144,175,229,138,168,231,154,132,230,152,175,118,117,101,231,154,132,229,188,128,229,143,145,231,142,175,229,162,131,239,188,140,228,185,159,229,143,175,228,187,165,228,189,191,231,148,168,62,32,32,32,32,32,32,32,50,46,32,232,176,131,232,175,149,229,144,142,239,188,140,232,175,183,233,135,141,230,150,176,230,137,147,229,140,133,230,148,190,229,156,168,32,110,111,100,101,230,156,141,229,138,161,228,184,138,40,230,137,147,229,140,133,231,154,132,100,105,115,116,232,190,147,229,135,186,231,155,174,229,189,149,229,183,178,231,187,143,232,135,170,229,138,168,232,174,190,231,189,174,229,136,176,110,111,100,101,47,112,117,98,108,105,99,228,184,139,41,62,62,32,32,32,32,52,46,32,229,135,160,228,184,170,230,179,168,230,132,143,228,186,139,233,161,185,239,188,154,62,62,32,32,32,32,32,32,32,49,46,32,232,175,183,231,161,174,228,191,157,230,149,176,230,141,174,229,186,147,230,156,141,229,138,161,230,173,163,229,184,184,229,188,128,229,144,175,239,188,140,229,156,168,77,121,115,113,108,230,150,135,228,187,183,229,164,185,228,184,139,239,188,140,230,156,137,229,189,147,229,137,141,230,150,135,228,187,182,231,154,132,230,149,176,230,141,174,229,186,147,232,161,168,232,175,180,230,152,142,230,150,135,228,187,182,239,188,154,82,69,65,68,77,69,46,109,100,32,228,187,165,229,143,138,233,161,185,231,155,174,230,149,176,230,141,174,229,186,147,230,150,135,228,187,182,32,109,121,115,113,108,46,115,113,108,44,229,166,130,230,158,156,229,175,185,233,161,185,231,155,174,230,149,176,230,141,174,231,187,147,230,158,132,230,156,137,231,150,145,233,151,174,239,188,140,232,175,183,229,133,136,230,159,165,231,156,139,231,155,184,229,133,179,230,149,176,230,141,174,231,187,147,230,158,132,232,175,180,230,152,142,230,150,135,230,161,163,229,147,136,62,62,32,32,32,32,32,32,32,50,46,32,230,150,135,228,187,182,228,184,138,228,188,160,231,154,132,232,183,175,229,190,132,233,151,174,233,162,152,239,188,140,109,118,99,32,45,62,32,99,111,110,116,114,111,108,108,101,114,32,45,62,32,102,105,108,101,32,45,62,32,117,112,108,111,97,100,70,105,108,101,32,228,184,173,230,156,137,228,184,128,228,184,170,109,118,40,41,230,150,185,230,179,149,239,188,140,228,188,160,229,133,165,231,154,132,230,152,175,229,189,147,229,137,141,230,137,167,232,161,140,229,145,189,228,187,164,231,154,132,230,160,185,232,183,175,229,190,132,239,188,140,229,166,130,230,158,156,229,156,168,229,141,143,229,144,140,231,188,150,232,190,145,228,184,173,230,150,135,228,187,182,228,184,138,228,188,160,229,135,186,231,142,176,233,151,174,233,162,152,239,188,140,229,143,175,228,187,165,231,156,139,231,156,139,232,191,153,233,135,140,239,188,155,62,62,32,32,32,32,32,32,32,51,46,32,110,111,100,101,233,135,135,231,148,168,232,190,131,229,188,186,231,154,132,230,168,161,229,157,151,229,140,150,230,128,157,230,131,179,239,188,140,230,175,143,228,184,170,229,141,149,231,139,172,231,154,132,230,168,161,229,157,151,233,131,189,228,188,154,231,139,172,231,171,139,229,175,188,229,135,186,32,105,110,100,101,120,46,106,115,32,239,188,140,229,155,160,230,173,164,239,188,140,110,111,100,101,230,156,137,229,190,136,229,164,154,231,154,132,32,105,110,100,101,120,46,106,115,239,188,140,230,179,168,230,132,143,229,140,186,229,136,134,59,62,62,32,32,32,32,32,32,32,52,46,32,233,135,141,230,150,176,230,137,147,229,140,133,229,144,142,239,188,136,118,117,101,233,161,185,231,155,174,229,140,133,227,128,129,108,117,99,107,121,115,104,101,101,116,228,186,140,229,188,128,229,140,133,239,188,137,239,188,140,108,117,99,107,121,115,104,101,101,116,32,230,150,135,228,187,182,231,154,132,229,164,132,231,144,134,239,188,154,62,32,32,32,32,32,32,32,53,46,32,229,176,134,108,117,99,107,121,115,104,101,101,116,231,154,132,100,105,115,116,230,148,190,229,136,176,110,111,100,101,233,161,185,231,155,174,228,184,139,239,188,140,231,161,174,228,191,157,32,105,110,100,101,120,46,104,116,109,108,32,229,188,149,231,148,168,230,173,163,231,161,174,231,154,132,32,108,117,99,107,121,115,104,101,101,116,32,229,141,179,229,143,175,227,128,130,62,32,32,32,32,32,32,32,54,46,32,115,111,99,107,101,116,46,105,111,32,229,156,168,230,156,141,229,138,161,231,171,175,230,156,137,228,184,128,228,184,170,232,183,168,229,159,159,231,154,132,233,133,141,231,189,174,239,188,140,229,156,168,32,78,111,100,101,47,115,111,99,107,101,116,47,105,110,100,101,120,46,106,115,32,228,184,173,239,188,140,232,191,153,230,152,175,232,129,138,229,164,169,231,148,168,231,154,132,239,188,140,229,164,167,229,174,182,230,160,185,230,141,174,229,174,158,233,153,133,230,131,133,229,134,181,233,133,141,231,189,174,229,141,179,229,143,175,227,128,130,96,96,96,106,115,99,111,110,115,116,32,105,111,32,61,32,115,111,99,107,101,116,73,79,40,104,116,116,112,44,32,123,97,108,108,111,119,69,73,79,51,58,32,116,114,117,101,44,99,111,114,115,58,32,123,111,114,105,103,105,110,58,32,91,35,91,115,93,35,104,116,116,112,58,47,47,108,111,99,97,108,104,111,115,116,58,51,48,48,48,35,91,115,93,35,44,35,91,115,93,35,104,116,116,112,58,47,47,49,50,55,46,48,46,48,46,49,58,51,48,48,48,35,91,115,93,35,44,35,91,115,93,35,104,116,116,112,58,47,47,108,111,99,97,108,104,111,115,116,58,51,48,48,49,35,91,115,93,35,44,35,91,115,93,35,104,116,116,112,58,47,47,49,50,55,46,48,46,48,46,49,58,51,48,48,49,35,91,115,93,35,44,93,44,109,101,116,104,111,100,115,58,32,91,35,91,115,93,35,71,69,84,35,91,115,93,35,44,32,35,91,115,93,35,80,79,83,84,35,91,115,93,35,93,44,99,114,101,100,101,110,116,105,97,108,115,58,32,116,114,117,101,44,125,44,125,41,59,96,96,96,230,137,147,229,140,133,229,144,142,230,150,135,228,187,182,229,164,132,231,144,134,96,96,96,106,97,118,97,115,99,114,105,112,116,49,46,32,230,137,147,229,140,133,229,145,189,228,187,164,110,112,109,32,114,117,110,32,98,117,105,108,100,50,46,32,231,148,159,230,136,144,32,100,105,115,116,32,231,155,174,229,189,149,239,188,140,229,176,134,232,135,170,229,138,168,230,148,190,231,189,174,229,136,176,32,110,111,100,101,47,112,117,98,108,105,99,32,228,184,139,51,46,32,230,163,128,230,159,165,229,185,182,232,176,131,230,149,180,115,99,114,105,112,116,229,188,149,231,148,168,229,156,176,229,157,128,228,184,186,110,111,100,101,231,187,147,230,158,132,228,184,139,231,154,132,108,117,99,107,121,115,104,101,101,116,229,156,176,229,157,128,60,33,45,45,32,229,188,149,229,133,165,32,108,117,99,107,121,83,104,101,101,116,239,188,136,228,184,139,229,136,151,228,184,164,228,184,170,229,156,176,229,157,128,233,156,128,232,166,129,233,135,141,230,150,176,229,174,154,228,189,141,239,188,140,231,161,174,228,191,157,230,150,135,228,187,182,229,188,149,229,133,165,230,173,163,231,161,174,239,188,137,32,45,45,62,60,115,99,114,105,112,116,32,115,114,99,61,35,91,115,93,35,46,46,47,108,105,98,115,47,108,117,99,107,121,115,104,101,101,116,47,112,108,117,103,105,110,115,47,106,115,47,112,108,117,103,105,110,46,106,115,35,91,115,93,35,62,60,47,115,99,114,105,112,116,62,60,115,99,114,105,112,116,32,115,114,99,61,35,91,115,93,35,46,46,47,108,105,98,115,47,108,117,99,107,121,115,104,101,101,116,47,108,117,99,107,121,115,104,101,101,116,46,117,109,100,46,106,115,35,91,115,93,35,62,60,47,115,99,114,105,112,116,62,52,46,32,230,137,147,229,140,133,229,144,142,239,188,140,112,117,98,108,105,99,32,228,184,139,231,154,132,108,105,98,115,231,155,174,229,189,149,228,188,154,228,184,128,232,181,183,230,137,147,229,140,133,229,136,176,32,100,105,115,116,32,228,184,173,239,188,140,108,117,99,107,121,115,104,101,101,116,32,229,166,130,230,158,156,230,178,161,230,156,137,229,164,141,229,136,182,229,136,176,110,111,100,101,228,184,173,239,188,140,229,136,153,229,188,149,231,154,132,230,152,175,229,189,147,229,137,141,231,155,174,229,189,149,228,184,139,231,154,132,32,108,105,98,115,32,229,141,179,229,143,175,96,96,96,233,161,185,231,155,174,229,156,176,229,157,128,103,105,116,101,101,58,32,91,104,116,116,112,115,58,47,47,103,105,116,101,101,46,99,111,109,47,119,102,101,110,103,48,47,109,112,111,101,93,40,104,116,116,112,115,58,47,47,103,105,116,101,101,46,99,111,109,47,119,102,101,110,103,48,47,109,112,111,101,41,230,150,135,231,171,160,229,156,176,229,157,128,121,106,115,43,113,117,105,108,108,229,141,143,229,144,140,58,32,91,104,116,116,112,115,58,47,47,98,108,111,103,46,99,115,100,110,46,110,101,116,47,119,101,105,120,105,110,95,52,55,55,52,54,52,53,50,47,97,114,116,105,99,108,101,47,100,101,116,97,105,108,115,47,49,51,50,52,48,50,55,49,51,63,115,112,109,61,49,48,48,49,46,50,48,49,52,46,51,48,48,49,46,53,53,48,49,93,40,104,116,116,112,115,58,47,47,98,108,111,103,46,99,115,100,110,46,110,101,116,47,119,101,105,120,105,110,95,52,55,55,52,54,52,53,50,47,97,114,116,105,99,108,101,47,100,101,116,97,105,108,115,47,49,51,50,52,48,50,55,49,51,63,115,112,109,61,49,48,48,49,46,50,48,49,52,46,51,48,48,49,46,53,53,48,49,41,108,117,99,107,121,115,104,101,101,116,229,141,143,229,144,140,239,188,154,91,104,116,116,112,115,58,47,47,98,108,111,103,46,99,115,100,110,46,110,101,116,47,119,101,105,120,105,110,95,52,55,55,52,54,52,53,50,47,97,114,116,105,99,108,101,47,100,101,116,97,105,108,115,47,49,51,52,50,52,48,57,48,53,63,115,112,109,61,49,48,48,49,46,50,48,49,52,46,51,48,48,49,46,53,53,48,49,93,40,104,116,116,112,115,58,47,47,98,108,111,103,46,99,115,100,110,46,110,101,116,47,119,101,105,120,105,110,95,52,55,55,52,54,52,53,50,47,97,114,116,105,99,108,101,47,100,101,116,97,105,108,115,47,49,51,52,50,52,48,57,48,53,63,115,112,109,61,49,48,48,49,46,50,48,49,52,46,51,48,48,49,46,53,53,48,49,41,230,142,152,233,135,145,239,188,154,91,104,116,116,112,115,58,47,47,106,117,101,106,105,110,46,99,110,47,112,111,115,116,47,55,50,57,56,49,55,48,55,51,54,52,56,48,52,56,53,51,55,54,93,40,104,116,116,112,115,58,47,47,106,117,101,106,105,110,46,99,110,47,112,111,115,116,47,55,50,57,56,49,55,48,55,51,54,52,56,48,52,56,53,51,55,54,41,66,231,171,153,232,167,134,233,162,145,66,231,171,153,239,188,154,91,104,116,116,112,115,58,47,47,119,119,119,46,98,105,108,105,98,105,108,105,46,99,111,109,47,118,105,100,101,111,47,66,86,49,83,106,52,49,49,49,55,118,52,47,63,115,112,109,95,105,100,95,102,114,111,109,61,51,51,51,46,57,57,57,46,48,46,48,38,118,100,95,115,111,117,114,99,101,61,54,48,52,97,50,53,99,55,55,101,50,57,54,98,52,99,101,50,57,98,49,101,54,101,54,99,102,48,51,101,97,54,93,40,104,116,116,112,115,58,47,47,119,119,119,46,98,105,108,105,98,105,108,105,46,99,111,109,47,118,105,100,101,111,47,66,86,49,83,106,52,49,49,49,55,118,52,47,63,115,112,109,95,105,100,95,102,114,111,109,61,51,51,51,46,57,57,57,46,48,46,48,38,118,100,95,115,111,117,114,99,101,61,54,48,52,97,50,53,99,55,55,101,50,57,54,98,52,99,101,50,57,98,49,101,54,101,54,99,102,48,51,101,97,54,41,1,175,208,148,220,1,1,203,10,188,19]},"1","1"] 
+[2025-05-26 09:39:41 +08:00Z] [INFO] - SQL (direct): UPDATE files SET currenthead='[object Object]' WHERE fileid='kMXvDPe2A4kwfc0UTtaNm' 
+[2025-05-26 09:39:41 +08:00Z] [DEBUG] - [status] 200 [msg] 版本创建成功 
+[2025-05-26 09:39:41 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["kMXvDPe2A4kwfc0UTtaNm"] 
+[2025-05-26 09:39:41 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-05-26 09:39:45 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, snapshot, description FROM versions WHERE vid = ? -- Params: ["muTIuO45fcEO08TyHoGBs"] 
+[2025-05-26 09:39:45 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本成功 
+[2025-05-26 09:39:53 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-05-26 09:39:53 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-05-26 09:39:53 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-26 09:39:55 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=1kvhg76xath 
+[2025-05-26 09:39:55 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=3vo1f0o987p 
+[2025-05-26 09:39:55 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=kMXvDPe2A4kwfc0UTtaNm, wid=yaevcra6kc 

@@ -1,0 +1,1 @@
+import{f as e}from"./index-671e50dd.js";const a=t=>e({url:"/message/createInvitation",method:"post",data:t}),n=()=>e({url:"/message/getUserMessages",method:"get"}),o=t=>e({url:"/message/acceptInvitation",method:"post",data:t}),r=t=>e({url:"/message/rejectInvitation",method:"post",data:{messageId:t}});export{o as A,a as C,n as G,r as R};

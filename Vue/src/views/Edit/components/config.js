@@ -1,0 +1,51 @@
+export const userListConf = [
+  {
+    lable: "1",
+    command: "1",
+    name: "用户1",
+    userid: "1",
+    img: "https://p7.itc.cn/q_70/images03/20200725/094ff500e93a444a99334e3dde1dd445.jpeg",
+  },
+  {
+    lable: "4",
+    command: "4",
+    name: "用户4",
+    userid: "4",
+    img: "https://p3.itc.cn/q_70/images03/20210101/6b3a4dadd82946ca93f642d0e43a0411.jpeg",
+  },
+  {
+    lable: "5",
+    command: "5",
+    name: "用户5",
+    userid: "5",
+    img: "https://p5.itc.cn/q_70/images03/20211128/20a5e6514ace4922946bf74637769107.jpeg",
+  },
+  {
+    lable: "4",
+    command: "4",
+    name: "用户4",
+    userid: "4",
+    img: "https://p3.itc.cn/q_70/images03/20210101/6b3a4dadd82946ca93f642d0e43a0411.jpeg",
+  },
+  {
+    lable: "5",
+    command: "5",
+    name: "用户5",
+    userid: "5",
+    img: "https://p5.itc.cn/q_70/images03/20211128/20a5e6514ace4922946bf74637769107.jpeg",
+  },
+  {
+    lable: "4",
+    command: "4",
+    name: "用户4",
+    userid: "4",
+    img: "https://p3.itc.cn/q_70/images03/20210101/6b3a4dadd82946ca93f642d0e43a0411.jpeg",
+  },
+  {
+    lable: "5",
+    command: "5",
+    name: "用户5",
+    userid: "5",
+    img: "https://p5.itc.cn/q_70/images03/20211128/20a5e6514ace4922946bf74637769107.jpeg",
+  },
+];

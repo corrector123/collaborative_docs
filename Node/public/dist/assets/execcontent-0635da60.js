@@ -1,0 +1,1 @@
+const c=o=>{if(navigator.clipboard)navigator.clipboard.writeText(o);else{var e=document.createElement("textarea");document.body.appendChild(e),e.style.position="fixed",e.style.clip="rect(0 0 0 0)",e.style.top="10px",e.value=o,e.select(),document.execCommand("copy",!0),document.body.removeChild(e)}};export{c as e};

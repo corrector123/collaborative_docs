@@ -1,0 +1,34 @@
+import { IElement } from '../../interface/Element';
+import { IRange, RangeRowArray, RangeRowMap } from '../../interface/Range';
+import { Draw } from '../draw/Draw';
+export declare class RangeManager {
+    private draw;
+    private options;
+    private range;
+    private listener;
+    private eventBus;
+    private position;
+    private historyManager;
+    constructor(draw: Draw);
+    getRange(): IRange;
+    clearRange(): void;
+    getIsCollapsed(): boolean;
+    getSelection(): IElement[] | null;
+    getSelectionElementList(): IElement[] | null;
+    getTextLikeSelection(): IElement[] | null;
+    getTextLikeSelectionElementList(): IElement[] | null;
+    getRangeRow(): RangeRowMap | null;
+    getRangeRowElementList(): IElement[] | null;
+    getRangeParagraph(): RangeRowArray | null;
+    getRangeParagraphElementList(): IElement[] | null;
+    getIsSelectAll(): boolean;
+    getIsPointInRange(x: number, y: number): boolean;
+    setRange(startIndex: number, endIndex: number, tableId?: string, startTdIndex?: number, endTdIndex?: number, startTrIndex?: number, endTrIndex?: number): void;
+    replaceRange(range: IRange): void;
+    synchronousUserRange(startIndex: number, endIndex: number, isCrossRowCol: boolean | undefined): void;
+    setRangeStyle(): void;
+    recoveryRangeStyle(): void;
+    shrinkBoundary(): void;
+    render(ctx: CanvasRenderingContext2D, x: number, y: number, width: number, height: number): void;
+    toString(): string;
+}
