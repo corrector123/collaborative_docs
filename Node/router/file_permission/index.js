@@ -2,7 +2,7 @@
 const router = require("express").Router();
 const { filePermissionCtrl } = require("../../mvc/controller");
 
-// 设置或更新权限
+// 设置权限
 router.post("/setPermission", filePermissionCtrl.setPermission);
 
 // 用于分享链接的权限设置（广播）
@@ -20,7 +20,7 @@ router.post("/deletePermission", filePermissionCtrl.deletePermission);
 //获取已授权的分享文件
 router.get("/getPermissionFiles", filePermissionCtrl.getPermissionFiles);
 
-//更新权限
+// 更新权限
 router.post("/UpdatePermission", filePermissionCtrl.UpdatePermission);
 
 // 导出路由

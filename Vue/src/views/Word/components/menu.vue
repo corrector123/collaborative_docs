@@ -100,16 +100,23 @@ import { execcontent } from "@/util/execcontent";
 import { createShearUrl } from "@/util/share";
 import { ElMessage } from "element-plus";
 import router from "../../../router";
-import { ref, watch, computed } from "vue";
+import {computed, ref, watch} from "vue";
 import canvasEditorMenu from "./canvas-editor-menu.vue";
 import insertMenu from "./insert-menu.vue";
 import {useStore} from "vuex";
+
+// 使用 computed 获取 store 中的状态
+const store = useStore();
+const fileid =computed(() => store.state.currentFileId).value;
+let { userid,username} = JSON.parse(sessionStorage.getItem("user"));
+
 import {
   menuIconList,
   menuTextList,
 } from "../config";
 
-const { menuStatus, saving, userList, isReadOnly, is_owner } = defineProps({
+
+const { menuStatus, saving, userList,isReadOnly,is_owner} = defineProps({
   menuStatus: {
     type: Object,
   },
@@ -129,18 +136,13 @@ const { menuStatus, saving, userList, isReadOnly, is_owner } = defineProps({
     type: Boolean,
   }
 });
-
-// 使用 computed 获取 store 中的状态
-const store = useStore();
-const fileid =computed(() => store.state.currentFileId).value;
-let { userid,username} = JSON.parse(sessionStorage.getItem("user"));
-
-
+console.log("word创建者",is_owner);
 // 所有的icon 都需要经过instance.command.xxx API 调用，因此，应该回传参数 实现对应功能
-const emit = defineEmits(["iconClick", "show_sap", "saveDocument", "toggleSidebar", "showShareWindow", "openPermissionEditWindow"]);
+const emit = defineEmits(["iconClick", "show_sap", "saveDocument", "toggleSidebar","showShareWindow","openPermissionEditWindow"]);
 
 // 是否显示文件下拉框
 let showFileSelect = ref(false);
+
 
 // 激活的文字index
 let active = ref(0);
@@ -157,11 +159,6 @@ const getUserInitial = (name) => {
   return String(name).charAt(0).toUpperCase();
 };
 
-async function PermissionEdit() {
-  console.log(fileid);
-  emit("openPermissionEditWindow",fileid);
-}
-
 // 保存文档函数
 async function saveDocument() {
   emit("saveDocument");
@@ -169,7 +166,15 @@ async function saveDocument() {
 
 // 分享按钮
 async function share() {
-  emit("showShareWindow", fileid, userid, username);
+  console.log("当前fileId",fileid);
+  console.log("当前userId",userid);
+  console.log("当前username",username);
+  emit("showShareWindow",fileid,userid,username);
+}
+
+async function PermissionEdit() {
+  console.log(fileid);
+  emit("openPermissionEditWindow",fileid);
 }
 
 // 切换侧边栏显示
@@ -204,6 +209,9 @@ watch(
       display: flex;
       align-items: center;
     }
+  }
+  &.readonly-mode {
+    opacity: 0.6; /* 降低透明度表示禁用状态 */
   }
   &-top {
     .fileSelete {
@@ -317,6 +325,16 @@ watch(
       }
     }
   }
+}
+.disable-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000; /* 确保覆盖所有内容 */
+  cursor: not-allowed; /* 显示禁用光标 */
+  background-color: transparent; /* 透明背景，仅拦截事件 */
 }
 /deep/.el-select__wrapper {
   width: 100%;

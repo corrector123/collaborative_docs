@@ -107,11 +107,10 @@ import { inject, nextTick, onMounted, reactive, ref, watch } from "vue";
 import { ElMessage } from "element-plus";
 import { ArrowLeftBold } from "@element-plus/icons-vue";
 import { useMouseChoose } from "../../hooks/useMouseChoose";
-import {useStore} from "vuex";
-
 const { mouseDownHandle, mouseUpHandle, mouseMoveHandle } = useMouseChoose();
 
-// 使用 computed 获取 store 中的状态
+import {useStore} from 'vuex';
+
 const store = useStore();
 // 文档列表
 var pagelist = reactive([]);
@@ -201,11 +200,11 @@ const gotoEdit = (i, item) => {
       });
     },
     word: () => {
-      //使用store设置编辑模式
+      // 使用 store 设置编辑器模式
       store.dispatch('setEditorMode', {
-        fileid: item.fileid,
+        fileId: item.fileid,
         isReadOnly: false
-      })
+      });
       router.push(`/word/${item.fileid}`)
     },
     excel: () => router.push(`/excel/${item.fileid}`),

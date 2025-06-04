@@ -34,30 +34,6 @@
 
   <div class="toolbar">
     <div class="toolbar-left">
-      <!-- 字体选择器 -->
-      <select 
-        v-model="currentFont" 
-        @change="changeFontFamily" 
-        class="font-selector"
-        title="字体"
-      >
-        <option v-for="font in fontOptions" :key="font.value" :value="font.value">
-          {{ font.label }}
-        </option>
-      </select>
-      
-      <!-- 标题格式选择器 -->
-      <select 
-        v-model="currentHeader" 
-        @change="changeHeader" 
-        class="header-selector"
-        title="标题格式"
-      >
-        <option v-for="header in headerOptions" :key="header.value" :value="header.value">
-          {{ header.label }}
-        </option>
-      </select>      
-      
       <i
         v-for="item in toolbarList[0]"
         :key="item.icon"
@@ -73,14 +49,6 @@
           <input v-model="color" type="color" />
         </div>
       </i>
-      
-      <!-- 背景颜色选择器 -->
-      <i class="iconfont icon-highlight" title="背景颜色">
-        <div class="colorBox">
-          <input v-model="backgroundColorValue" type="color" />
-        </div>
-      </i>
-      
       <i
         v-for="item in toolbarList[1]"
         :key="item.icon"
@@ -104,40 +72,6 @@
         </div>
       </i>
     </div>
-    
-    <!-- 中间网络状态区域 -->
-    <div class="toolbar-center">
-      <div 
-        class="network-status" 
-        :style="{ color: networkStatusColor }"
-        @click="debugNetworkStatus"
-        title="点击查看网络状态详情"
-      >
-        <i class="network-icon" :class="networkIconClass"></i>
-        <span class="network-text">{{ networkStatusText }}</span>
-        
-        <!-- 同步按钮（当有未同步修改时显示） -->
-        <button 
-          v-if="needsSync" 
-          @click.stop="handleManualSync" 
-          class="sync-button"
-          :disabled="isSyncing"
-        >
-          {{ isSyncing ? '同步中...' : '立即同步' }}
-        </button>
-        
-        <!-- 测试按钮 - 仅开发模式显示 -->
-        <button 
-          v-if="isDevelopment"
-          @click.stop="toggleWebSocketConnection" 
-          class="test-button"
-          :title="websocketConnected ? '断开WebSocket测试离线' : '重连WebSocket'"
-        >
-          {{ websocketConnected ? '断开' : '重连' }}
-        </button>
-      </div>
-    </div>
-    
     <div class="toolbar-right">
       <i
         v-for="item in toolbarList[2]"
@@ -188,9 +122,9 @@
 import emojilist from "@/util/emoji.js";
 import { myQuill } from "../Quill";
 import { myYjs } from "../Yjs";
-import { nextTick, onMounted, reactive, ref, watch, computed } from "vue";
+import { nextTick, onMounted, reactive, ref, watch } from "vue";
 import router from "@/router";
-import { tabbarConfig, fontOptions, headerOptions } from "./config";
+import { tabbarConfig } from "./config";
 import {
   editUploadFile_API,
   saveFile_API,
@@ -206,8 +140,11 @@ import { utf16toEntities } from "@/util/utf16";
 import { ElMessage, ElMessageBox, ElDialog, ElButton } from "element-plus";
 import * as Y from "yjs";
 import { diffChars } from 'diff';
+
+// Log the imported diffChars function
+console.log('typeof diffChars after import:', typeof diffChars);
+
 import { http_server_url } from "/default.config";
-import { useStore } from 'vuex';
 
 //传参，只读参数
 const props = defineProps({
@@ -216,12 +153,6 @@ const props = defineProps({
   }
 })
 const isReadOnly = props.isReadOnly;
-
-// Vuex store
-const store = useStore();
-
-// 获取文件ID用于离线同步
-const fileId = router.currentRoute.value.params.fileid;
 
 // 定义Quill对象
 let quill = reactive({});
@@ -243,78 +174,7 @@ const uploadRef = ref("");
 // yanse
 let color = ref("");
 
-// 选择器状态
-const currentFont = ref('');
-const currentHeader = ref(false);
-const backgroundColorValue = ref('#ffff00');
-
-// 网络状态计算属性
-const networkStatusText = computed(() => store.getters.networkStatusText);
-const networkStatusColor = computed(() => store.getters.networkStatusColor);
-const needsSync = computed(() => store.getters.needsSync);
-const isSyncing = computed(() => store.state.isSyncing);
-const isOnline = computed(() => store.state.isOnline);
-const websocketConnected = computed(() => {
-  return yjsInstance?.websocketProvider?.wsconnected || false;
-});
-
-// 开发模式检测
-const isDevelopment = computed(() => {
-  // 临时强制显示测试按钮以便测试离线功能
-  return true;
-  // return import.meta.env.MODE === "development";
-});
-
-// 网络状态图标
-const networkIconClass = computed(() => {
-  if (!isOnline.value) return 'icon-offline';
-  if (isSyncing.value) return 'icon-syncing';
-  if (needsSync.value) return 'icon-warning';
-  return 'icon-online';
-});
-
-// 网络状态处理方法
-const handleManualSync = async () => {
-  if (yjsInstance && typeof yjsInstance.manualSync === 'function') {
-    try {
-      await yjsInstance.manualSync();
-    } catch (error) {
-      console.error('[Tabbar] 手动同步失败:', error);
-      ElMessage.error('同步失败，请稍后重试');
-    }
-  } else {
-    console.warn('[Tabbar] Yjs实例未就绪，无法进行手动同步');
-    ElMessage.warning('编辑器尚未就绪，请稍后重试');
-  }
-};
-
-// 网络状态调试 - 点击网络状态指示器查看状态信息
-const debugNetworkStatus = () => {
-  console.log('=== 网络状态信息 ===');
-  console.log('当前网络状态:', store.state.isOnline ? '在线' : '离线');
-  console.log('有离线修改:', store.state.hasOfflineChanges);
-  console.log('正在同步:', store.state.isSyncing);
-  
-  ElMessage.info(`网络状态: ${networkStatusText.value}`);
-};
-
-// 测试按钮处理函数 - 切换WebSocket连接状态
-const toggleWebSocketConnection = () => {
-  if (yjsInstance && typeof yjsInstance.toggleWebSocketConnection === 'function') {
-    yjsInstance.toggleWebSocketConnection();
-  } else {
-    console.warn('[Tabbar] Yjs实例未就绪，无法切换WebSocket连接');
-    ElMessage.warning('无法切换WebSocket连接，Yjs尚未就绪');
-  }
-};
-
 watch(color, (val) => quill.format("color", val));
-watch(backgroundColorValue, (val) => {
-  const range = quill.quill.getSelection();
-  if (range && range.length > 0) {
-    quill.quill.formatText(range.index, range.length, 'background', val);
-  }
-});
 
 // 定义toolbar 列表
 const toolbarList = reactive(tabbarConfig);
@@ -343,20 +203,6 @@ const iconClick = (icon) => {
     case "icon-italic":
     case "icon-strikethrough":
     case "icon-zitixiahuaxian":
-      quill.format(icon);
-      break;
-
-    // 列表功能
-    case "icon-list-bullet":
-    case "icon-list-ordered":
-      quill.format(icon);
-      break;
-
-    // 对齐方式
-    case "icon-align-left":
-    case "icon-align-center":
-    case "icon-align-right":
-    case "icon-align-justify":
       quill.format(icon);
       break;
 
@@ -454,6 +300,7 @@ const loadVersions = async (fileid) => {
   try {
     const res = await getAllVersions_API({ fileid });
 
+    console.log(res.data);
     if (res.code === 200 && res.data) {
       versions.value = res.data.map(version => ({
         id: version.vid,
@@ -471,6 +318,7 @@ const loadVersions = async (fileid) => {
   } finally {
     loading.value = false;
   }
+  console.log("版本内容",versions);
 };
 
 // Helper function to convert Uint8Array to Base64 string more robustly
@@ -758,7 +606,7 @@ const showDiffHandler = async (version) => {
       return;
     }
 
-    // 使用 diff 库计算差异 (字符级别对比)
+    // 3. 使用 diff 库计算差异 (字符级别对比)
     if (typeof diffChars !== 'function') {
       console.error('[showDiffHandler] diff: diffChars function not available');
       ElMessage.error("差异对比功能初始化失败：diff 库未正确加载。");
@@ -767,6 +615,7 @@ const showDiffHandler = async (version) => {
       return;
     }
 
+    console.log('[showDiffHandler] Using diff.diffChars');
     const diffResults = diffChars(historicalContent, currentContent);
     
     // 4. 将差异转换为 HTML
@@ -789,32 +638,9 @@ const showDiffHandler = async (version) => {
   }
 };
 
-// 字体选择器处理
-const changeFontFamily = () => {
-  quill.quill.format('font', currentFont.value);
-  ElMessage.success(`字体已切换为 ${fontOptions.find(f => f.value === currentFont.value)?.label || 'Sans Serif'}`);
-};
-
-// 标题格式选择器处理
-const changeHeader = () => {
-  quill.quill.format('header', currentHeader.value);
-  const headerLabel = headerOptions.find(h => h.value === currentHeader.value)?.label || 'Normal';
-  ElMessage.success(`格式已切换为 ${headerLabel}`);
-};
-
 onMounted(() => {
   const fileid = router.currentRoute.value.params.fileid;
   const { username } = JSON.parse(sessionStorage.getItem("user"));
-  
-  console.log('[Tabbar] 组件已挂载，文件ID:', fileid);
-  console.log('[Tabbar] 用户名:', username);
-  
-  // 初始化网络状态监听
-  console.log('[Tabbar] 开始初始化网络状态监听...');
-  store.dispatch('initNetworkMonitoring').then(() => {
-    console.log('[Tabbar] 网络状态监听初始化完成');
-    console.log('[Tabbar] 当前网络状态:', store.state.isOnline);
-  });
   
   // 获取dom需要在mounted后
   quill = new myQuill("#edit", isReadOnly);
@@ -823,27 +649,11 @@ onMounted(() => {
   // 获取焦点
   quill.focus();
 
-  // 监听光标位置变化，更新选择器状态
-  quill.quill.on('selection-change', (range) => {
-    if (range) {
-      const format = quill.quill.getFormat(range);
-      currentFont.value = format.font || '';
-      currentHeader.value = format.header || false;
-    }
-  });
-
   // 处理编辑器内容  获取 版本信息
   setTimeout(() => handleEditContent(fileid), 100);
 
   // 初始化YJS
-  console.log('[Tabbar] 开始初始化Yjs...');
   yjsInstance = new myYjs(quill, fileid, username);
-  
-  // 调试：在开发模式下暴露实例到全局
-  if (import.meta.env.MODE === "development") {
-    window.yjsInstance = yjsInstance;
-    window.store = store;
-  }
   
   // 加载服务器版本列表
   loadVersions(fileid);
@@ -858,52 +668,14 @@ onMounted(() => {
   border: 1px solid #ccc;
   box-sizing: border-box;
   font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-  padding: 8px 12px;
+  padding: 8px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  
   i {
     cursor: pointer;
     margin: 0 5px;
-    padding: 4px;
-    border-radius: 3px;
-    transition: all 0.2s ease;
-    
-    &:hover {
-      background-color: rgba(255, 255, 255, 0.3);
-      transform: translateY(-1px);
-    }
   }
 }
-
-.toolbar-left {
-  display: flex;
-  align-items: center;
-  flex: 0 0 auto;
-  padding-right: 15px;
-  border-right: 1px solid rgba(0, 0, 0, 0.1);
-  gap: 8px;
-}
-
-.toolbar-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-  margin: 0 20px;
-  position: relative;
-}
-
-.toolbar-right {
-  display: flex;
-  align-items: center;
-  flex: 0 0 auto;
-  padding-left: 15px;
-  border-left: 1px solid rgba(0, 0, 0, 0.1);
-}
-
 .emoji {
   position: relative;
   &:hover {
@@ -1090,279 +862,5 @@ onMounted(() => {
   background-color: #ffeef0;
   color: #dc3545;
   padding: 2px 4px;
-}
-
-// 网络状态样式
-.network-status {
-  display: flex;
-  align-items: center;
-  padding: 8px 16px;
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 20px;
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  gap: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
-  min-width: 200px;
-  justify-content: center;
-}
-
-.network-status:hover {
-  background: rgba(255, 255, 255, 1);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transform: translateY(-2px);
-}
-
-.network-icon {
-  font-size: 16px;
-  min-width: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.network-icon::before {
-  font-family: "iconfont" !important;
-  font-style: normal;
-}
-
-.network-icon.icon-online::before {
-  content: "●";
-  color: #67c23a;
-}
-
-.network-icon.icon-offline::before {
-  content: "○";
-  color: #f56c6c;
-}
-
-.network-icon.icon-syncing::before {
-  content: "⟳";
-  color: #e6a23c;
-  animation: spin 1s linear infinite;
-}
-
-.network-icon.icon-warning::before {
-  content: "⚠";
-  color: #e6a23c;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.network-text {
-  white-space: nowrap;
-  margin: 0;
-  font-weight: 600;
-}
-
-.sync-button {
-  padding: 4px 8px;
-  background-color: #409eff;
-  color: white;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  font-size: 11px;
-  font-weight: 500;
-  transition: all 0.2s;
-  margin-left: 4px;
-}
-
-.sync-button:hover {
-  background-color: #66b1ff;
-  transform: scale(1.05);
-}
-
-.sync-button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  background-color: #c0c4cc;
-  transform: none;
-}
-
-// 测试按钮样式
-.test-button {
-  padding: 4px 10px;
-  background-color: #e6a23c;
-  color: white;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  font-size: 11px;
-  font-weight: 600;
-  transition: all 0.2s;
-  margin-left: 4px;
-  box-shadow: 0 2px 4px rgba(230, 162, 60, 0.3);
-}
-
-.test-button:hover {
-  background-color: #ebb563;
-  transform: scale(1.05);
-  box-shadow: 0 4px 8px rgba(230, 162, 60, 0.4);
-}
-
-.test-button:active {
-  transform: scale(0.98);
-}
-
-.test-button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  background-color: #c0c4cc;
-  transform: none;
-  box-shadow: none;
-}
-
-// 响应式设计
-@media (max-width: 768px) {
-  .toolbar {
-    flex-direction: column;
-    padding: 8px;
-    gap: 8px;
-  }
-  
-  .toolbar-left,
-  .toolbar-center,
-  .toolbar-right {
-    border: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    justify-content: center;
-  }
-  
-  .toolbar-center {
-    order: -1; // 将网络状态移到顶部
-  }
-  
-  .network-status {
-    min-width: auto;
-    width: 100%;
-    max-width: 300px;
-  }
-  
-  .network-text {
-    font-size: 12px;
-  }
-}
-
-@media (max-width: 480px) {
-  .network-status {
-    padding: 6px 12px;
-    font-size: 12px;
-  }
-  
-  .test-button,
-  .sync-button {
-    padding: 3px 6px;
-    font-size: 10px;
-  }
-}
-
-// 选择器样式
-.font-selector,
-.header-selector,
-.size-selector {
-  padding: 4px 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background: rgba(255, 255, 255, 0.9);
-  font-size: 12px;
-  color: #333;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  min-width: 70px;
-  
-  &:hover {
-    border-color: #409eff;
-    background: white;
-    transform: translateY(-1px);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  &:focus {
-    outline: none;
-    border-color: #409eff;
-    box-shadow: 0 0 0 2px rgba(64, 158, 255, 0.2);
-  }
-}
-
-.font-selector {
-  min-width: 85px;
-}
-
-.header-selector {
-  min-width: 90px;
-}
-
-.size-selector {
-  min-width: 60px;
-}
-
-.separator {
-  width: 1px;
-  height: 20px;
-  background-color: rgba(0, 0, 0, 0.2);
-  margin: 0 8px;
-  flex-shrink: 0;
-}
-
-// 新按钮样式
-.icon-highlight {
-  position: relative;
-  
-  &::after {
-    content: "■";
-    color: #ffff00;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 10px;
-  }
-}
-
-.icon-list-bullet::before {
-  content: "●";
-}
-
-.icon-list-ordered::before {
-  content: "1.";
-  font-size: 10px;
-}
-
-.icon-align-left::before {
-  content: "≡";
-}
-
-.icon-align-center::before {
-  content: "≡";
-  text-align: center;
-}
-
-.icon-align-right::before {
-  content: "≡";
-}
-
-.icon-align-justify::before {
-  content: "≡";
-}
-
-.font-size-plus::before {
-  content: "A+";
-  font-size: 10px;
-  font-weight: bold;
-}
-
-.font-size-minus::before {
-  content: "A-";
-  font-size: 10px;
-  font-weight: bold;
 }
 </style>

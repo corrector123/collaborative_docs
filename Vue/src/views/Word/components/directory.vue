@@ -1,6 +1,8 @@
 <!-- 目录组件 -->
 <template>
-  <div class="directory-container" :class="{ 'collapsed': isCollapsed }">
+  <div class="directory-container"
+       :class="{ 'collapsed': isCollapsed }"
+       :disabled="isReadOnly">
     <!-- 目录标题栏 -->
     <div class="directory-header">
       <div class="directory-title">
@@ -51,8 +53,13 @@ const props = defineProps({
   instance: {
     type: Object,
     default: () => ({})
+  },
+  isReadOnly:{
+    type: Boolean,
+    default: false,
   }
 });
+const isReadOnly = props.isReadOnly;
 
 // 响应式数据
 const isCollapsed = ref(false);

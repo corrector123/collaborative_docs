@@ -1,6 +1,6 @@
 <!-- 侧边栏组件 - 历史版本 -->
 <template>
-  <div class="sidebar-container">
+  <div class="sidebar-container" :disabled="isReadOnly">
     <div class="sidebar-header">
       <h3>历史版本</h3>
     </div>
@@ -161,6 +161,13 @@ import {
 } from '@/api/version'
 import { saveFile_API } from '@/api/file'
 
+//父组件传参
+const { isReadOnly } = defineProps({
+  isReadOnly:{
+    type: Boolean,
+    default: false,
+  }
+});
 // 路由信息
 const route = useRoute()
 

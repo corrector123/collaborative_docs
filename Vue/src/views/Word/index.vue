@@ -19,26 +19,23 @@
         @saveDocument="handleSaveDocument"
         @toggleSidebar="toggleSidebar"
         @showShareWindow="showShareWindow"
-        @open-Permission-Edit-Window="openPermissionEditWindow"
+        @open-permission-edit-window="openPermissionEditWindow"
       />
     </div>
-
     <!-- editor-content -->
     <el-scrollbar class="word-editor">
       <!-- 目录 -->
       <div class="word-editor-directory">
-        <directoryVue 
+        <directoryVue
             :instance="instance"
             :isReadOnly="isReadOnly"
-            ref="directoryRef" 
-        />
-      </div>
+            ref="directoryRef" /></div>
       <!-- 编辑器内容区 -->
       <div class="word-editor-dom" :style="{ marginRight: showSidebar ? '20vw' : '0' }">
       </div>
       <!-- 侧边栏 历史版本 -->
       <div class="word-editor-sidebar" v-show="showSidebar">
-        <sidebarVue 
+        <sidebarVue
             :isReadOnly="isReadOnly"
         />
       </div>
@@ -54,18 +51,21 @@
       <searchVue
         ref="searchRef"
         :instance="instance"
+        :isReadOnly="isReadOnly"
         @iconClick="ICH"
         @close="showsap = false"
       />
     </div>
+
   </div>
+
 </template>
 
 <script setup>
 import { Editor } from "/public/libs/canvas-editor/canvas-editor.es";
-import {computed, nextTick, onBeforeUnmount, onMounted, reactive, ref, readonly} from "vue";
+import {computed, nextTick, onBeforeUnmount, onMounted, reactive, readonly, ref} from "vue";
 import { useEditor } from "../../hooks/useEditor";
-import { saveFile_API, getFileContent_API, getFilesByFileId_API } from "@/api/file";
+import {saveFile_API, getFileContent_API, getFilesByFileId_API} from "@/api/file";
 import { findUser_API } from "@/api/user";
 import { ElMessage } from "element-plus";
 import { useRoute } from "vue-router";
@@ -74,28 +74,32 @@ import footerVue from "./components/footer.vue";
 import sidebarVue from "./components/sidebar.vue";
 import directoryVue from "./components/directory.vue";
 import searchVue from "./components/search.vue";
-import fileShareDialog from "../Pages/components/shareDialog.vue";
-import PermissionEditDialog from "../Pages/components/PermissionEditDialog.vue";
+import fileShareDialog from '../Pages/components/shareDialog.vue'
 import { ws_server_url as url } from "/default.config";
 import { options } from "./config";
 import { useStore } from 'vuex';
+import PermissionEditDialog from "../Pages/components/PermissionEditDialog.vue";
+
+// 使用 computed 获取 store 中的状态
+const store = useStore();
+const isReadOnly = computed(() => store.state.editorReadOnly);
+
+//权限修改窗口ref
+let permissionDialog = ref(null)
+
+console.log("是否为只读用户?",isReadOnly.value);
 
 var { iconClickHandle } = useEditor();
 
 const route = useRoute();
 let instance = ref(null);
 
-const store = useStore();
-const isReadOnly = computed(() => store.state.editorReadOnly);
-
-// 分享组件 Ref
-const shareDialog = ref(null);
-
-// 权限编辑组件 Ref
-const permissionDialog = ref(null);
 
 // 搜索组件 Ref
 let searchRef = ref(null);
+
+// 分享窗口ref
+let shareDialog = ref(null)
 
 // 目录组件 Ref
 let directoryRef = ref(null);
@@ -123,38 +127,16 @@ let menuStatus = reactive({});
 // 保存状态
 let saving = ref(false);
 
-const is_owner = ref(false);
-
 // 分享窗口显示方法
 const showShareWindow = (fileid,userId,username) => {
   shareDialog.value.openDialog(fileid,userId,username);
 };
-
-// 打开权限编辑弹窗
+//权限窗口显示方法
 const openPermissionEditWindow = (fileId) => {
   const currentUser = JSON.parse(sessionStorage.getItem('user'))
   console.log("输出信息",permissionDialog);
   permissionDialog.value.openDialog(fileId, currentUser.userid)
 };
-
-//初始化
-const init = async(userid)=>{
-  try {
-    const FileRes = await getFilesByFileId_API({
-      fileid: route.params.fileid
-    });
-
-    if (FileRes.code === 200) {
-      // 这里可以使用FileRes.data
-      is_owner.value = FileRes.data.owner === userid;
-    } else {
-      console.error("获取文件信息失败:", FileRes.msg);
-    }
-  } catch (error) {
-    console.error("API调用出错:", error);
-  }
-}
-
 // 做参数转换
 const ICH = (p) => {
   // 处理编辑模式变化
@@ -168,6 +150,12 @@ const ICH = (p) => {
   // 其他图标点击事件继续使用原有逻辑
   iconClickHandle(p, instance.value);
 };
+
+// 在组件卸载时清理状态
+onBeforeUnmount(() => {
+  store.commit('setEditorReadOnly', false);
+  store.commit('setCurrentFileId', null);
+});
 
 // 保存文档函数
 async function handleSaveDocument() {
@@ -319,6 +307,24 @@ async function updateUserList() {
 function toggleSidebar() {
   showSidebar.value = !showSidebar.value;
 }
+const is_owner = ref(false);
+//初始化
+const init = async(userid)=>{
+  try {
+    const FileRes = await getFilesByFileId_API({
+      fileid: route.params.fileid
+    });
+
+    if (FileRes.code === 200) {
+      // 这里可以使用FileRes.data
+      is_owner.value = FileRes.data.owner === userid;
+    } else {
+      console.error("获取文件信息失败:", FileRes.msg);
+    }
+  } catch (error) {
+    console.error("API调用出错:", error);
+  }
+}
 
 onMounted(async () => {
   // 协同相关配置 解决初始加载会报错问题
@@ -326,7 +332,6 @@ onMounted(async () => {
   let roomname = window.location.hash.split("word/")[1];
   const socketinfo = { url, username, userid, roomname };
   await init(userid);
-
   // 加载文件内容
   let initialData = [];
   
@@ -464,8 +469,6 @@ onMounted(async () => {
 });
 
 onBeforeUnmount(() => {
-  store.commit('setEditorReadOnly', false);
-  store.commit('setCurrentFileId', null);
   // 清理定时器
   if (window.directoryUpdateTimer) {
     clearTimeout(window.directoryUpdateTimer);
@@ -538,5 +541,9 @@ onBeforeUnmount(() => {
     right: 50px;
     top: 90px;
   }
+}
+/* 在全局样式中确保弹窗层级正确 */
+.el-dialog {
+  z-index: 2000;
 }
 </style>

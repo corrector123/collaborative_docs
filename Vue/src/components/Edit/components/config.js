@@ -8,13 +8,6 @@ export const tabbarConfig = [
     { icon: "icon-italic", title: "斜体" },
     { icon: "icon-strikethrough", title: "删除线" },
     { icon: "icon-zitixiahuaxian", title: "下划线" },
-    { icon: "icon-anjianfengexian", title: "" },
-    { icon: "icon-list-bullet", title: "项目符号" },
-    { icon: "icon-list-ordered", title: "编号列表" },
-    { icon: "icon-align-left", title: "左对齐" },
-    { icon: "icon-align-center", title: "居中对齐" },
-    { icon: "icon-align-right", title: "右对齐" },
-    { icon: "icon-align-justify", title: "两端对齐" },
   ],
   [
     { icon: "icon-anjianfengexian", title: "" },
@@ -22,24 +15,4 @@ export const tabbarConfig = [
     { icon: "icon-baocun", title: "每10分钟自动保存" },
   ],
   [{ icon: "icon-24gl-fullScreenEnter2", title: "进入全屏" }],
-];
-
-// 字体选项配置
-export const fontOptions = [
-  { value: 'serif', label: 'Serif' },
-  { value: 'monospace', label: 'Monospace' },
-  { value: '', label: 'Sans Serif' }, // 默认字体
-  { value: 'cursive', label: 'Cursive' },
-  { value: 'fantasy', label: 'Fantasy' }
-];
-
-// 标题格式选项配置
-export const headerOptions = [
-  { value: false, label: 'Normal' },
-  { value: 1, label: 'Header 1' },
-  { value: 2, label: 'Header 2' },
-  { value: 3, label: 'Header 3' },
-  { value: 4, label: 'Header 4' },
-  { value: 5, label: 'Header 5' },
-  { value: 6, label: 'Header 6' }
 ];

@@ -2,7 +2,7 @@
 const { logger } = require("./util");
 
 // 业务端口
-const server_port = 5000;
+const server_port = 8080;
 
 // ws 统一端口
 const ws_port = 9000;
@@ -13,7 +13,7 @@ const sql_config = {
   host: "127.0.0.1",
   database: "mpoe",
   user: "root",
-  password: "mysql123",
+  password: "tsYz20040824",
 };
 
 // JWT 加密字符串

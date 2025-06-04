@@ -79,17 +79,16 @@ const is_owner= ref(false);
 // 打开弹窗方法（由父组件调用）
 const openDialog = async (fileid,userId,username) => {
   try {
-    console.log("fileid:",fileid);
     const res = await getFilesByFileId_API({ fileid })
-    data.value = res.data
-    dialogVisible.value = true
+    data.value= res.data;
+    dialogVisible.value=true;
     // 重置表单
     targetUserId.value = ''
     fileId.value = fileid;
-    userName.value = username;
+    userName.value = username
     myId.value=userId;
     selectedPermission.value = FILE_PERMISSIONS.VIEWER.value // 重置为默认权限
-    is_owner.value = userId === data.value.owner;
+    is_owner.value = userId===data.value.owner;
   } finally {
   }
 }
@@ -121,7 +120,7 @@ const handleConfirm = async () => {
       userId: targetUserId.value,
       fileId: fileId.value,
       permissionType: selectedPermission.value,
-      ownerId: data.value.owner
+      ownerId:data.value.owner
     })
 
     if (permissionRes.code !== 200) {
@@ -189,17 +188,17 @@ defineExpose({ openDialog })
 <style scoped>
 .dialog-item {
   margin-bottom: 20px;
-}
 
-.dialog-item .label {
-  display: block;
-  margin-bottom: 8px;
-  color: #606266;
-  font-size: 14px;
-}
+  .label {
+    display: block;
+    margin-bottom: 8px;
+    color: #606266;
+    font-size: 14px;
+  }
 
-.dialog-item .el-input {
-  width: 300px;
+  .el-input {
+    width: 300px;
+  }
 }
 
 .dialog-footer {

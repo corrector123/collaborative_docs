@@ -19,10 +19,9 @@ exports.findFileByIdMap = async (userid, fileid) =>
 
 // 查找指定的fileid 文件
 exports.findFileOnlyByIdMap = async (fileid) =>
-  await query(
-      `SELECT * FROM files WHERE fileid='${fileid}'`
-  );
-
+    await query(
+        `SELECT * FROM files WHERE fileid='${fileid}'`
+    );
 exports.createFileMap = async (
   userid,
   fileid,

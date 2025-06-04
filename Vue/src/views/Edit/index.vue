@@ -3,7 +3,7 @@
     <fileShareDialog
         ref="shareDialog"
     />
-    <permissionEditDialog
+    <PermissionEditDialog
         ref="permissionDialog"
     />
     <div class="editbox-left">
@@ -51,9 +51,15 @@
 <script setup>
 import topVue from "./components/top.vue";
 import editVue from "@compo/Edit/index.vue";
-import fileShareDialog from "../Pages/components/shareDialog.vue";
-import permissionEditDialog from "../Pages/components/PermissionEditDialog.vue";
 import router from "@/router";
+import fileShareDialog from '../Pages/components/shareDialog.vue'
+import PermissionEditDialog from '../Pages/components/PermissionEditDialog.vue'
+
+//权限修改窗口ref
+let permissionDialog = ref(null)
+// 分享窗口ref
+let shareDialog = ref(null)
+
 import {
   inject,
   onMounted,
@@ -66,7 +72,8 @@ import {
 import { registerSockets, destroySockets } from "@/sockets/index.js";
 import dayjs from "dayjs";
 import {useRoute} from "vue-router";
-import { getFilesByFileId_API } from "@/api/file";
+import {getFilesByFileId_API} from "@/api/file";
+
 
 let messageDialog = ref(false);
 let open = () => (
@@ -75,18 +82,23 @@ let open = () => (
 let myinfo = JSON.parse(sessionStorage.getItem("user"));
 let input = ref("");
 
-//权限修改窗口ref
-const permissionDialog = ref(null);
-
-//分享窗口ref
-let shareDialog = ref(null);
-
-//是否为作者
-const is_owner = ref(false);
+// 分享窗口显示方法
+const showShareWindow = (fileid,userId,username) => {
+  shareDialog.value.openDialog(fileid,userId,username);
+};
 
 const route = useRoute();
 //只读用户
 const isReadOnly = computed(() => route.query.readOnly === 'true');
+//是否为作者
+const is_owner = ref(false);
+// 打开权限编辑弹窗
+const openPermissionEditWindow = (fileId) => {
+  const currentUser = JSON.parse(sessionStorage.getItem('user'))
+  console.log("输出信息",permissionDialog);
+  permissionDialog.value.openDialog(fileId, currentUser.userid)
+};
+
 /**
  * 初始化 socket 服务
  */
@@ -99,35 +111,6 @@ let message = reactive([]);
 let unread = ref(0);
 
 let fileid = ref("");
-
-// 分享窗口显示方法
-const showShareWindow = (fileid,userId,username) => {
-  shareDialog.value.openDialog(fileid,userId,username);
-};
-
-// 打开权限编辑弹窗
-const openPermissionEditWindow = (fileId) => {
-  const currentUser = JSON.parse(sessionStorage.getItem('user'))
-  permissionDialog.value.openDialog(fileId, currentUser.userid)
-};
-
-const init = async(user)=>{
-  fileid.value = window.location.hash.split("edit/")[1]; // 当前文件的fileid
-  try {
-    const FileRes = await getFilesByFileId_API({
-      fileid: fileid.value
-    });
-
-    if (FileRes.code === 200) {
-      // 这里可以使用FileRes.data
-      is_owner.value = FileRes.data.owner === user.userid;
-    } else {
-      console.error("获取文件信息失败:", FileRes.msg);
-    }
-  } catch (error) {
-    console.error("API调用出错:", error);
-  }
-};
 
 let sockets = {
   // 用户加入编辑：处理用户列表
@@ -147,6 +130,7 @@ let sockets = {
     // console.log(unread.value);
   },
 };
+
 
 // 发送消息
 let send = () => {
@@ -170,17 +154,35 @@ const initSocketServer = (fileid, user) => {
   socket.io.emit("init", { user, fileid });
 };
 
+//初始化函数
+const init = async(user)=>{
+  fileid.value = window.location.hash.split("edit/")[1]; // 当前文件的fileid
+  try {
+    const FileRes = await getFilesByFileId_API({
+      fileid: fileid.value
+    });
+
+    if (FileRes.code === 200) {
+      // 这里可以使用FileRes.data
+      is_owner.value = FileRes.data.owner === user.userid;
+    } else {
+      console.error("获取文件信息失败:", FileRes.msg);
+    }
+  } catch (error) {
+    console.error("API调用出错:", error);
+  }
+}
 onMounted(() => {
   let user = JSON.parse(sessionStorage.getItem("user"));
   //初始化文档
   init(user);
   // 获取 proxy sockets
-  initSocketServer(fileid.value, user);
-  registerSockets(sockets, proxy, socket);
+    initSocketServer(fileid.value, user);
+    registerSockets(sockets, proxy, socket);
 });
 
 onBeforeMount(() => {
-  destroySockets(sockets, proxy, socket);
+    destroySockets(sockets, proxy, socket);
 });
 </script>
 

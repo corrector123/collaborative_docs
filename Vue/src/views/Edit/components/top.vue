@@ -52,7 +52,7 @@
       <div class="header-right-shear" v-if="!isReadOnly" title="分享">
         <el-button type="primary" size="small" @click="share">分享</el-button>
       </div>
-      <!-- 文档权限管理 -->
+      <!-- 分享 -->
       <div class="header-right-shear" v-if="is_owner" title="文档权限管理">
         <el-button type="primary" size="small" @click="PermissionEdit">文档权限管理</el-button>
       </div>
@@ -85,12 +85,12 @@ import { getFilesByFileId_API } from "@/api/file";
 import router from "@/router";
 import store from "@/store";
 
-const emit = defineEmits(["open", "showShareWindow", "openPermissionEditWindow"]);
+const emit = defineEmits(["open","showShareWindow","openPermissionEditWindow"]);
 const open = () => emit("open");
 
 // 解析 websocket provider
 
-let { socketuserlist, unread,isReadOnly, fileid, is_owner } = defineProps({
+let { socketuserlist, unread,isReadOnly,fileid,is_owner} = defineProps({
   socketuserlist: {
     type: Array,
   },
@@ -98,15 +98,14 @@ let { socketuserlist, unread,isReadOnly, fileid, is_owner } = defineProps({
   isReadOnly:{
     type:Boolean
   },
-  fileid: {
-    type: String,
+  fileid:{
   },
   is_owner:{
     type:Boolean
-  }
+  },
 });
 console.log(isReadOnly);
-
+console.log("top接收是否为作者：",is_owner);
 // 当前编辑的文件名称
 let filename = ref("");
 let userinfo = reactive({
@@ -124,6 +123,7 @@ const commandhandle = (command) => {
   // console.log("点击了", command);
 };
 async function share() {
+  console.log(fileid);
   let { userid,username} = JSON.parse(sessionStorage.getItem("user"));
   emit("showShareWindow",fileid,userid,username);
 }

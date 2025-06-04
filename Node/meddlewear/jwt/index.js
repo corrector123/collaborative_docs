@@ -14,15 +14,15 @@ const initJWT = async (req, res, next) => {
   // 路由白名单
   const whitePath = ["/user/login", "/user/register", "/favicon.ico", ""];
 
-  //检查是否是SVG请求
+  // 检查是否是SVG请求
   const isSvgRequest = req.url.includes('svg') || decodeURIComponent(req.url).includes('svg');
 
   if (
     whitePath.find((i) => i === req.url) ||
     req.url.includes("static") ||
     req.url.includes("assets") ||
-    req.url.includes("excel") ||
-    isSvgRequest //添加svg白名单
+    req.url.includes("excel")||
+    isSvgRequest  // 添加SVG白名单
   )
     return next(); // 白名单路由放行
 

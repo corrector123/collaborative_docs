@@ -1,5 +1,5 @@
 <template>
-  <div class="footer">
+  <div class="footer" :disabled="isReadOnly">
     <div class="footer-left">
       <span>
         <i class="iconfont"></i>
@@ -9,7 +9,7 @@
       <span>字数：{{ footerInfo.wordCount }}</span>
       
       <!-- 编辑模式控制 -->
-      <span class="edit-mode-section">
+      <span class="edit-mode-section" v-if="isReadOnly">
         <el-popover placement="top-start" title="编辑模式" trigger="click" width="150">
           <template #reference>
             <span class="edit-mode-display" :class="{ readonly: isReadonly }">
@@ -24,7 +24,7 @@
               :key="mode.value"
               class="mode-option"
               :class="{ active: currentMode === mode.value }"
-              @click="setEditorMode(mode.value)"
+              @click="setEditorMode(mode.value)" disabled="isReadOnly"
             >
               {{ mode.label }}
             </div>
@@ -85,7 +85,7 @@ import { ref, watch, computed, onMounted } from "vue";
 import { exitFullScreen } from "@utils/fullScreen";
 import { ElMessage } from 'element-plus';
 
-let { footerInfo, isReadOnly } = defineProps({
+let { footerInfo ,isReadOnly} = defineProps({
   footerInfo: { type: Object, default: () => ({}) },
   isReadOnly:{
     type: Boolean,
@@ -181,6 +181,7 @@ const getCurrentEditorMode = () => {
 // 初始化编辑模式
 const initializeEditorMode = () => {
   const mode = getCurrentEditorMode();
+  console.log("初始化的编辑器模式：",mode);
   currentMode.value = mode;
 };
 

@@ -92,11 +92,8 @@ CREATE TABLE `filestates` (
   `top` varchar(10) DEFAULT '0' COMMENT '是否置顶 0/1 (0:否, 1:是)',
   `createtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`fsid`),
-  UNIQUE KEY `uk_file_user_role` (`fileid`), /* 确保一个用户在一个文件上只有一条角色/状态记录 */
-  KEY `idx_fileid` (`fileid`),
-  KEY `idx_userid` (`userid`),
-  CONSTRAINT `fk_filestates_fileid` FOREIGN KEY (`fileid`) REFERENCES `files` (`fileid`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_filestates_userid` FOREIGN KEY (`userid`) REFERENCES `users` (`userid`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `fileid` (`fileid`),
+  KEY `editor` (`editor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Table structure for table `folders` */
@@ -147,7 +144,7 @@ CREATE TABLE `versions` (
   `lasteditor` varchar(255) CHARACTER SET utf8 DEFAULT NULL COMMENT '最后编辑者',
   `createtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `description` varchar(255) CHARACTER SET utf8 DEFAULT NULL COMMENT '版本描述',
-  `snapshot` longblob CHARACTER SET utf8 DEFAULT NULL COMMENT '快照',
+  `snapshot` longblob DEFAULT NULL COMMENT '快照',
   PRIMARY KEY (`vid`),
   KEY `index` (`index`),
   KEY `lasteditor` (`lasteditor`),
