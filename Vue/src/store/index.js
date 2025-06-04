@@ -9,6 +9,8 @@ export default createStore({
     topCreateData: {},
     searchKeyWord: "",
     WebsocketProvider: null,
+    // 添加编辑器相关的状态
+    editorReadOnly: false,
     
     // 简化的网络状态管理
     isOnline: navigator.onLine,
