@@ -25,6 +25,7 @@ import { onMounted, ref } from "vue";
 import router from "../../router";
 import {broadSetPermission_API} from "@/api/file_permission";
 import {AcceptInvitation_API} from "@/api/message";
+import {getFilesByFileId_API} from "@/api/file";
 
 let dialogVisible = ref(true);
 
