@@ -26,7 +26,7 @@
 - **数据库**：MySQL
 - **部署**: Docker + Nginx + 云服务器  
 
-## 🚀 快速开始
+## 🚀 快速开始(待完成)
 
 ### 环境要求
 - Node.js ≥18.x
@@ -35,7 +35,7 @@
 1. **克隆仓库**
    ```bash
    git clone https://github.com/your-username/collaborative-docs.git
-   cd mpoe
+   cd collaborative_docs
 2. **安装前端项目**
    ```bash
    cd Vue
@@ -44,5 +44,8 @@
    ```bash
    cd Node
    npm install
-
+4. 退回到collaborative_docs，**运行以下命令**
+   ```bash
+   npm run build
+   npm run server
 
