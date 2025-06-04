@@ -40,10 +40,15 @@ let targetId = ref("");
 
 let confirm = async () => {
   let { userid } = JSON.parse(sessionStorage.getItem("user"));
+  const fileRes = await getFilesByFileId_API({
+    fileid:fileid.value
+  })
+  const fileOwner = fileRes.data.owner;
+  console.log(fileOwner);
   try{
     // 生成之后，直接确认
     const permissionRes = await broadSetPermission_API({
-      sender_Id: targetId.value,
+      sender_Id: fileOwner,
       fileId: fileid.value,
       permissionType: permission.value
     })
