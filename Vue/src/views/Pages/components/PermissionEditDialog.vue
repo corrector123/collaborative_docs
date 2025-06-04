@@ -89,7 +89,7 @@ const openDialog = async (currentFileId, currentUserId) => {
           // 检查API响应结构
           if (userRes.code === 200) {
             return {
-              user_id: targetUserId,
+              user_id: targetUserId,s
               username: userRes.data.username,
               userimg: userRes.data.userimg,
               permission: item.permission_type

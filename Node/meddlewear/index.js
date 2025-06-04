@@ -17,6 +17,14 @@ module.exports = {
     app.use(express.static(path.resolve(__dirname, "../public/dist")));
     app.use(express.static(path.resolve(__dirname, "../public/dist/assets")));
 
+    // 添加SVG MIME类型支持
+    app.use((req, res, next) => {
+      if (req.url.endsWith('.svg')) {
+        res.type('image/svg+xml');
+      }
+      next();
+    });
+
     // logger
     app.use(initLogger);
 
@@ -25,13 +33,5 @@ module.exports = {
 
     // File upload middleware
     app.use(fileupload());
-
-    // 添加SVG MIME类型支持
-    app.use((req, res, next) => {
-      if (req.url.endsWith('.svg')) {
-        res.type('image/svg+xml');
-      }
-      next();
-    });
   },
 };

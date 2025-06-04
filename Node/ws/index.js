@@ -6,13 +6,15 @@
 const { ws_port } = require("../base.config");
 const { logger, unzip } = require("../util");
 const { WebSocketServer } = require("ws");
+const WebSocket = require('ws');
 const { yjsHandle } = require("./yjs");
 const { luckysheetHandle } = require("./luckysheet");
 const { canvasEditorHandle } = require("./canvas-editor");
 const url = require('url');
 const { jwt_verify } = require('../meddlewear/jwt');
-const WebSocket = require('ws');
-const PermissionWebSocketHandler = require('./permission');
+const PermissionWebSocketHandler = require("./permission");
+
+
 
 function initializeWebSocket(server) {
   const wss = new WebSocket.Server({

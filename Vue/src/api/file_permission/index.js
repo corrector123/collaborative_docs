@@ -1,6 +1,6 @@
 import { fetch } from "@/core/index.js";
 
-// 设置或更新权限
+// 设置权限
 export const setPermission_API = (data) => {
     return fetch({
         url: "/file_permission/setPermission",
@@ -58,7 +58,6 @@ export const getPermissionFiles_API = () => {
         method: "get",
     });
 };
-
 // 更新权限
 export const UpdatePermission_API = (data) => {
     return fetch({

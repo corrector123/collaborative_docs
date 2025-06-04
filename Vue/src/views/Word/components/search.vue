@@ -1,5 +1,5 @@
 <template>
-  <div class="search">
+  <div class="search" :disabled="isReadOnly">
     <!-- icon -->
     <i
       class="iconfont icon-xiangxiazhankai"
@@ -47,10 +47,14 @@ import { ref, defineEmits, watch, defineExpose, onMounted } from "vue";
 
 const emit = defineEmits(["iconClick", "close"]);
 
-const { instance } = defineProps({
+const { instance,isReadOnly} = defineProps({
   instance: {
     type: Object,
   },
+  isReadOnly:{
+    type: Boolean,
+    default: false,
+  }
 });
 
 // 输入框组件 ref

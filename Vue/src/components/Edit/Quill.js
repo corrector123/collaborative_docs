@@ -55,7 +55,7 @@ export class myQuill {
   }
 
   // 格式化
-  format(opt, value) {
+  format(opt, color) {
     // 将加粗\斜体\删除线\下划线\颜色等操作 封装一个函数,因此,就需要先获取样式,才能判断是否已经有样式
     // 还需要获取用户的选择,可能是给某些字符添加样式
     // 获取用户选择 ** 这里需要传递参数,不然会导致焦点移出编辑器,选中失效
@@ -63,11 +63,17 @@ export class myQuill {
 
     if (!range) return console.warn("User cursor is not in editor");
     let { index, length } = range; // index 是当前光标的索引,length 表示当前选择的长度
-    
     // 获取样式 检索给定范围内文本的所用格式(加粗 斜体都是块作用域,是需要指定长度的,因此,用户没有选择,则默认不作用,不像标题等,是行作用域)
-    let { bold, italic, strike, underline, background, list, align, font, header, size } = this.quill.getFormat(index, length);
-    
-    // 字符格式 - 需要选中文本
+    let { bold, italic, strike, underline } = this.quill.getFormat(
+      index,
+      length
+    );
+    // "icon-cuti": bold,
+    // "icon-italic": italic,
+    // "icon-strikethrough": strike,
+    // "icon-zitixiahuaxian": underline,
+    // "icon-zitiyanse": color,
+    // 拿到用户操作的映射,判断有没有当前属性,没有则添加,有,则删除
     if (opt === "icon-cuti")
       this.quill.formatText(index, length, "bold", !bold);
     if (opt === "icon-italic")
@@ -76,30 +82,7 @@ export class myQuill {
       this.quill.formatText(index, length, "strike", !strike);
     if (opt === "icon-zitixiahuaxian")
       this.quill.formatText(index, length, "underline", !underline);
-    if (opt === "color") 
-      this.quill.formatText(index, length, "color", value);
-    if (opt === "icon-highlight")
-      this.quill.formatText(index, length, "background", background ? false : "#ffff00");
-    if (opt === "font")
-      this.quill.formatText(index, length, "font", value);
-    if (opt === "size")
-      this.quill.formatText(index, length, "size", value);
-    
-    // 块格式 - 影响整行
-    if (opt === "header")
-      this.quill.format("header", value);
-    if (opt === "icon-list-bullet")
-      this.quill.format("list", list === "bullet" ? false : "bullet");
-    if (opt === "icon-list-ordered")
-      this.quill.format("list", list === "ordered" ? false : "ordered");
-    if (opt === "icon-align-left")
-      this.quill.format("align", align === "left" ? false : "left");
-    if (opt === "icon-align-center")
-      this.quill.format("align", align === "center" ? false : "center");
-    if (opt === "icon-align-right")
-      this.quill.format("align", align === "right" ? false : "right");
-    if (opt === "icon-align-justify")
-      this.quill.format("align", align === "justify" ? false : "justify");
+    if (opt === "color") this.quill.formatText(index, length, "color", color);
   }
 
   // 添加嵌入式内容

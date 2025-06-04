@@ -61,16 +61,16 @@
 </template>
 
 <script setup>
-import { onMounted, reactive, ref } from "vue";
-import { getShearFile_API } from "@/api/file";
-import { ElMessage } from "element-plus";
+import {onMounted, reactive, ref} from "vue";
+import {favorOrTopFile_API} from "@/api/file";
+import {ElMessage} from "element-plus";
 import router from "@/router";
-import { createShearUrl } from "@/util/share";
-import { execcontent } from "@/util/execcontent";
-import { favorOrTopFile_API } from "@/api/file";
 import {getPermission_API, getPermissionFiles_API} from "@/api/file_permission";
-import { useStore } from 'vuex';
+
+import {useStore} from 'vuex';
+
 const store = useStore();
+
 
 let shearFileArr = reactive([]);
 
@@ -117,7 +117,6 @@ const toEdit = async (item) => {
       fileId: file_id,
       isReadOnly: permission.permission_type === 'read'
     });
-
     // 根据权限类型决定跳转行为
     switch (filesuffix.toLowerCase()) {
       case "md":
