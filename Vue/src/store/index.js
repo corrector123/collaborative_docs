@@ -7,6 +7,11 @@ export default createStore({
     WebsocketProvider: null,
     // 添加编辑器相关的状态
     editorReadOnly: false,
+    
+    // 简化的网络状态管理
+    isOnline: navigator.onLine,
+    hasOfflineChanges: false,
+    isSyncing: false,
     currentFileId: null
   },
   mutations: {

@@ -51,9 +51,9 @@
 <script setup>
 import topVue from "./components/top.vue";
 import editVue from "@compo/Edit/index.vue";
+import fileShareDialog from "../Pages/components/shareDialog.vue";
+import PermissionEditDialog from "../Pages/components/PermissionEditDialog.vue";
 import router from "@/router";
-import fileShareDialog from '../Pages/components/shareDialog.vue'
-import PermissionEditDialog from '../Pages/components/PermissionEditDialog.vue'
 
 //权限修改窗口ref
 let permissionDialog = ref(null)
