@@ -3,7 +3,7 @@
     <fileShareDialog
         ref="shareDialog"
     />
-    <permissionEditDialog
+    <PermissionEditDialog
         ref="permissionDialog"
     />
     <div class="editbox-left">
@@ -52,7 +52,7 @@
 import topVue from "./components/top.vue";
 import editVue from "@compo/Edit/index.vue";
 import fileShareDialog from "../Pages/components/shareDialog.vue";
-import permissionEditDialog from "../Pages/components/PermissionEditDialog.vue";
+import PermissionEditDialog from "../Pages/components/PermissionEditDialog.vue";
 import router from "@/router";
 import {
   inject,
