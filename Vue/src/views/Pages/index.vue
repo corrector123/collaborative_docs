@@ -203,7 +203,7 @@ const gotoEdit = (i, item) => {
     word: () => {
       //使用store设置编辑模式
       store.dispatch('setEditorMode', {
-        fileid: item.fileid,
+        fileId: item.fileid,
         isReadOnly: false
       })
       router.push(`/word/${item.fileid}`)
