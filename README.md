@@ -31,8 +31,18 @@
 ### 环境要求
 - Node.js ≥18.x
 
-### 安装步骤(待完成)
+### 安装步骤
 1. **克隆仓库**
    ```bash
    git clone https://github.com/your-username/collaborative-docs.git
-   cd collaborative-docs
+   cd mpoe
+2. **安装前端项目**
+   ```bash
+   cd Vue
+   npm install
+3. **安装后端项目**
+   ```bash
+   cd Node
+   npm install
+
+
