@@ -52,9 +52,6 @@ export default createStore({
     setEditorReadOnly(state, isReadOnly) {
       state.editorReadOnly = isReadOnly;
     },
-    setCurrentFileId(state, fileId) {
-      state.currentFileId = fileId;
-    },
     setFavorFiles(state, files) {
       state.favorFiles = files;
     }
