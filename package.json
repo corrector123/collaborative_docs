@@ -1,0 +1,25 @@
+{
+  "name": "mpoe",
+  "version": "1.0.0",
+  "description": "使用 luckysheet、quill、canvas-editor 搭建的在线协作编辑器，支持类word、markdown、excel等格式的协作编辑",
+  "main": "index.js",
+  "scripts": {
+    "server": "cd node && node app.js",
+    "dev": "cd vue && yarn dev",
+    "build": "cd vue && yarn build",
+    "installVue": "cd vue && npm install",
+    "installNode": "cd node && npm install"
+  },
+  "keywords": [
+    "协同编辑",
+    "Excel在线编辑",
+    "lucky sheet",
+    "CRDT",
+    "Quill",
+    "Canvas-Editor"
+  ],
+  "author": "WF",
+  "email": "1982392655@qq.com",
+  "license": "Apache-2.0",
+  "dependencies": {}
+}

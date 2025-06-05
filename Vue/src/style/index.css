@@ -1,0 +1,23 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+/* 取消a链接下划线 */
+a {
+	text-decoration: none;
+}
+#app {
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	overflow-y: auto;
+}
+
+/* 用户 svg 头像的公共类 */
+.userimg_svg {
+	height: 25px;
+}
+.userimg_svg svg {
+	height: 100%;
+}

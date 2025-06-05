@@ -1,0 +1,18 @@
+export declare function debounce(func: Function, delay: number): (this: any, ...args: any[]) => void;
+export declare function deepClone<T>(obj: T): T;
+export declare function isBody(node: Element): boolean;
+export declare function findParent(node: Element, filterFn: Function, includeSelf: boolean): Element | null;
+export declare function getUUID(): string;
+export declare function splitText(text: string): string[];
+export declare function downloadFile(href: string, fileName: string): void;
+export declare function threeClick(dom: HTMLElement, fn: (evt: MouseEvent) => any): void;
+export declare function isObject(type: unknown): type is Record<string, unknown>;
+export declare function isArray(type: unknown): type is Array<unknown>;
+export declare function mergeObject<T>(source: T, target: T): T;
+export declare function nextTick(fn: Function): void;
+export declare function convertNumberToChinese(num: number): string;
+export declare function cloneProperty<T>(properties: (keyof T)[], sourceElement: T, targetElement: T): void;
+export declare function omitObject<T>(object: T, omitKeys: (keyof T)[]): T;
+export declare function convertStringToBase64(input: string): string;
+export declare function findScrollContainer(element: HTMLElement): HTMLElement;
+export declare function isArrayEqual(arr1: unknown[], arr2: unknown[]): boolean;

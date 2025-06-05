@@ -1,0 +1,19 @@
+/* 4F82E8 冰晶蓝 'bjl'
+  4DC8BA 原野绿 'yyl'
+  F7C6C1 胭脂粉 'yzf 
+    */
+:root[theme="bjl"] {
+  --main-color: #4f82e8;
+}
+
+:root[theme="yyl"] {
+  --main-color: #4dc8ba;
+}
+
+:root[theme="yzf"] {
+  --main-color: #f7c6c1;
+}
+
+:root[theme="test"] {
+  --main-color: red;
+}

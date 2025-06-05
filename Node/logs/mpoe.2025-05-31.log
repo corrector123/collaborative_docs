@@ -1,0 +1,40 @@
+[2025-05-31 10:28:22 +08:00Z] [INFO] - 开始初始化 node 方法 
+[2025-05-31 10:28:22 +08:00Z] [SUCCESS] - Socket Server is running... 
+[2025-05-31 10:28:22 +08:00Z] [SUCCESS] - WS 服务初始化成功，连接地址：ws://localhost:9000 
+[2025-05-31 10:28:22 +08:00Z] [SUCCESS] - Node Serve is running at http://localhost:5000. 
+[2025-05-31 10:28:22 +08:00Z] [INFO] - 连接数据库成功！ 
+[2025-05-31 10:28:47 +08:00Z] [INFO] - SQL (direct): SELECT * FROM users WHERE userid='2'&&password='c81e728d9d4c2f636f067f89cc14862c' 
+[2025-05-31 10:28:47 +08:00Z] [DEBUG] - [status] 200 [msg] 登录成功 
+[2025-05-31 10:28:47 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='2' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-05-31 10:28:47 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='2' AND state=1 AND ISNULL(parentfolderid) 
+[2025-05-31 10:28:47 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-31 10:28:48 +08:00Z] [INFO] - SQL (direct): SELECT *  FROM filestates AS fs,files AS fl 
+    WHERE fs.editor='2' AND fl.fileid=fs.fileid 
+[2025-05-31 10:28:48 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-31 10:28:52 +08:00Z] [INFO] - SQL (direct): SELECT * FROM users WHERE userid='1'&&password='c4ca4238a0b923820dcc509a6f75849b' 
+[2025-05-31 10:28:52 +08:00Z] [DEBUG] - [status] 200 [msg] 登录成功 
+[2025-05-31 10:28:52 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-05-31 10:28:52 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-05-31 10:28:52 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-05-31 10:28:55 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-31 10:28:55 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=rxt4oeislsi 
+[2025-05-31 10:28:55 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND OWNER ='1' 
+[2025-05-31 10:28:55 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["Kyv0pgp-6Tq2ZwBGtBGHx"] 
+[2025-05-31 10:28:55 +08:00Z] [INFO] - 用户连接... 
+[2025-05-31 10:28:55 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-05-31 10:28:55 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-05-31 10:28:55 +08:00Z] [INFO] - 用户加入房间 Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-31 10:28:55 +08:00Z] [INFO] - SQL (direct): SELECT versions.content FROM files,versions WHERE files.fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND files.currenthead=versions.vid 
+[2025-05-31 10:28:55 +08:00Z] [DEBUG] - [status] 6003 [msg] 参数缺失 
+[2025-05-31 10:29:08 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/Kyv0pgp-6Tq2ZwBGtBGHx 
+[2025-05-31 10:29:08 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=27tvwygmz0o 
+[2025-05-31 10:29:08 +08:00Z] [INFO] - 用户连接... 
+[2025-05-31 10:29:08 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='Kyv0pgp-6Tq2ZwBGtBGHx?fileid=Kyv0pgp-6Tq2ZwBGtBGHx&editor=2&favor&top&createtime=2025-05-21&filename=test&filetype=markdown&filesuffix=md&owner=1' AND OWNER ='2' 
+[2025-05-31 10:29:08 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["Kyv0pgp-6Tq2ZwBGtBGHx"] 
+[2025-05-31 10:29:08 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-05-31 10:29:08 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-05-31 10:29:08 +08:00Z] [INFO] - 用户加入房间 Kyv0pgp-6Tq2ZwBGtBGHx?fileid=Kyv0pgp-6Tq2ZwBGtBGHx&editor=2&favor&top&createtime=2025-05-21&filename=test&filetype=markdown&filesuffix=md&owner=1 
+[2025-05-31 10:29:08 +08:00Z] [INFO] - SQL (direct): SELECT versions.content FROM files,versions WHERE files.fileid='Kyv0pgp-6Tq2ZwBGtBGHx' AND files.currenthead=versions.vid 
+[2025-05-31 10:29:08 +08:00Z] [DEBUG] - [status] 6003 [msg] 参数缺失 
+[2025-05-31 10:29:17 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=27tvwygmz0o 
+[2025-05-31 10:29:19 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=Kyv0pgp-6Tq2ZwBGtBGHx, wid=rxt4oeislsi 

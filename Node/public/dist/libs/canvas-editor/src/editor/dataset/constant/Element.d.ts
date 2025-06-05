@@ -1,0 +1,15 @@
+import { ElementType } from '../enum/Element';
+import { IElement } from '../../interface/Element';
+import { ITd } from '../../interface/table/Td';
+export declare const EDITOR_ELEMENT_STYLE_ATTR: Array<keyof IElement>;
+export declare const EDITOR_ELEMENT_COPY_ATTR: Array<keyof IElement>;
+export declare const EDITOR_ELEMENT_ZIP_ATTR: Array<keyof IElement>;
+export declare const TABLE_TD_ZIP_ATTR: Array<keyof ITd>;
+export declare const TABLE_CONTEXT_ATTR: Array<keyof IElement>;
+export declare const TITLE_CONTEXT_ATTR: Array<keyof IElement>;
+export declare const LIST_CONTEXT_ATTR: Array<keyof IElement>;
+export declare const EDITOR_ELEMENT_CONTEXT_ATTR: Array<keyof IElement>;
+export declare const TEXTLIKE_ELEMENT_TYPE: ElementType[];
+export declare const INLINE_ELEMENT_TYPE: ElementType[];
+export declare const INLINE_NODE_NAME: string[];
+export declare const VIRTUAL_ELEMENT_TYPE: ElementType[];
