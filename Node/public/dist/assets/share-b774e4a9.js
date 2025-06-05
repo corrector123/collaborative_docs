@@ -1,0 +1,1 @@
+import{y as t}from"./index-cf2af7f9.js";const i=(o,s,r,e,a)=>!r||!e||!a?t.error(`分享文件参数缺失: fileid=${r}, filename=${e}, permission=${a}`):`${window.location.origin}/#/invited/${r}?userId=${o}&username=${s}&filename=${e}&permission=${a}`;export{i as c};

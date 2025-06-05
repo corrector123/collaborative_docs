@@ -1,0 +1,20 @@
+import { MaxHeightRatio } from '../enum/Common';
+export declare const ZERO = "\u200B";
+export declare const WRAP = "\n";
+export declare const HORIZON_TAB = "\t";
+export declare const NBSP = " ";
+export declare const NON_BREAKING_SPACE = "&nbsp;";
+export declare const PUNCTUATION_LIST: string[];
+export declare const maxHeightRadioMapping: Record<MaxHeightRatio, number>;
+export declare const LETTER_CLASS: {
+    ENGLISH: string;
+    SPANISH: string;
+    FRENCH: string;
+    GERMAN: string;
+    RUSSIAN: string;
+    PORTUGUESE: string;
+    ITALIAN: string;
+    DUTCH: string;
+    SWEDISH: string;
+    GREEK: string;
+};

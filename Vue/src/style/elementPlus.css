@@ -1,0 +1,5 @@
+/* element 样式覆盖 */
+.el-button--primary {
+  border-color: var(--main-color) !important;
+  background-color: var(--main-color) !important;
+}
