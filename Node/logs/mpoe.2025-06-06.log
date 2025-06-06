@@ -1,0 +1,147 @@
+[2025-06-06 08:59:30 +08:00Z] [INFO] - 开始初始化 node 方法 
+[2025-06-06 08:59:30 +08:00Z] [SUCCESS] - Socket Server is running... 
+[2025-06-06 08:59:30 +08:00Z] [SUCCESS] - WS 服务初始化成功，连接地址：ws://localhost:9000 
+[2025-06-06 08:59:30 +08:00Z] [SUCCESS] - Node Serve is running at http://localhost:5000. 
+[2025-06-06 08:59:30 +08:00Z] [INFO] - 连接数据库成功！ 
+[2025-06-06 08:59:35 +08:00Z] [INFO] - SQL (direct): SELECT * FROM users WHERE userid='1'&&password='c4ca4238a0b923820dcc509a6f75849b' 
+[2025-06-06 08:59:35 +08:00Z] [DEBUG] - [status] 200 [msg] 登录成功 
+[2025-06-06 08:59:35 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-06-06 08:59:35 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-06-06 08:59:35 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-06-06 08:59:42 +08:00Z] [ERROR] - 未解析到Type类型 
+[2025-06-06 08:59:42 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='u70LbfCjlxgNuxyQawmVw' 
+[2025-06-06 08:59:42 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["u70LbfCjlxgNuxyQawmVw"] 
+[2025-06-06 08:59:42 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='u70LbfCjlxgNuxyQawmVw' 
+[2025-06-06 08:59:42 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-06-06 08:59:42 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-06-06 08:59:42 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-06-06 08:59:42 +08:00Z] [INFO] - SQL (direct): SELECT favor FROM filestates WHERE editor='1' AND fileid='u70LbfCjlxgNuxyQawmVw' 
+[2025-06-06 08:59:42 +08:00Z] [INFO] - SQL (direct): SELECT versions.content FROM files,versions WHERE files.fileid='u70LbfCjlxgNuxyQawmVw' AND files.currenthead=versions.vid 
+[2025-06-06 08:59:42 +08:00Z] [DEBUG] - [status] 200 [msg] 获取收藏状态成功 
+[2025-06-06 08:59:42 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-06-06 08:59:43 +08:00Z] [INFO] - canvas-editor 客户端连接尝试, URL: /?canvas-editor/u70LbfCjlxgNuxyQawmVw 
+[2025-06-06 08:59:43 +08:00Z] [INFO] - canvas-editor 客户端连接成功: fileid=u70LbfCjlxgNuxyQawmVw, wid=cgbagcvyx7f 
+[2025-06-06 08:59:43 +08:00Z] [INFO] - 消息广播完成，共发送给 0 个客户端 
+[2025-06-06 08:59:43 +08:00Z] [INFO] - 消息广播完成，共发送给 0 个客户端 
+[2025-06-06 08:59:45 +08:00Z] [INFO] - 消息广播完成，共发送给 0 个客户端 
+[2025-06-06 08:59:48 +08:00Z] [INFO] - 当前连接的客户端: [{"wid":"cgbagcvyx7f","fileid":"u70LbfCjlxgNuxyQawmVw"}] 
+[2025-06-06 08:59:48 +08:00Z] [INFO] - 消息广播完成，共发送给 0 个客户端 
+[2025-06-06 08:59:49 +08:00Z] [INFO] - 消息广播完成，共发送给 0 个客户端 
+[2025-06-06 08:59:52 +08:00Z] [WARN] - canvas-editor 用户关闭连接: fileid=u70LbfCjlxgNuxyQawmVw, wid=cgbagcvyx7f 
+[2025-06-06 08:59:53 +08:00Z] [INFO] - 当前连接的客户端: [] 
+[2025-06-06 08:59:53 +08:00Z] [ERROR] - 未解析到Type类型 
+[2025-06-06 08:59:53 +08:00Z] [DEBUG] - [status] 500 [msg] 参数缺失 
+[2025-06-06 08:59:53 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["u70LbfCjlxgNuxyQawmVw"] 
+[2025-06-06 08:59:53 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='u70LbfCjlxgNuxyQawmVw' 
+[2025-06-06 08:59:53 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-06-06 08:59:53 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-06-06 08:59:53 +08:00Z] [INFO] - SQL (direct): SELECT versions.content FROM files,versions WHERE files.fileid='u70LbfCjlxgNuxyQawmVw' AND files.currenthead=versions.vid 
+[2025-06-06 08:59:53 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-06-06 08:59:53 +08:00Z] [INFO] - canvas-editor 客户端连接尝试, URL: /?canvas-editor/u70LbfCjlxgNuxyQawmVw 
+[2025-06-06 08:59:53 +08:00Z] [INFO] - canvas-editor 客户端连接成功: fileid=u70LbfCjlxgNuxyQawmVw, wid=ejj5l9l70q 
+[2025-06-06 08:59:53 +08:00Z] [INFO] - 消息广播完成，共发送给 0 个客户端 
+[2025-06-06 08:59:53 +08:00Z] [INFO] - 消息广播完成，共发送给 0 个客户端 
+[2025-06-06 08:59:55 +08:00Z] [INFO] - 消息广播完成，共发送给 0 个客户端 
+[2025-06-06 08:59:56 +08:00Z] [INFO] - 消息广播完成，共发送给 0 个客户端 
+[2025-06-06 08:59:56 +08:00Z] [WARN] - canvas-editor 用户关闭连接: fileid=u70LbfCjlxgNuxyQawmVw, wid=ejj5l9l70q 
+[2025-06-06 08:59:56 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-06-06 08:59:56 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-06-06 08:59:56 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-06-06 08:59:57 +08:00Z] [ERROR] - 未解析到Type类型 
+[2025-06-06 08:59:57 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/V3mMYpxh02Zu1u2Lzz2x2 
+[2025-06-06 08:59:57 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=V3mMYpxh02Zu1u2Lzz2x2, wid=wuwunwx5ane 
+[2025-06-06 08:59:57 +08:00Z] [INFO] - 用户连接... 
+[2025-06-06 08:59:57 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='V3mMYpxh02Zu1u2Lzz2x2' 
+[2025-06-06 08:59:57 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["V3mMYpxh02Zu1u2Lzz2x2"] 
+[2025-06-06 08:59:57 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='V3mMYpxh02Zu1u2Lzz2x2' 
+[2025-06-06 08:59:57 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-06-06 08:59:57 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-06-06 08:59:57 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-06-06 08:59:57 +08:00Z] [INFO] - SQL (direct): SELECT favor FROM filestates WHERE editor='1' AND fileid='V3mMYpxh02Zu1u2Lzz2x2' 
+[2025-06-06 08:59:57 +08:00Z] [DEBUG] - [status] 200 [msg] 获取收藏状态成功 
+[2025-06-06 08:59:57 +08:00Z] [INFO] - 用户加入房间 V3mMYpxh02Zu1u2Lzz2x2 
+[2025-06-06 08:59:58 +08:00Z] [INFO] - 当前连接的客户端: [] 
+[2025-06-06 08:59:58 +08:00Z] [INFO] - 当前连接的客户端: [] 
+[2025-06-06 08:59:59 +08:00Z] [ERROR] - 未解析到Type类型 
+[2025-06-06 09:00:03 +08:00Z] [INFO] - 当前连接的客户端: [] 
+[2025-06-06 09:00:03 +08:00Z] [INFO] - 当前连接的客户端: [] 
+[2025-06-06 09:00:04 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=V3mMYpxh02Zu1u2Lzz2x2, wid=wuwunwx5ane 
+[2025-06-06 09:00:05 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/V3mMYpxh02Zu1u2Lzz2x2 
+[2025-06-06 09:00:05 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=V3mMYpxh02Zu1u2Lzz2x2, wid=3ylg5ftqdam 
+[2025-06-06 09:00:08 +08:00Z] [INFO] - 当前连接的客户端: [] 
+[2025-06-06 09:00:08 +08:00Z] [INFO] - 当前连接的客户端: [] 
+[2025-06-06 09:00:08 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-06-06 09:00:08 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-06-06 09:00:08 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-06-06 09:00:11 +08:00Z] [ERROR] - 未解析到Type类型 
+[2025-06-06 09:00:13 +08:00Z] [INFO] - 当前连接的客户端: [] 
+[2025-06-06 09:00:13 +08:00Z] [INFO] - 当前连接的客户端: [] 
+[2025-06-06 09:00:15 +08:00Z] [ERROR] - 未解析到Type类型 
+[2025-06-06 09:00:15 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='u70LbfCjlxgNuxyQawmVw' 
+[2025-06-06 09:00:15 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["u70LbfCjlxgNuxyQawmVw"] 
+[2025-06-06 09:00:15 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='u70LbfCjlxgNuxyQawmVw' 
+[2025-06-06 09:00:15 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-06-06 09:00:15 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-06-06 09:00:15 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-06-06 09:00:15 +08:00Z] [INFO] - SQL (direct): SELECT favor FROM filestates WHERE editor='1' AND fileid='u70LbfCjlxgNuxyQawmVw' 
+[2025-06-06 09:00:15 +08:00Z] [DEBUG] - [status] 200 [msg] 获取收藏状态成功 
+[2025-06-06 09:00:15 +08:00Z] [INFO] - SQL (direct): SELECT versions.content FROM files,versions WHERE files.fileid='u70LbfCjlxgNuxyQawmVw' AND files.currenthead=versions.vid 
+[2025-06-06 09:00:15 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-06-06 09:00:15 +08:00Z] [INFO] - canvas-editor 客户端连接尝试, URL: /?canvas-editor/u70LbfCjlxgNuxyQawmVw 
+[2025-06-06 09:00:15 +08:00Z] [INFO] - canvas-editor 客户端连接成功: fileid=u70LbfCjlxgNuxyQawmVw, wid=1g3kcreifui 
+[2025-06-06 09:00:15 +08:00Z] [INFO] - 消息广播完成，共发送给 0 个客户端 
+[2025-06-06 09:00:15 +08:00Z] [INFO] - 消息广播完成，共发送给 0 个客户端 
+[2025-06-06 09:00:18 +08:00Z] [INFO] - 当前连接的客户端: [{"wid":"1g3kcreifui","fileid":"u70LbfCjlxgNuxyQawmVw"}] 
+[2025-06-06 09:00:18 +08:00Z] [INFO] - 当前连接的客户端: [{"wid":"1g3kcreifui","fileid":"u70LbfCjlxgNuxyQawmVw"}] 
+[2025-06-06 09:00:25 +08:00Z] [INFO] - 开始初始化 node 方法 
+[2025-06-06 09:00:26 +08:00Z] [SUCCESS] - Socket Server is running... 
+[2025-06-06 09:00:26 +08:00Z] [SUCCESS] - WS 服务初始化成功，连接地址：ws://localhost:9000 
+[2025-06-06 09:00:26 +08:00Z] [SUCCESS] - Node Serve is running at http://localhost:5000. 
+[2025-06-06 09:00:26 +08:00Z] [INFO] - 连接数据库成功！ 
+[2025-06-06 09:00:26 +08:00Z] [INFO] - 用户连接... 
+[2025-06-06 09:00:26 +08:00Z] [ERROR] - 未解析到Type类型 
+[2025-06-06 09:00:26 +08:00Z] [ERROR] - 未解析到Type类型 
+[2025-06-06 09:00:26 +08:00Z] [ERROR] - 未解析到Type类型 
+[2025-06-06 09:00:26 +08:00Z] [INFO] - canvas-editor 客户端连接尝试, URL: /?canvas-editor/u70LbfCjlxgNuxyQawmVw 
+[2025-06-06 09:00:26 +08:00Z] [INFO] - canvas-editor 客户端连接成功: fileid=u70LbfCjlxgNuxyQawmVw, wid=uj2cvahdav 
+[2025-06-06 09:00:26 +08:00Z] [INFO] - 消息广播完成，共发送给 0 个客户端 
+[2025-06-06 09:00:26 +08:00Z] [INFO] - 消息广播完成，共发送给 0 个客户端 
+[2025-06-06 09:00:26 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/V3mMYpxh02Zu1u2Lzz2x2 
+[2025-06-06 09:00:26 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=V3mMYpxh02Zu1u2Lzz2x2, wid=klfmqelx34 
+[2025-06-06 09:00:28 +08:00Z] [INFO] - 消息广播完成，共发送给 0 个客户端 
+[2025-06-06 09:00:28 +08:00Z] [WARN] - canvas-editor 用户关闭连接: fileid=u70LbfCjlxgNuxyQawmVw, wid=uj2cvahdav 
+[2025-06-06 09:00:28 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-06-06 09:00:28 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-06-06 09:00:28 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-06-06 09:00:29 +08:00Z] [ERROR] - 未解析到Type类型 
+[2025-06-06 09:00:29 +08:00Z] [INFO] - 用户加入房间 V3mMYpxh02Zu1u2Lzz2x2 
+[2025-06-06 09:00:29 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='V3mMYpxh02Zu1u2Lzz2x2' 
+[2025-06-06 09:00:29 +08:00Z] [INFO] - SQL (parameterized): SELECT vid, fileid, lasteditor, createtime, description FROM versions WHERE fileid = ? AND description is not null ORDER BY createtime DESC -- Params: ["V3mMYpxh02Zu1u2Lzz2x2"] 
+[2025-06-06 09:00:29 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE fileid='V3mMYpxh02Zu1u2Lzz2x2' 
+[2025-06-06 09:00:29 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-06-06 09:00:29 +08:00Z] [DEBUG] - [status] 200 [msg] 获取版本列表成功 
+[2025-06-06 09:00:29 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/V3mMYpxh02Zu1u2Lzz2x2 
+[2025-06-06 09:00:29 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=V3mMYpxh02Zu1u2Lzz2x2, wid=y0vg6f38tx 
+[2025-06-06 09:00:29 +08:00Z] [DEBUG] - [status] 200 [msg] 文件查找成功 
+[2025-06-06 09:00:29 +08:00Z] [INFO] - SQL (direct): SELECT favor FROM filestates WHERE editor='1' AND fileid='V3mMYpxh02Zu1u2Lzz2x2' 
+[2025-06-06 09:00:29 +08:00Z] [DEBUG] - [status] 200 [msg] 获取收藏状态成功 
+[2025-06-06 09:00:31 +08:00Z] [ERROR] - 未解析到Type类型 
+[2025-06-06 09:00:35 +08:00Z] [INFO] - 开始初始化 node 方法 
+[2025-06-06 09:00:35 +08:00Z] [SUCCESS] - Socket Server is running... 
+[2025-06-06 09:00:35 +08:00Z] [SUCCESS] - WS 服务初始化成功，连接地址：ws://localhost:9000 
+[2025-06-06 09:00:35 +08:00Z] [SUCCESS] - Node Serve is running at http://localhost:5000. 
+[2025-06-06 09:00:35 +08:00Z] [INFO] - 连接数据库成功！ 
+[2025-06-06 09:00:35 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/V3mMYpxh02Zu1u2Lzz2x2 
+[2025-06-06 09:00:35 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=V3mMYpxh02Zu1u2Lzz2x2, wid=pla2kjnxtnm 
+[2025-06-06 09:00:35 +08:00Z] [ERROR] - 未解析到Type类型 
+[2025-06-06 09:00:35 +08:00Z] [ERROR] - 未解析到Type类型 
+[2025-06-06 09:00:36 +08:00Z] [ERROR] - 未解析到Type类型 
+[2025-06-06 09:00:36 +08:00Z] [ERROR] - 未解析到Type类型 
+[2025-06-06 09:00:36 +08:00Z] [INFO] - yjs 客户端连接尝试，URL: /?yjs/V3mMYpxh02Zu1u2Lzz2x2 
+[2025-06-06 09:00:36 +08:00Z] [INFO] - yjs 客户端连接成功: fileid=V3mMYpxh02Zu1u2Lzz2x2, wid=mb8lytrg23f 
+[2025-06-06 09:00:36 +08:00Z] [INFO] - 用户连接... 
+[2025-06-06 09:00:37 +08:00Z] [INFO] - SQL (direct): SELECT * FROM files WHERE OWNER ='1' AND ISNULL(fileownerfolderid) AND state='1 ORDER BY filetype' 
+[2025-06-06 09:00:37 +08:00Z] [INFO] - SQL (direct): SELECT * FROM folders WHERE OWNER ='1' AND state=1 AND ISNULL(parentfolderid) 
+[2025-06-06 09:00:37 +08:00Z] [DEBUG] - [status] 200 [msg] 查找成功 
+[2025-06-06 09:00:39 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=V3mMYpxh02Zu1u2Lzz2x2, wid=pla2kjnxtnm 
+[2025-06-06 09:00:39 +08:00Z] [WARN] - yjs 用户关闭连接: fileid=V3mMYpxh02Zu1u2Lzz2x2, wid=mb8lytrg23f 

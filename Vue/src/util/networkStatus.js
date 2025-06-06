@@ -16,7 +16,6 @@ class NetworkStatus {
     // 监听网络状态变化
     window.addEventListener('online', this.handleOnline.bind(this));
     window.addEventListener('offline', this.handleOffline.bind(this));
-    
     console.log('[NetworkStatus] 网络状态管理器已初始化:', this.isOnline ? '在线' : '离线');
   }
 

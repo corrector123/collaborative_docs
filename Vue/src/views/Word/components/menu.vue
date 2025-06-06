@@ -75,6 +75,12 @@
           </div>
         </div>
         
+        <el-tooltip :content="networkStatusText" placement="bottom">
+          <div class="network-status" :class="{ offline: !isOnline }">
+            <div class="status-dot" :style="{ backgroundColor: networkStatusColor }"></div>
+            <span class="status-text">{{ networkStatusText }}</span>
+          </div>
+        </el-tooltip>
         <el-tooltip content="保存文档 (Ctrl+S)" placement="bottom" :z-index="150">
           <el-button type="success" size="small" @click="saveDocument" :loading="saving">
             <i class="iconfont icon-baocun" style="margin-right: 4px;"></i>
@@ -266,6 +272,28 @@ watch(
   () => {},
   { deep: true }
 );
+
+// 网络状态相关计算属性
+const isOnline = computed(() => store.state.isOnline)
+const networkStatusText = computed(() => {
+  if (!isOnline.value) {
+    return '网络已断开，进入离线编辑'
+  }
+  if (store.state.isSyncing) {
+    return '正在同步...'
+  }
+  if (store.state.hasOfflineChanges) {
+    return '网络良好 (有未同步修改)'
+  }
+  return '网络良好'
+})
+
+const networkStatusColor = computed(() => {
+  if (!isOnline.value) return '#f56c6c' // 红色
+  if (store.state.isSyncing) return '#e6a23c' // 黄色
+  if (store.state.hasOfflineChanges) return '#e6a23c' // 黄色
+  return '#67c23a' // 绿色
+})
 </script>
 
 <style lang="less" scoped>
@@ -457,5 +485,46 @@ watch(
 }
 /deep/.el-select__wrapper {
   width: 100%;
+}
+
+.menu-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: auto;
+}
+
+.network-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 4px;
+  background-color: var(--el-bg-color-page);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  
+  &.offline {
+    background-color: rgba(245, 108, 108, 0.1);
+  }
+
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+  }
+
+  .status-text {
+    font-size: 13px;
+    color: var(--el-text-color-regular);
+    white-space: nowrap;
+  }
+}
+
+.button-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 </style>

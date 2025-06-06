@@ -79,7 +79,6 @@ import PermissionEditDialog from "../Pages/components/PermissionEditDialog.vue";
 import { ws_server_url as url } from "/default.config";
 import { options } from "./config";
 import { useStore } from 'vuex';
-
 var { iconClickHandle } = useEditor();
 
 const route = useRoute();
@@ -320,6 +319,7 @@ function toggleSidebar() {
   showSidebar.value = !showSidebar.value;
 }
 
+
 onMounted(async () => {
   // 协同相关配置 解决初始加载会报错问题
   let { username, userid } = JSON.parse(sessionStorage.getItem("user"));
@@ -333,7 +333,7 @@ onMounted(async () => {
   try {
     const fileid = route.params.fileid;
     if (fileid) {
-      const res = await getFileContent_API({ fileid });
+      const res = await getFileContent_API({ fileid: fileid });
       
       if (res.code === 200 && res.data) {
         try {
@@ -352,6 +352,12 @@ onMounted(async () => {
   } catch (error) {
     console.error("获取初始内容失败:", error);
   }
+
+  // 初始化网络状态监听
+  store.dispatch('initNetworkMonitoring');
+
+  // 设置当前文件ID用于离线同步
+  store.dispatch('setCurrentFile', route.params.fileid);
 
   // 初始化 canvas-editor，使用获取到的数据,加载数据
   instance.value = reactive(
@@ -388,7 +394,19 @@ onMounted(async () => {
     const wordCount = await instance.value.command.getWordCount();
     footerInfo.wordCount = wordCount;
     
-    // 通知目录组件更新（使用防抖避免频繁更新）
+    // 如果处于离线状态，保存到本地存储
+    if (!store.state.isOnline) {
+      const content = instance.value.command.getValue();
+      await store.dispatch('saveToOfflineStorage', {
+        documentState: content,
+        metadata: {
+          lastModified: Date.now(),
+          wordCount
+        }
+      });
+    }
+    
+    // 通知目录组件更新
     if (directoryRef.value && directoryRef.value.extractHeadings) {
       clearTimeout(window.directoryUpdateTimer);
       window.directoryUpdateTimer = setTimeout(() => {
@@ -433,6 +451,19 @@ onMounted(async () => {
           await updateUserList();
         }
       });
+
+      // 监听网络恢复，同步离线修改
+      store.watch(
+        state => state.isOnline,
+        async (isOnline) => {
+          if (isOnline) {
+            const hasOfflineChanges = await store.dispatch('checkOfflineChanges');
+            if (hasOfflineChanges) {
+              await store.dispatch('syncOfflineChanges');
+            }
+          }
+        }
+      );
     }
   }, 20);
 
@@ -486,7 +517,11 @@ onBeforeUnmount(() => {
   &-menu {
     min-height: 50px;
     position: relative;
-    z-index: 1000; /* 确保菜单栏在Canvas之上，但低于消息提示 */
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 16px;
   }
   &-editor {
     position: relative;
