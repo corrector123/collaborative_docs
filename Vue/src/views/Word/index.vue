@@ -20,6 +20,7 @@
         @toggleSidebar="toggleSidebar"
         @showShareWindow="showShareWindow"
         @open-permission-edit-window="openPermissionEditWindow"
+        :version-info="versionInfo"
       />
     </div>
 
@@ -66,6 +67,7 @@ import { Editor } from "/public/libs/canvas-editor/canvas-editor.es";
 import {computed, nextTick, onBeforeUnmount, onMounted, reactive, ref, readonly} from "vue";
 import { useEditor } from "../../hooks/useEditor";
 import { saveFile_API, getFileContent_API, getFilesByFileId_API } from "@/api/file";
+import { getLastEditorAndTime_API } from "@/api/version";
 import { findUser_API } from "@/api/user";
 import { ElMessage } from "element-plus";
 import { useRoute } from "vue-router";
@@ -104,6 +106,8 @@ let showsap = ref(false);
 
 // 侧边栏显示状态
 let showSidebar = ref(false);
+
+const versionInfo = ref({});
 
 // 在线用户列表
 let socketuserlist = reactive([]);
@@ -215,6 +219,7 @@ async function handleSaveDocument() {
     
     if (res.code === 200) {
       ElMessage.success("文档保存成功");
+      await getVersionInfo();
     } else {
       ElMessage.error(res.msg || "保存失败");
     }
@@ -314,6 +319,25 @@ async function updateUserList() {
   }
 }
 
+const getVersionInfo = async () => {
+  try {
+    const fileid = route.params.fileid;
+    if (!fileid) {
+      versionInfo.value = { lasteditor: "未知用户", last_edit_time: null };
+      return;
+    }
+    const versionRes = await getLastEditorAndTime_API({ fileid });
+    if (versionRes.code === 200 && versionRes.data) {
+      versionInfo.value = versionRes.data;
+    } else {
+      versionInfo.value = { lasteditor: "未知用户", last_edit_time: null };
+    }
+  } catch (error) {
+    versionInfo.value = { lasteditor: "未知用户", last_edit_time: null };
+    console.error("获取最后编辑信息失败:", error);
+  }
+};
+
 // 切换侧边栏显示
 function toggleSidebar() {
   showSidebar.value = !showSidebar.value;
@@ -326,6 +350,7 @@ onMounted(async () => {
   let roomname = window.location.hash.split("word/")[1];
   const socketinfo = { url, username, userid, roomname };
   await init(userid);
+  await getVersionInfo();
 
   // 加载文件内容
   let initialData = [];

@@ -199,8 +199,21 @@ let sockets = {
   },
 };
 
-const handleEditorUpdate = () => {
-  let { userid, username } = JSON.parse(sessionStorage.getItem("user"));
+const handleEditorUpdate = async () => {
+  // 保存成功后，重新获取最新的版本信息
+  try {
+    if (fileid.value) {
+      const versionRes = await getLastEditorAndTime_API({ fileid: fileid.value });
+      if (versionRes && versionRes.code === 200 && versionRes.data) {
+        versionInfo.value = versionRes.data;
+      }
+    }
+  } catch (error) {
+    console.error("保存后刷新编辑信息失败:", error);
+  }
+
+  // 通知其他协作者更新
+  let { username } = JSON.parse(sessionStorage.getItem("user"));
   socket.io.emit("update_editor", {
     fileid: fileid.value,
     editor: username,

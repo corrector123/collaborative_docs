@@ -476,44 +476,26 @@ const loadVersions = async (fileid) => {
   }
 };
 
-// Helper function to convert Uint8Array to Base64 string more robustly
-function uint8ArrayToBase64(uint8Array) {
-  let binary = '';
-  const len = uint8Array.byteLength;
-  for (let i = 0; i < len; i++) {
-    binary += String.fromCharCode(uint8Array[i]);
-  }
-  return btoa(binary);
-}
-
-// Helper function to get plain text from Yjs Doc
-const getYDocText = (ydoc) => {
-  // Assuming the main content is in a Y.Text named 'quill' or 'default'
-  // Adjust this based on your Yjs setup in myYjs.js
-  const ytext = ydoc.getText('quill'); // Or 'default', 'content', etc.
-  return ytext ? ytext.toString() : "";
-};
-
 // 创建新版本的处理函数
 const createVersionHandler = async () => {
   if (loading.value) return;
   loading.value = true;
   
   try {
-    // 确保 yjsInstance 和其 ydoc 已经初始化
-    if (yjsInstance && yjsInstance.ydoc) {
-      const snapshot = Y.encodeStateAsUpdate(yjsInstance.ydoc); // snapshot is Uint8Array
+    // 我们现在使用 Quill 来获取内容，所以检查它是否准备就绪
+    if (quill && quill.getDetail) {
       const fileid = router.currentRoute.value.params.fileid;
       const { userid } = JSON.parse(sessionStorage.getItem("user"));
       
-      // 使用更稳健的 Base64 转换方法
-      const snapshotBase64 = uint8ArrayToBase64(snapshot);
+      // 获取当前编辑器内容作为 Delta 对象
+      const currentContent = quill.getDetail();
+      const contentStr = JSON.stringify(currentContent);
       
       // 调用API保存版本到后端
       const res = await createVersion_API({
         userid,
         fileid,
-        snapshot: snapshotBase64,
+        snapshot: contentStr, // 直接使用 Delta 的 JSON 字符串
         description: versionDescription.value
       });
 
@@ -528,15 +510,15 @@ const createVersionHandler = async () => {
         versions.value.unshift({
           id: Date.now(), // 本地临时版本的ID
           timestamp: new Date().toLocaleString(),
-          snapshot: snapshot, // 存储原始Uint8Array以供本地回滚
+          snapshot: contentStr, // 存储原始内容字符串
           description: versionDescription.value + " (本地临时版本)",
           editor: userid
         });
         versionDescription.value = ""; // 清空描述
       }
     } else {
-      console.warn("Yjs 实例或 ydoc 尚未在 tabbar.vue 中初始化。");
-      ElMessage.warning("无法创建版本，Yjs尚未就绪");
+      console.warn("Quill 实例尚未在 tabbar.vue 中初始化。");
+      ElMessage.warning("无法创建版本，编辑器尚未就绪");
     }
   } catch (error) {
     console.error("创建版本失败:", error);
@@ -564,23 +546,31 @@ const rollbackToVersionHandler = async (version) => {
     if (result !== 'confirm') return;
     
     loading.value = true;
-    let versionSnapshotBytes;
+    let historicalContent;
 
-    if (version.snapshot instanceof Uint8Array) { // 本地临时版本
-      versionSnapshotBytes = version.snapshot;
-    } else { // 服务器版本，需要获取和解码
+    // 本地临时版本现在也存储原始内容字符串
+    if (typeof version.snapshot === 'string') {
+      try {
+        historicalContent = JSON.parse(version.snapshot);
+      } catch(e) {
+        console.error("解析本地快照失败:", e);
+        ElMessage.error("解析本地版本数据失败!");
+        loading.value = false;
+        return;
+      }
+    } else { // 服务器版本，需要获取
       const res = await getVersionSnapshot_API({ vid: version.id });
       if (res.code === 200 && res.data && res.data.snapshot) {
         try {
-          const binary = atob(res.data.snapshot);
-          const bytes = new Uint8Array(binary.length);
-          for (let i = 0; i < binary.length; i++) {
-            bytes[i] = binary.charCodeAt(i) & 0xff;
+          // 快照可能是JSON字符串(从本地临时版本或旧数据)，也可能是已经解析好的对象(从新后端)
+          if (typeof res.data.snapshot === 'string') {
+            historicalContent = JSON.parse(res.data.snapshot);
+          } else {
+            historicalContent = res.data.snapshot; // 它已经是对象了
           }
-          versionSnapshotBytes = bytes;
         } catch (error) {
-          console.error("解码服务器版本快照失败:", error);
-          ElMessage.error("解码版本数据失败!");
+          console.error("解析服务器版本快照失败:", error);
+          ElMessage.error("解析版本数据失败!");
           loading.value = false;
           return;
         }
@@ -591,50 +581,39 @@ const rollbackToVersionHandler = async (version) => {
       }
     }
 
-    if (!versionSnapshotBytes) {
-      ElMessage.error("未能获取有效的版本快照数据");
+    if (!historicalContent) {
+      ElMessage.error("未能获取有效的版本数据");
       loading.value = false;
       return;
     }
 
-    if (yjsInstance && yjsInstance.ydoc) {
-      try {
-        // 1. 创建一个临时的 Y.Doc
-        const tempDoc = new Y.Doc();
-        // 2. 将旧版本的快照应用到临时文档
-        Y.applyUpdate(tempDoc, versionSnapshotBytes);
-        // 3. 从临时文档生成一个代表其完整状态的更新
-        const fullStateToApply = Y.encodeStateAsUpdate(tempDoc);
-
-        // 4. 清空当前 ydoc 的主要内容
-        // 假设主要内容在名为 'quill' (或 'default') 的 Y.Text 中
-        // 您可能需要根据 myYjs 的实现调整这里的 Y.Text 名称
-        const ytext = yjsInstance.ydoc.getText('quill'); // 或者 'default', 'content' 等
-        
-        yjsInstance.ydoc.transact(() => {
-          if (ytext && typeof ytext.delete === 'function') {
-             ytext.delete(0, ytext.length);
-          }
-          // 如果您的 Yjs 文档有其他顶层类型，也需要在这里清空
-          // 例如，对于 Y.Map: 
-          // const ymap = yjsInstance.ydoc.getMap('myMap');
-          // for (const key of ymap.keys()) { ymap.delete(key); }
-          // 对于 Y.Array:
-          // const yarray = yjsInstance.ydoc.getArray('myArray');
-          // yarray.delete(0, yarray.length);
-
-          // 5. 将完整状态应用到（现在为空的）当前ydoc
-          Y.applyUpdate(yjsInstance.ydoc, fullStateToApply);
-        });
-        
-        console.log(`已回滚并覆盖到版本: ${version.timestamp}`);
-        ElMessage.success(`已回滚到版本: ${version.timestamp}`);
-      } catch (error) {
-        console.error("应用版本快照进行覆盖时失败:", error);
-        ElMessage.error("回滚版本失败!");
+    try {
+      let contentToSet = null;
+      if (historicalContent && Array.isArray(historicalContent.ops)) {
+        contentToSet = historicalContent; // Pass the whole Delta object
+      } else if (Array.isArray(historicalContent)) {
+        contentToSet = historicalContent; // Pass the ops array
       }
-    } else {
-      ElMessage.warning("无法回滚版本，Yjs尚未就绪");
+
+      if (!contentToSet) {
+        console.error("Invalid historical content format for rollback:", historicalContent);
+        ElMessage.error("回滚失败：无法解析版本数据格式。");
+        loading.value = false;
+        return;
+      }
+      quill.quill.setContents(contentToSet);
+
+      // quill的变更会自动传播到Yjs，并同步给其他协作者
+      console.log(`已回滚到版本: ${version.timestamp}`);
+      ElMessage.success(`已回滚到版本: ${version.timestamp}`);
+
+      // 自动保存回滚后的内容，这会创建一个新的文档状态
+      // 这与canvas-editor的行为是一致的，即回滚是创建一次新的编辑
+      await saveFile(JSON.stringify(quill.getDetail()));
+      
+    } catch (error) {
+      console.error("应用版本快照进行覆盖时失败:", error);
+      ElMessage.error("回滚版本失败!");
     }
 
   } catch (error) {
@@ -666,13 +645,14 @@ const deleteVersionHandler = async (versionId) => {
     
     loading.value = true;
     
-    // 先检查是否是本地临时版本
-    const localVersionIndex = versions.value.findIndex(v => v.id === versionId && v.snapshot instanceof Uint8Array);
+    // 先检查是否是本地临时版本 (本地版本有快照字符串)
+    const localVersionIndex = versions.value.findIndex(v => v.id === versionId && typeof v.snapshot === 'string');
     
     if (localVersionIndex !== -1) {
       // 本地临时版本直接从数组中删除
       versions.value.splice(localVersionIndex, 1);
       ElMessage.success("本地版本已删除");
+      loading.value = false; // Manually set loading to false here
     } else {
       // 服务器版本需要调用API删除
       const fileid = router.currentRoute.value.params.fileid;
@@ -709,32 +689,33 @@ const showDiffHandler = async (version) => {
   diffOutputHtml.value = "<p>正在加载和计算差异...</p>"; // Initial loading message
 
   try {
-    // 1. 获取当前编辑器的文本内容 (从 Yjs)
-    let currentContent = "";
-    if (yjsInstance && yjsInstance.ydoc) {
-      currentContent = getYDocText(yjsInstance.ydoc);
-    } else {
-      // Fallback to Quill's content if Yjs is not ready (though less ideal for pure CRDT state)
-      currentContent = quill.getText();
-      console.warn("Yjs 实例或 ydoc 尚未就绪，使用 Quill 内容进行对比。");
-    }
+    // 1. 获取当前编辑器的文本内容 (从 Quill)
+    const currentContentText = quill.quill.getText();
 
     // 2. 获取历史版本的文本内容
-    let historicalContent = "";
-    let versionSnapshotBytes;
+    let historicalContentText = "";
+    let historicalContent;
 
-    if (version.snapshot instanceof Uint8Array) { // 本地临时版本
-      versionSnapshotBytes = version.snapshot;
+    // 本地临时版本现在也存储原始内容字符串
+    if (typeof version.snapshot === 'string') {
+        try {
+            historicalContent = JSON.parse(version.snapshot);
+        } catch(e) {
+            console.error("解析本地快照失败", e);
+            diffOutputHtml.value = "<p style='color:red;'>解析本地版本数据失败。</p>";
+            loading.value = false;
+            return;
+        }
     } else { // 服务器版本，需要获取和解码
       const res = await getVersionSnapshot_API({ vid: version.id });
       if (res.code === 200 && res.data && res.data.snapshot) {
         try {
-          const binary = atob(res.data.snapshot);
-          const bytes = new Uint8Array(binary.length);
-          for (let i = 0; i < binary.length; i++) {
-            bytes[i] = binary.charCodeAt(i) & 0xff;
+          // 快照可能是JSON字符串(从本地临时版本或旧数据)，也可能是已经解析好的对象(从新后端)
+          if (typeof res.data.snapshot === 'string') {
+            historicalContent = JSON.parse(res.data.snapshot);
+          } else {
+            historicalContent = res.data.snapshot; // 它已经是对象了
           }
-          versionSnapshotBytes = bytes;
         } catch (error) {
           console.error("解码服务器版本快照失败:", error);
           ElMessage.error("解码版本数据失败!");
@@ -750,11 +731,23 @@ const showDiffHandler = async (version) => {
       }
     }
 
-    if (versionSnapshotBytes) {
-      const tempDoc = new Y.Doc();
-      Y.applyUpdate(tempDoc, versionSnapshotBytes);
-      historicalContent = getYDocText(tempDoc);
-      tempDoc.destroy(); // Clean up temporary Y.Doc
+    if (historicalContent) {
+        let deltaOps = null;
+        if (historicalContent && Array.isArray(historicalContent.ops)) {
+            deltaOps = historicalContent.ops;
+        } else if (Array.isArray(historicalContent)) {
+            deltaOps = historicalContent;
+        }
+
+        if (!deltaOps) {
+            console.error("Invalid historical content format for diff:", historicalContent);
+            diffOutputHtml.value = "<p style='color:red;'>无法解析历史版本数据格式。</p>";
+            loading.value = false;
+            return;
+        }
+
+        // 从Delta中提取纯文本
+        historicalContentText = deltaOps.map(op => (typeof op.insert === 'string' ? op.insert : '')).join('');
     } else {
       ElMessage.error("未能获取有效的历史版本快照数据");
       diffOutputHtml.value = "<p style='color:red;'>未能获取有效的历史版本数据。</p>";
@@ -771,7 +764,7 @@ const showDiffHandler = async (version) => {
       return;
     }
 
-    const diffResults = diffChars(historicalContent, currentContent);
+    const diffResults = diffChars(historicalContentText, currentContentText);
     
     // 4. 将差异转换为 HTML
     let html = "";

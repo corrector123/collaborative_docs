@@ -147,7 +147,7 @@ CREATE TABLE `versions` (
   `lasteditor` varchar(255) CHARACTER SET utf8 DEFAULT NULL COMMENT '最后编辑者',
   `createtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `description` varchar(255) CHARACTER SET utf8 DEFAULT NULL COMMENT '版本描述',
-  `snapshot` longblob DEFAULT NULL COMMENT '快照',
+  `snapshot` longtext CHARACTER SET utf8 DEFAULT NULL COMMENT '快照',
   `last_edit_time` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后编辑时间',
   PRIMARY KEY (`vid`),
   KEY `index` (`index`),

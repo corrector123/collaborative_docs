@@ -16,6 +16,14 @@
               <i class="iconfont icon-shijian"></i>
               <span>创建时间：{{ fileInfo.createtime }}</span>
             </div>
+            <div class="file-last-edit">
+              <i class="iconfont icon-oko"></i>
+              <span>
+                上次修改由
+                <span class="newUserName">{{ versionInfo.lasteditor || '未知用户' }}</span> 
+                {{ formatTime(versionInfo.last_edit_time) }}完成
+              </span>
+            </div>
           </div>
           <div class="file-actions">
             <div class="action-item" @click="saveDocument">
@@ -123,8 +131,6 @@
 
 <script setup>
 import { getFilesByFileId_API, favorOrTopFile_API, getFileFavorState_API } from "@/api/file";
-import { execcontent } from "@/util/execcontent";
-import { createShearUrl } from "@/util/share";
 import { ElMessage } from "element-plus";
 import router from "../../../router";
 import { ref, watch, computed, onMounted } from "vue";
@@ -132,11 +138,10 @@ import canvasEditorMenu from "./canvas-editor-menu.vue";
 import insertMenu from "./insert-menu.vue";
 import {useStore} from "vuex";
 import {
-  menuIconList,
   menuTextList,
 } from "../config";
 
-const { menuStatus, saving, userList, isReadOnly, is_owner } = defineProps({
+const { menuStatus, saving, userList, isReadOnly, is_owner, versionInfo } = defineProps({
   menuStatus: {
     type: Object,
   },
@@ -154,7 +159,10 @@ const { menuStatus, saving, userList, isReadOnly, is_owner } = defineProps({
   },
   is_owner:{
     type: Boolean,
-  }
+  },
+  versionInfo: {
+    type: Object,
+  },
 });
 
 // 使用 computed 获取 store 中的状态
@@ -177,9 +185,12 @@ const getFileInfo = async () => {
       fileid: fileid
     });
     if (res.code === 200) {
+      const date = new Date(res.data.createtime);
+      const formattedCreatetime = `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`;
+
       fileInfo.value = {
         filename: `${res.data.filename}.${res.data.filesuffix}`,
-        createtime: res.data.createtime,
+        createtime: formattedCreatetime,
         favor: '0'  // 默认未收藏
       };
     }
@@ -294,6 +305,27 @@ const networkStatusColor = computed(() => {
   if (store.state.hasOfflineChanges) return '#e6a23c' // 黄色
   return '#67c23a' // 绿色
 })
+
+const formatTime = (time) => {
+    if(!time) return '未知时间';
+    
+    const date = new Date(time);
+    const now = new Date();
+    const diff = now - date;
+    
+    // 转换成相对时间
+    if (diff < 60000) { // 小于1分钟
+        return '刚刚';
+    } else if (diff < 3600000) { // 小于1小时
+        return `${Math.floor(diff / 60000)}分钟前`;
+    } else if (diff < 86400000) { // 小于24小时
+        return `${Math.floor(diff / 3600000)}小时前`;
+    } else if (diff < 2592000000) { // 小于30天
+        return `${Math.floor(diff / 86400000)}天前`;
+    } else {
+        return date.toLocaleDateString();
+    }
+}
 </script>
 
 <style lang="less" scoped>
@@ -354,6 +386,25 @@ const networkStatusColor = computed(() => {
           
           i {
             margin-right: 8px;
+          }
+        }
+
+        .file-last-edit {
+          display: flex;
+          align-items: center;
+          font-size: 12px;
+          color: #909399;
+          margin-top: 8px;
+          
+          i {
+            margin-right: 8px;
+          }
+
+          .newUserName {
+            font-style: italic;
+            font-weight: 500;
+            color: #606266;
+            margin: 0 3px;
           }
         }
       }

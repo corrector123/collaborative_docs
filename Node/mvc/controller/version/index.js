@@ -3,7 +3,7 @@ const { httpCode, getNanoid, logger } = require("../../../util");
 const { fileImpl, versionImpl } = require("../../serviceImpl");
 const dayjs = require("dayjs");
 
-// 创建版本（接收Base64编码的快照）
+// 创建版本
 exports.createVersion = async (req, res) => {
   try {
     let { userid, fileid, snapshot, description } = req.body;
@@ -16,20 +16,11 @@ exports.createVersion = async (req, res) => {
     // 生成版本ID
     let vid = await getNanoid();
     
-    // 将Base64编码的快照转换为Buffer，使用更安全的方式
-    let snapshotBuffer;
-    try {
-      snapshotBuffer = Buffer.from(snapshot, 'base64');
-    } catch (error) {
-      logger.error("快照数据解码失败:", error);
-      return httpCode(res, 400, "无效的快照数据");
-    }
-    
     // 创建版本 (userid作为lasteditor值传入)
     let createRes = await versionImpl.createVersionImpl(
       userid,
       fileid,
-      snapshotBuffer,
+      snapshot, // 直接传递字符串快照
       description || null,
       vid
     );
@@ -174,20 +165,6 @@ exports.getVersionSnapshot = async (req, res) => {
     
     let version = versionResults[0];
     
-    // 将Buffer转换为Base64字符串以便传输
-    if (version.snapshot) {
-      try {
-        // 确保快照数据是Buffer类型
-        const snapshotBuffer = Buffer.isBuffer(version.snapshot) 
-          ? version.snapshot 
-          : Buffer.from(version.snapshot);
-        version.snapshot = snapshotBuffer.toString('base64');
-      } catch (error) {
-        logger.error("快照数据编码失败:", error);
-        return httpCode(res, 500, "快照数据处理失败");
-      }
-    }
-    
     return httpCode(res, 200, "获取版本成功", version);
   } catch (error) {
     logger.error("获取版本失败:", error);
@@ -244,11 +221,24 @@ exports.deleteVersion = async (req, res) => {
 
 // 获取最后编辑者和编辑时间
 exports.getLastEditorAndTime = async (req, res) => {
-  const { fileid } = req.body;
-  if(!fileid) return httpCode(res, 400, '参数缺失');
+  // Defensive coding to handle malformed request bodies.
+  let fileid = req.body.fileid;
+
+  // If the whole body is the fileid, or if fileid is nested, we try to find the string.
+  if (!fileid && typeof req.body === 'string') {
+    fileid = req.body;
+  } else if (fileid && typeof fileid === 'object' && fileid.fileid) {
+    fileid = fileid.fileid;
+  }
+  
+  if (!fileid || typeof fileid !== 'string') {
+    return httpCode(res, 400, '无效的文件ID格式');
+  }
+
   try {
     const versionRes = await versionImpl.getLastEditorAndTimeImpl(fileid);
-    if(versionRes) {
+    
+    if(versionRes && typeof versionRes === 'object') {
       return res.status(200).json({
         code: 200,
         message: '获取最后编辑者和编辑时间成功',
@@ -258,9 +248,12 @@ exports.getLastEditorAndTime = async (req, res) => {
         }
       });
     }
+
+    logger.warn(`[getLastEditorAndTime] For fileid ${fileid}, no valid version info found. Raw result:`, versionRes);
     return httpCode(res, 404, '未找到版本');
+
   } catch (error) {
-    logger.error('获取最后编辑者和编辑时间失败:', error);
+    logger.error(`[getLastEditorAndTime] Error for fileid ${fileid}:`, error);
     return httpCode(res, 500, '服务器错误');
   }
 }
