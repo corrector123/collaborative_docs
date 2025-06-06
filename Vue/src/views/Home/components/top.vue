@@ -22,11 +22,8 @@
       </el-button>
     </div>
     <div class="top-right">
-      <div class="top-right-vip">
-        <el-link type="danger">
-          <i class="iconfont icon-zuanshi"></i>
-          <span>{{ advertisement }}</span>
-        </el-link>
+      <div class="top-right-project-name">
+        <span>{{ project_name }}</span>
       </div>
       <div class="top-right-message" style="margin-right: 20px">
         <el-badge :value="''" class="item">
@@ -86,7 +83,7 @@ import { fileImport } from "@/util/FileImport";
 import { ElMessage, ElMessageBox } from "element-plus";
 import { createFile_API } from "@/api/file";
 
-const advertisement = ref("软件工程课程设计");
+const project_name = ref("Vue3+Node | 在线协同文档");
 
 let vipuser = ref(true);
 
@@ -126,7 +123,7 @@ const commandhandle = (command) => {
       break;
 
     case "gitee":
-      window.open("https://gitee.com/wfeng0/mpoe");
+      window.open("https://github.com/corrector123/collaborative_docs");
       break;
     case "setting":
       settingsOption.show = true;
@@ -280,6 +277,11 @@ onMounted(() => {
     & > div {
       cursor: pointer;
       margin: 0 5px;
+    }
+    &-project-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--main-color);
     }
     &-setting,
     &-message {

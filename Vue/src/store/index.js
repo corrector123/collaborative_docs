@@ -2,7 +2,7 @@
 import { createStore } from "vuex";
 import networkStatus from "@/util/networkStatus";
 import offlineStorage from "@/util/offlineStorage";
-import { getFavorFiles_API } from "@/api/file";
+import { getFavorFiles_API, getRecentFiles_API } from "@/api/file";
 
 export default createStore({
   name: "inedx",
@@ -13,6 +13,7 @@ export default createStore({
     // 添加编辑器相关的状态
     editorReadOnly: false,
     favorFiles: [], // 添加收藏文件状态
+    recentFiles: [], // 添加最近文档状态
     
     // 简化的网络状态管理
     isOnline: navigator.onLine,
@@ -54,6 +55,9 @@ export default createStore({
     },
     setFavorFiles(state, files) {
       state.favorFiles = files;
+    },
+    setRecentFiles(state, files) {
+      state.recentFiles = files;
     }
   },
   
@@ -69,6 +73,19 @@ export default createStore({
         }
       } catch (error) {
         console.error("获取收藏文件失败:", error);
+      }
+    },
+    // 添加获取最近文档的action
+    fetchRecentFiles: async ({ commit }) => {
+      const user = JSON.parse(sessionStorage.getItem("user"));
+      if (!user || !user.userid) return;
+      try {
+        const res = await getRecentFiles_API(user.userid);
+        if (res.code === 200) {
+          commit('setRecentFiles', res.data);
+        }
+      } catch (error) {
+        console.error("获取最近文档失败:", error);
       }
     },
     // 添加一个方便的 action 来同时设置编辑器状态

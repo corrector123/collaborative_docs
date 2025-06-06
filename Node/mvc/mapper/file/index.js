@@ -165,3 +165,34 @@ exports.getFavorFilesMap = async (userid) => {
       AND fl.state = '1'
   `);
 };
+
+// 获取最近文档
+exports.getRecentFilesMap = async (userid) => {
+  return await query(`
+    SELECT
+        f.fileid,
+        f.filename,
+        f.filesuffix,
+        f.owner,
+        f.filetype,
+        latest_times.last_edit_time
+    FROM
+        files f
+    INNER JOIN (
+        -- Find all files the user has edited in the last day
+        SELECT DISTINCT fileid
+        FROM versions
+        WHERE lasteditor = '${userid}' AND last_edit_time >= DATE_SUB(NOW(), INTERVAL 1 DAY)
+    ) AS recent_files ON f.fileid = recent_files.fileid
+    INNER JOIN (
+        -- Find the absolute latest edit time for each of those files
+        SELECT fileid, MAX(last_edit_time) as last_edit_time
+        FROM versions
+        GROUP BY fileid
+    ) AS latest_times ON f.fileid = latest_times.fileid
+    WHERE
+        f.state = '1'
+    ORDER BY
+        latest_times.last_edit_time DESC
+  `);
+};

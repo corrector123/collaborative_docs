@@ -50,4 +50,7 @@ router.post("/getFavorState", fileCtrl.getFavorState);
 //获取收藏文件的路由
 router.post("/getFavorFiles", fileCtrl.getFavorFiles);
 
+// 获取最近文档
+router.post("/getRecentFiles", fileCtrl.getRecentFiles);
+
 exports.fileRouter = router;

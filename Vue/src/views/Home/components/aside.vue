@@ -2,7 +2,7 @@
   <div class="aside">
     <div class="aside-logo">
       <i class="iconfont icon-circulation"></i>
-      <span title="多人协作编辑器"> 多人协作编辑器 </span>
+      <span title="实时协同文档编辑系统"> 实时协同文档编辑系统 </span>
     </div>
     <div class="aside-search">
       <el-input placeholder="搜索" v-model="searchKeyWord" clearable>
@@ -23,7 +23,7 @@
 
     <div
       class="aside-icon"
-      @click="menuClick('news')"
+      @click="loadRecentFiles"
       :class="{ active: activeMenu === 'news' }"
     >
       <i class="iconfont icon-zuijinchangyong"></i>
@@ -93,6 +93,10 @@ const loadFavorFiles = async () => {
   store.dispatch("fetchFavorFiles");
 };
 
+const loadRecentFiles = async () => {
+  router.push("/home/news");
+  store.dispatch("fetchRecentFiles");
+};
 
 const menuClick = (path) => router.push(`/home/${path}`);
 </script>

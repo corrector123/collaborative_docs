@@ -283,6 +283,26 @@ exports.getFavorFiles = async (req, res, next) => {
   }
 };
 
+// 获取最近文档
+exports.getRecentFiles = async (req, res, next) => {
+  let { userid } = req.body;
+  if (!userid) return httpCode(res); // 参数缺失
+
+  try {
+    const recentFiles = await fileImpl.getRecentFilesImpl(userid);
+
+    // 格式化日期
+    const formattedFiles = recentFiles.map(file => ({
+      ...file,
+      last_edit_time: dayjs(file.last_edit_time).format("YYYY-MM-DD HH:mm:ss")
+    }));
+
+    return httpCode(res, 200, "获取最近文档成功", formattedFiles);
+  } catch (error) {
+    console.error("[获取最近文档] 服务器错误:", error);
+    return httpCode(res, 500, "服务器内部错误");
+  }
+};
 
 // 辅助函数
 const findFilesByFilename = async (

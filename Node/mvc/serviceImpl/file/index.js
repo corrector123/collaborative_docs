@@ -95,3 +95,8 @@ exports.getFavorStateImpl = async (userid, fileid) => {
 exports.getFavorFilesImpl = async (userid) => {
   return await fileMap.getFavorFilesMap(userid);
 };
+
+// 获取最近文档
+exports.getRecentFilesImpl = async (userid) => {
+  return await fileMap.getRecentFilesMap(userid);
+};

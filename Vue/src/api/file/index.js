@@ -151,3 +151,12 @@ export const getFavorFiles_API = (userid) => {
     data: { userid },
   });
 };
+
+// 获取最近文档
+export const getRecentFiles_API = (userid) => {
+  return fetch({
+    url: "/file/getRecentFiles",
+    method: "post",
+    data: { userid },
+  });
+};
