@@ -33,4 +33,13 @@ export const deleteVersion_API = (data) => {
     method: 'post',
     data
   });
-}; 
+};
+
+// 获取最后编辑者和编辑时间
+export const getLastEditorAndTime_API = (fileid) => {
+  return fetch({
+    url: '/version/getLastEditorAndTime',
+    method: 'post',
+    data: { fileid }
+  });
+}

@@ -27,4 +27,7 @@ router.post("/deleteVersion", versionCtrl.deleteVersion);
 // 更新版本(有一定的时间周期,不然一个文件会有很多版本)
 router.post("/updateVersion", versionCtrl.saveVersion, fileCtrl.updateFiles);
 
+// 获取最后编辑者和编辑时间
+router.post("/getLastEditorAndTime", versionCtrl.getLastEditorAndTime);
+
 exports.versionRouter = router;

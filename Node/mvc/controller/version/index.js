@@ -108,6 +108,7 @@ exports.saveVersion = async (req, res, next) => {
       
       logger.info(`[saveVersion] 未超过版本控制时限，更新版本内容，vid: ${fileData.currenthead}, fileid: ${fileid}`);
       let updateRes = await versionImpl.updateVersionImpl(
+        userid,
         fileData.currenthead,
         content,
         fileid // fileid 传递给 updateVersionImpl 但可能未被使用
@@ -240,3 +241,26 @@ exports.deleteVersion = async (req, res) => {
     return httpCode(res, 500, "服务器错误");
   }
 };
+
+// 获取最后编辑者和编辑时间
+exports.getLastEditorAndTime = async (req, res) => {
+  const { fileid } = req.body;
+  if(!fileid) return httpCode(res, 400, '参数缺失');
+  try {
+    const versionRes = await versionImpl.getLastEditorAndTimeImpl(fileid);
+    if(versionRes) {
+      return res.status(200).json({
+        code: 200,
+        message: '获取最后编辑者和编辑时间成功',
+        data: {
+          lasteditor: versionRes.username || versionRes.lasteditor,
+          last_edit_time: versionRes.last_edit_time
+        }
+      });
+    }
+    return httpCode(res, 404, '未找到版本');
+  } catch (error) {
+    logger.error('获取最后编辑者和编辑时间失败:', error);
+    return httpCode(res, 500, '服务器错误');
+  }
+}

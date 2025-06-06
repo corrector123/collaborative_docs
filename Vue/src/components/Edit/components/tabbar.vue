@@ -209,6 +209,8 @@ import { diffChars } from 'diff';
 import { http_server_url } from "/default.config";
 import { useStore } from 'vuex';
 
+const emit = defineEmits(["editor-updated"]);
+
 //传参，只读参数
 const props = defineProps({
   isReadOnly: {
@@ -407,6 +409,7 @@ const saveFile = async (c) => {
   let res = await saveFile_API({ fileid, userid, content });
   if (res.code !== 200) return ElMessage.error(res.msg);
   ElMessage.success(res.msg);
+  emit('editor-updated');
 };
 
 // emoji
@@ -513,11 +516,12 @@ const createVersionHandler = async () => {
         snapshot: snapshotBase64,
         description: versionDescription.value
       });
-      
+
       if (res.code === 200) {
         ElMessage.success("新版本已创建!");
         versionDescription.value = ""; // 清空描述
         await loadVersions(fileid); // 重新加载版本列表
+        emit('editor-updated');
       } else {
         ElMessage.error(res.msg || "创建版本失败");
         // 如果后端保存失败，仍可在本地保存一个临时版本

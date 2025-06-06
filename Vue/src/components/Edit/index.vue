@@ -2,7 +2,8 @@
   <div class="edit">
     <!-- 工具栏 -->
     <tabbar
-    :isReadOnly="isReadOnly"/>
+    :isReadOnly="isReadOnly"
+    @editor-updated="handleEditorUpdate"/>
     <!-- 文本编辑器 -->
     <div id="edit" />
   </div>
@@ -10,12 +11,19 @@
 
 <script setup>
 import tabbar from "./components/tabbar.vue";
+
+const emit = defineEmits(["editor-updated"]);
+
 const props = defineProps({
   isReadOnly: {
     type: Boolean,
   }
-})
+});
 const isReadOnly = props.isReadOnly;
+
+const handleEditorUpdate = () => {
+  emit("editor-updated");
+};
 </script>
 
 <style lang="less" scoped>

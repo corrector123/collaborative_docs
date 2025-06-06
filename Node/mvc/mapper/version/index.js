@@ -42,8 +42,26 @@ exports.saveVersionMap = async (userid, fileid, content, vid) => {
   return await query(sql, params);
 };
 
-exports.updateVersionMap = async (vid, content, fileid) => {
-  const sql = 'UPDATE versions SET content = ? WHERE fileid = ? AND vid = ?';
-  const params = [content, fileid, vid];
+exports.updateVersionMap = async (userid, vid, content, fileid) => {
+  const sql = 'UPDATE versions SET content = ?, lasteditor = ? WHERE fileid = ? AND vid = ?';
+  const params = [content, userid, fileid, vid];
   return await query(sql, params);
+};
+
+//获取最后编辑者和编辑时间
+exports.getLastEditorAndTimeMap = async (fileid) => {
+  if(!fileid) throw new Error('fileid is required');
+  const [result] = await query(
+    `SELECT 
+      v.lasteditor, 
+      u.username,
+      v.last_edit_time 
+    FROM versions v
+    LEFT JOIN users u ON v.lasteditor = u.userid
+    WHERE v.fileid = ? 
+    ORDER BY v.last_edit_time DESC 
+    LIMIT 1`,
+    [fileid]
+  );
+  return result || null;
 };

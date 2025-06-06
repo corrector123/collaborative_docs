@@ -19,8 +19,9 @@
       <div class="header-left-news">
         <i class="iconfont icon-oko"></i>
         <span>
-          上次修改是
-          <span class="newUserName">{{ newUser }}</span> 在15分钟前进行的
+          上次修改由
+          <span class="newUserName">{{ versionInfo.lasteditor || '未知用户' }}</span> 
+          {{ formatTime(versionInfo.last_edit_time) }}完成
         </span>
       </div>
     </div>
@@ -77,18 +78,14 @@
 import { onMounted, reactive, ref } from "vue";
 import { ElMessage } from "element-plus";
 import userListVue from "./userList.vue";
-import { execcontent } from "@/util/execcontent";
-import { createShearUrl } from "@/util/share";
 import { getFilesByFileId_API, getFileFavorState_API, favorOrTopFile_API } from "@/api/file";
-
+import { getLastEditorAndTime_API } from "@/api/version";
 import router from "@/router";
 import store from "@/store";
 import { toRef } from 'vue';
 
 const emit = defineEmits(["open", "showShareWindow", "openPermissionEditWindow"]);
 const open = () => emit("open");
-
-// 解析 websocket provider
 
 const props = defineProps({
   socketuserlist: {
@@ -103,7 +100,10 @@ const props = defineProps({
   },
   is_owner:{
     type:Boolean
-  }
+  },
+  versionInfo: {
+    type: Object,
+  },
 });
 
 const currentFileId = toRef(props, 'fileid');
@@ -115,7 +115,6 @@ let userinfo = reactive({
   userimg: "",
   username: "",
 });
-const newUser = "追风少年";
 
 const favor = ref(false);
 
@@ -197,6 +196,27 @@ const toBack = () => {
   store.commit("setWebsocketProvider", null);
   router.push("/home/pages");
 };
+
+const formatTime = (time) => {
+    if(!time) return '未知时间';
+    
+    const date = new Date(time);
+    const now = new Date();
+    const diff = now - date;
+    
+    // 转换成相对时间
+    if (diff < 60000) { // 小于1分钟
+        return '刚刚';
+    } else if (diff < 3600000) { // 小于1小时
+        return `${Math.floor(diff / 60000)}分钟前`;
+    } else if (diff < 86400000) { // 小于24小时
+        return `${Math.floor(diff / 3600000)}小时前`;
+    } else if (diff < 2592000000) { // 小于30天
+        return `${Math.floor(diff / 86400000)}天前`;
+    } else {
+        return date.toLocaleDateString();
+    }
+}
 
 onMounted(async () => {
   const userData = JSON.parse(sessionStorage.getItem("user")); // Assuming userData is fine

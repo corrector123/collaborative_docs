@@ -15,9 +15,11 @@
               :isReadOnly="isReadOnly"
               :fileid="fileid"
               :is_owner="is_owner"
+              :versionInfo="versionInfo"
       />
       <editVue
-      :isReadOnly="isReadOnly"/>
+      :isReadOnly="isReadOnly"
+      @editor-updated="handleEditorUpdate"/>
     </div>
     <div class="editbox-right" v-show="messageDialog">
       <div class="editbox-right-top">文档交流区</div>
@@ -67,6 +69,7 @@ import { registerSockets, destroySockets } from "@/sockets/index.js";
 import dayjs from "dayjs";
 import {useRoute} from "vue-router";
 import { getFilesByFileId_API } from "@/api/file";
+import { getLastEditorAndTime_API } from "@/api/version";
 import { ElMessage } from 'element-plus';
 
 let messageDialog = ref(false);
@@ -84,6 +87,8 @@ let shareDialog = ref(null);
 
 //是否为作者
 const is_owner = ref(false);
+
+const versionInfo = ref({});
 
 const route = useRoute();
 //只读用户
@@ -134,9 +139,12 @@ const init = async(user)=>{
       return;
     }
 
-    const FileRes = await getFilesByFileId_API({
-      fileid: fileid.value
-    });
+    const [FileRes, versionRes] = await Promise.all([
+      getFilesByFileId_API({
+        fileid: fileid.value,
+      }),
+      getLastEditorAndTime_API(fileid.value),
+    ]);
 
     console.log("[Edit/index.vue] Received FileRes from getFilesByFileId_API:", JSON.parse(JSON.stringify(FileRes || {})));
 
@@ -151,6 +159,16 @@ const init = async(user)=>{
     } else {
       console.error("获取文件信息失败或API返回错误码. FileRes:", FileRes);
       ElMessage.error(`获取文件信息失败: ${FileRes ? FileRes.msg : '接口无响应或返回格式错误'}`);
+    }
+
+    if (versionRes && versionRes.code === 200 && versionRes.data) {
+      versionInfo.value = versionRes.data;
+    } else {
+      versionInfo.value = { lasteditor: "未知用户", last_edit_time: null };
+      console.error(
+        "[Edit/index.vue] 获取版本信息失败. Response:",
+        versionRes
+      );
     }
   } catch (error) {
     console.error("[Edit/index.vue] Error in init during API call or processing:", error);
@@ -175,6 +193,18 @@ let sockets = {
 
     // console.log(unread.value);
   },
+
+  editor_updated: (data) => {
+    versionInfo.value = data;
+  },
+};
+
+const handleEditorUpdate = () => {
+  let { userid, username } = JSON.parse(sessionStorage.getItem("user"));
+  socket.io.emit("update_editor", {
+    fileid: fileid.value,
+    editor: username,
+  });
 };
 
 // 发送消息

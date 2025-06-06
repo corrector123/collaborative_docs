@@ -27,6 +27,10 @@ exports.saveVersionImpl = async (userid, fileid, content, vid) =>
 exports.findVersionImpl = async (vid) => await versionMap.findVersionMap(vid);
 
 // g更新版本内容
-exports.updateVersionImpl = async (vid, content, fileid) =>
-  await versionMap.updateVersionMap(vid, content, fileid);
+exports.updateVersionImpl = async (userid, vid, content, fileid) =>
+  await versionMap.updateVersionMap(userid, vid, content, fileid);
 
+// 获取最后编辑者和编辑时间
+exports.getLastEditorAndTimeImpl = async (fileid) => {
+  return await versionMap.getLastEditorAndTimeMap(fileid);
+}
