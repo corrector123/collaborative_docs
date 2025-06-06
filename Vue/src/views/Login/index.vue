@@ -9,7 +9,7 @@
         <div class="login-box-left-tip">
           <ul>
             <li>多人协作在线编辑器-collaborative online editor</li>
-            <li>效率高、多版本控制</li>
+            <li>效率高、多版本控制、支持离线同步</li>
           </ul>
         </div>
       </div>
