@@ -53,21 +53,17 @@ exports.register = async (req, res, next) => {
   return httpCode(res, 200, "用户注册成功");
 };
 
-// 辅助工具函数，不能直接return 给用户
-const findUserHandle = async (userid) => {
-  const mapRes = await userImpl.findUserImpl(userid);
+exports.findUser = async (req, res, next) => {
+  // 使用 targetUserId 参数来查询指定用户，避免JWT中间件覆盖userid
+  const { targetUserId } = req.body;
+  if (!targetUserId) return httpCode(res); //  参数缺失
+  const mapRes = await userImpl.findUserImpl(targetUserId);
+  if (!mapRes.length) return httpCode(res, 2002, "用户不存在");
+
   // 删除密码字段
   let result = JSON.parse(JSON.stringify(mapRes[0]));
   delete result.password;
   delete result.index;
   delete result.createtime;
-  return result;
-};
-
-exports.findUser = async (req, res, next) => {
-  // 使用 targetUserId 参数来查询指定用户，避免JWT中间件覆盖userid
-  const { targetUserId } = req.body;
-  if (!targetUserId) return httpCode(res); //  参数缺失
-  let result = await findUserHandle(targetUserId);
   return httpCode(res, 200, "查找用户成功", result);
 };
