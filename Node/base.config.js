@@ -10,10 +10,10 @@ const ws_port = 9000;
 // mysql
 const sql_config = {
   port: 3306,
-  host: "127.0.0.1",
-  database: "mpoe",
-  user: "root",
-  password: "mysql123",
+  host: process.env.MYSQL_HOST || "127.0.0.1",
+  database: process.env.MYSQL_DATABASE || "mpoe",
+  user: process.env.MYSQL_USER || "root",
+  password: process.env.MYSQL_PASSWORD || "mysql123",
 };
 
 // JWT 加密字符串
