@@ -92,13 +92,13 @@ export class myQuill {
       this.quill.format("list", list === "bullet" ? false : "bullet");
     if (opt === "icon-list-ordered")
       this.quill.format("list", list === "ordered" ? false : "ordered");
-    if (opt === "icon-align-left")
+    if (opt === "left")
       this.quill.format("align", align === "left" ? false : "left");
-    if (opt === "icon-align-center")
+    if (opt === "center")
       this.quill.format("align", align === "center" ? false : "center");
-    if (opt === "icon-align-right")
+    if (opt === "right")
       this.quill.format("align", align === "right" ? false : "right");
-    if (opt === "icon-align-justify")
+    if (opt === "justify")
       this.quill.format("align", align === "justify" ? false : "justify");
   }
 
