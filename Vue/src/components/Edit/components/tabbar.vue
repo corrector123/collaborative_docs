@@ -355,11 +355,17 @@ const iconClick = (icon) => {
       break;
 
     // 对齐方式
-    case "icon-align-left":
-    case "icon-align-center":
-    case "icon-align-right":
-    case "icon-align-justify":
-      quill.format(icon);
+    case "icon-juzuoduiqi":
+      quill.format("left");
+      break;
+    case "icon-juzhongduiqi":
+      quill.format("center");
+      break;
+    case "icon-juyouduiqi":
+      quill.format("right");
+      break;
+    case "icon-liangduanduiqi1":
+      quill.format("justify");
       break;
 
     // 保存
@@ -1332,23 +1338,6 @@ onMounted(() => {
 .icon-list-ordered::before {
   content: "1.";
   font-size: 10px;
-}
-
-.icon-align-left::before {
-  content: "≡";
-}
-
-.icon-align-center::before {
-  content: "≡";
-  text-align: center;
-}
-
-.icon-align-right::before {
-  content: "≡";
-}
-
-.icon-align-justify::before {
-  content: "≡";
 }
 
 .font-size-plus::before {
