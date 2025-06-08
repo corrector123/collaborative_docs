@@ -14,6 +14,44 @@ export class myQuill {
       modules: {
         cursors: true, // 开启插件
       },
+      table: false, // disable table module
+        "better-table": {
+          operationMenu: {
+            items: {
+              unmergeCells: {
+                text: "取消合并",
+              },
+              mergeCells: {
+                text: "合并单元格",
+              },
+              deleteRow: {
+                text: "删除行",
+              },
+              deleteColumn: {
+                text: '删除列',
+              },
+              insertRowAbove: {
+                text: '在上方插入行',
+              },
+              insertRowBelow: {
+                text: '在下方插入行',
+              },
+              insertColumnLeft: {
+                text: '在左侧插入列',
+              },
+              insertColumnRight: {
+                text: '在右侧插入列',
+              },
+              deleteTable: {
+                text: '删除表格',
+              }
+            },
+          },
+        },
+        keyboard: {
+          bindings: QuillBetterTable.keyboardBindings,
+        },
+      },
       theme: null, // 是否启用工具栏
       placeholder: "请输入内容...",
       readOnly: isReadOnly
@@ -105,6 +143,12 @@ export class myQuill {
   // 添加嵌入式内容
   insertEmbed(index, type, value) {
     this.quill.insertEmbed(index || this.getCurrentCursor(), type, value);
+  }
+
+  // 插入表格
+  insertTable(rows, cols) {
+    let tableModule = this.quill.getModule('better-table');
+    tableModule.insertTable(rows, cols);
   }
 
   // 获取当前编辑器的 detail 数据格式
