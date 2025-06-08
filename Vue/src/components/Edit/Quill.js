@@ -2,55 +2,41 @@
 import Quill from "quill";
 import QuillCursors from "quill-cursors";
 import "quill/dist/quill.snow.css"; // 使用了 snow 主题色
+import QuillBetterTable from "quill-better-table";
+import "quill-better-table/dist/quill-better-table.css";
 import { entitiestoUtf16 } from "@/util/utf16";
 import { ElMessage } from "element-plus";
 export class myQuill {
   constructor(selector,isReadOnly) {
     // 使用 cursors 插件
     Quill.register("modules/cursors", QuillCursors);
+    Quill.register({
+        "modules/better-table": QuillBetterTable,
+      },
+      true
+    );
 
     // 初始化 quill 文档操作对象
     this.quill = new Quill(selector, {
       modules: {
         cursors: true, // 开启插件
-      },
-      table: false, // disable table module
+        table: false, // disable table module
         "better-table": {
           operationMenu: {
             items: {
-              unmergeCells: {
-                text: "取消合并",
+                unmergeCells: {
+                  text: 'Another unmerge cells name'
+                }
               },
-              mergeCells: {
-                text: "合并单元格",
-              },
-              deleteRow: {
-                text: "删除行",
-              },
-              deleteColumn: {
-                text: '删除列',
-              },
-              insertRowAbove: {
-                text: '在上方插入行',
-              },
-              insertRowBelow: {
-                text: '在下方插入行',
-              },
-              insertColumnLeft: {
-                text: '在左侧插入列',
-              },
-              insertColumnRight: {
-                text: '在右侧插入列',
-              },
-              deleteTable: {
-                text: '删除表格',
-              }
-            },
-          },
+            color: {
+                colors: ['green', 'red', 'yellow', 'blue', 'white'],
+                text: 'Background Colors:'
+            }
+          }
         },
-        keyboard: {
-          bindings: QuillBetterTable.keyboardBindings,
-        },
+        // keyboard: {
+        //   bindings: QuillBetterTable.keyboardBindings
+        // }
       },
       theme: null, // 是否启用工具栏
       placeholder: "请输入内容...",
@@ -206,4 +192,4 @@ export class myQuill {
     });
     this.quill.setContents(detail);
   }
-}
+};
