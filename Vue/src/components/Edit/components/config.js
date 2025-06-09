@@ -19,6 +19,7 @@ export const tabbarConfig = [
   [
     { icon: "icon-anjianfengexian", title: "" },
     { icon: "icon-tupian", title: "插入图片" },
+    { icon: "icon-charubiaoge", title: "插入表格" },
     { icon: "icon-baocun", title: "每10分钟自动保存" },
   ],
   [{ icon: "icon-24gl-fullScreenEnter2", title: "进入全屏" }],
