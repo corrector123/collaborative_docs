@@ -51,7 +51,7 @@ exports.setPermission = async (req, res, next) => {
         } else {
             // 添加新权限
             result = await filePermissionImpl.addPermissionImpl(userId,ownerId,fileId, permissionType);
-            
+
             // 检查是否已存在文件状态记录
             const existingFileState = await findEditorByFileidImpl(userId, fileId);
             if (!existingFileState || existingFileState.length === 0) {
@@ -96,7 +96,7 @@ exports.broadSetPermission = async (req, res, next) => {
         } else {
             // 添加新权限
             result = await filePermissionImpl.addPermissionImpl(userId,sender_Id,fileId, permissionType);
-            
+
             // 检查是否已存在文件状态记录
             const existingFileState = await findEditorByFileidImpl(userId, fileId);
             if (!existingFileState || existingFileState.length === 0) {

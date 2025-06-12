@@ -112,7 +112,6 @@ exports.updateFileStateMap = async (data) => {
     throw error;
   }
 };
-
 exports.findFilesByFileidMap = async (fileid) =>
   await query(`SELECT * FROM files WHERE fileid='${fileid}'`);
 

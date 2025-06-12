@@ -1,7 +1,7 @@
 // 导出Quill实体类
 import Quill from "quill";
 import QuillCursors from "quill-cursors";
-import "quill/dist/quill.bubble.css"; // 使用了 bubble 主题色
+import "quill/dist/quill.snow.css"; // 使用了 snow 主题色
 import QuillBetterTable from "quill-better-table";
 import "quill-better-table/dist/quill-better-table.css";
 import { entitiestoUtf16 } from "@/util/utf16";
@@ -25,19 +25,19 @@ export class myQuill {
         "better-table": {
           operationMenu: {
             items: {
-              unmergeCells: {
-                text: 'Another unmerge cells name'
-              }
-            },
-          color: {
-              colors: ['green', 'red', 'yellow', 'blue', 'white'],
-              text: 'Background Colors:'
-            },
+                unmergeCells: {
+                  text: 'Another unmerge cells name'
+                }
+              },
+            color: {
+                colors: ['green', 'red', 'yellow', 'blue', 'white'],
+                text: 'Background Colors:'
+            }
           }
         },
-        keyboard: {
-          bindings: QuillBetterTable.keyboardBindings
-        }
+        // keyboard: {
+        //   bindings: QuillBetterTable.keyboardBindings
+        // }
       },
       theme: null, // 是否启用工具栏
       placeholder: "请输入内容...",
