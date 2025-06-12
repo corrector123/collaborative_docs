@@ -1,25 +1,15 @@
 // vite.config.js
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
-import { http_server_url } from "./default.config";
 const path = require("path");
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue()],
 
-  // 服务器配置
-  server: {
-    host: "0.0.0.0",
-    port: 3000,
-    // 生产不需要开启代理
-    proxy: {
-      "/baseURL": {
-        target: http_server_url,
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/baseURL/, ""),
-      },
-    },
-  },
+  // 移除了 server 配置块。
+  // 它仅用于本地开发（npm run dev），且它依赖的 import 导致了您看到的 "import.meta" 构建错误。
+  // 在我们的生产环境中，代理是由 Nginx 容器负责的。
 
   // 配置路径别名
   resolve: {
@@ -47,8 +37,9 @@ export default defineConfig({
     ],
   },
 
-  // 修改打包输出路径
+  // 将打包输出路径修改为 Vite 的默认值 "dist"。
+  // 这是为了匹配 Vue/Dockerfile 中的 `COPY --from=build /app/dist ...` 指令。
   build: {
-    outDir: "../Node/public/dist",
+    outDir: "dist",
   },
 });

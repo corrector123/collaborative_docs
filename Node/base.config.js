@@ -9,7 +9,7 @@ const ws_port = 9000;
 
 // mysql
 const sql_config = {
-  port: 3306,
+  port: process.env.MYSQL_PORT || 3306,
   host: process.env.MYSQL_HOST || "127.0.0.1",
   database: process.env.MYSQL_DATABASE || "mpoe",
   user: process.env.MYSQL_USER || "root",

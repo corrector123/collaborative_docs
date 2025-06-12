@@ -1,1 +1,0 @@
-import{f as e}from"./index-62c5e1e0.js";const t=r=>e({url:"/user/login",method:"post",data:r}),o=r=>e({url:"/user/register",method:"post",data:r}),n=r=>e({url:"/user/findUser",method:"post",data:r});export{n as f,t as l,o as r};

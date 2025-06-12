@@ -1,18 +1,43 @@
 // 导出Quill实体类
 import Quill from "quill";
 import QuillCursors from "quill-cursors";
-import "quill/dist/quill.snow.css"; // 使用了 snow 主题色
+import "quill/dist/quill.bubble.css"; // 使用了 bubble 主题色
+import QuillBetterTable from "quill-better-table";
+import "quill-better-table/dist/quill-better-table.css";
 import { entitiestoUtf16 } from "@/util/utf16";
 import { ElMessage } from "element-plus";
+import { http_server_url } from "/default.config.js";
 export class myQuill {
   constructor(selector,isReadOnly) {
     // 使用 cursors 插件
     Quill.register("modules/cursors", QuillCursors);
+    Quill.register({
+        "modules/better-table": QuillBetterTable,
+      },
+      true
+    );
 
     // 初始化 quill 文档操作对象
     this.quill = new Quill(selector, {
       modules: {
         cursors: true, // 开启插件
+        table: false, // disable table module
+        "better-table": {
+          operationMenu: {
+            items: {
+              unmergeCells: {
+                text: 'Another unmerge cells name'
+              }
+            },
+          color: {
+              colors: ['green', 'red', 'yellow', 'blue', 'white'],
+              text: 'Background Colors:'
+            },
+          }
+        },
+        keyboard: {
+          bindings: QuillBetterTable.keyboardBindings
+        }
       },
       theme: null, // 是否启用工具栏
       placeholder: "请输入内容...",
@@ -92,13 +117,13 @@ export class myQuill {
       this.quill.format("list", list === "bullet" ? false : "bullet");
     if (opt === "icon-list-ordered")
       this.quill.format("list", list === "ordered" ? false : "ordered");
-    if (opt === "icon-align-left")
+    if (opt === "left")
       this.quill.format("align", align === "left" ? false : "left");
-    if (opt === "icon-align-center")
+    if (opt === "center")
       this.quill.format("align", align === "center" ? false : "center");
-    if (opt === "icon-align-right")
+    if (opt === "right")
       this.quill.format("align", align === "right" ? false : "right");
-    if (opt === "icon-align-justify")
+    if (opt === "justify")
       this.quill.format("align", align === "justify" ? false : "justify");
   }
 
@@ -107,17 +132,28 @@ export class myQuill {
     this.quill.insertEmbed(index || this.getCurrentCursor(), type, value);
   }
 
+  // 插入表格
+  insertTable(rows, cols) {
+    let tableModule = this.quill.getModule('better-table');
+    tableModule.insertTable(rows, cols);
+  }
+
   // 获取当前编辑器的 detail 数据格式
   getDetail() {
-    // 检索编辑器的内容，格式化返回一个Delta对象。
-    // 20231119 单引号会引起数据库插入失败，因此，需要处理单引号问题
+    // 检索编辑器的内容，返回一个纯净的Delta对象。
     let detail = this.quill.getContents();
 
-    console.log(detail);
     detail.ops.forEach((i) => {
       // 兼容图片 视频等流媒体内容
-      if (i.insert.image) i.insert = "#image#" + i.insert.image;
-      else i.insert = i.insert.replace(/[']/g, "#[d]#");
+      if (i.insert && typeof i.insert === 'object' && i.insert.image) {
+        if (!i.insert.image.startsWith('#image#')) {
+          // 只保存相对路径，移除服务器地址部分
+          const relativePath = i.insert.image.replace(http_server_url, '');
+          i.insert = "#image#" + relativePath;
+        }
+      } else if (typeof i.insert === 'string') {
+        i.insert = i.insert.replace(/[']/g, "#[d]#");
+      }
     });
     return detail;
   }
@@ -145,9 +181,14 @@ export class myQuill {
      * emoji 转码
      */
     detail.forEach((i, index) => {
-      if (i.insert.includes("#image#"))
-        i.insert = { image: i.insert.replace("#image#", "") };
-      else
+      if (typeof i.insert === 'string' && i.insert.includes("#image#")) {
+        // 将#image#格式的字符串转换为图片对象
+        const imagePath = i.insert.replace("#image#", "");
+        // 拼接上当前的服务器地址
+        i.insert = { 
+          image: http_server_url + imagePath 
+        };
+      } else {
         i.insert = entitiestoUtf16(
           i.insert
             .toString()
@@ -159,7 +200,8 @@ export class myQuill {
             .replace(/#[d]#/g, "'")
             .replace(/#[s]#/g, '"')
         );
+      }
     });
     this.quill.setContents(detail);
   }
-}
+};

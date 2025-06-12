@@ -36,11 +36,6 @@
         <i class="iconfont icon-markdown1"></i>
       </div>
 
-      <!-- 历史 -->
-      <div class="header-right-history" title="历史记录">
-        <i class="iconfont icon-lishi"></i>
-      </div>
-
       <!-- 消息：打开抽屉实现 -->
       <div class="header-right-setting" title="消息" @click="open">
         <el-badge :value="props.unread || ''" class="item">
@@ -165,7 +160,7 @@ async function PermissionEdit() {
 const favorClick = async () => {
   try {
     const userData = JSON.parse(sessionStorage.getItem("user"));
-    const fileid = window.location.hash.split("edit/")[1];
+    const fileid = currentFileId.value;
     
     // 切换收藏状态
     const newFavorState = favor.value ? "0" : "1";
@@ -237,7 +232,6 @@ onMounted(async () => {
     console.log("[top.vue] onMounted: Attempting to get file info for fileid:", fileid_for_top, "with user:", userData ? userData.userid : 'no user data');
     try {
       const fileRes_top = await getFilesByFileId_API({
-        // userid: userData.userid, // Sending userid might be part of the issue if collaborator has different view
         fileid: fileid_for_top
       });
       console.log("[top.vue] onMounted: Received fileRes_top for filename:", JSON.parse(JSON.stringify(fileRes_top || {})));
@@ -253,17 +247,22 @@ onMounted(async () => {
         console.error("[top.vue] onMounted: Failed to get file info or API error for fileid:", fileid_for_top, "Response:", fileRes_top);
         filename.value = "文件名获取失败(api)";
       }
+
+      // 获取文件收藏状态
+      if (userData && userData.userid) {
+        const favorRes = await getFileFavorState_API({
+          userid: userData.userid,
+          fileid: fileid_for_top
+        });
+        console.log("[top.vue] onMounted: Received favorRes:", JSON.parse(JSON.stringify(favorRes || {})));
+        if (favorRes && favorRes.code === 200) {
+          favor.value = favorRes.data.favor === "1";
+        }
+      }
     } catch (error) {
-      console.error("[top.vue] onMounted: Error during getFilesByFileId_API call for fileid", fileid_for_top, ":", error);
-      filename.value = "文件名加载时发生异常";
+      console.error("[top.vue] onMounted: Error during API calls:", error);
+      filename.value = "文件加载时发生异常";
     }
-  }
-  
-  // Call fetchFavorState with potentially parsed fileid and user data
-  if (userData && userData.userid && fileid_for_top) {
-    await fetchFavorState(fileid_for_top, userData.userid);
-  } else {
-    console.warn("[top.vue] onMounted: Skipping fetchFavorState due to missing userid (", userData ? userData.userid : 'undefined', ") or fileid_for_top (", fileid_for_top, ").");
   }
 
   // Initialize user avatar

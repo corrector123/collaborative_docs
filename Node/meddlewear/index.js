@@ -6,9 +6,8 @@ const { initLogger } = require("./logger");
 
 module.exports = {
   initExpressMeddleWear: (app, express) => {
-    app.use(express.urlencoded({ extended: false }));
-    app.use(express.json());
-    // 静态目录
+    app.use(express.urlencoded({ extended: false, limit: '50mb' }));
+    app.use(express.json({ limit: '50mb' }));
     app.use(express.static(path.resolve(__dirname, "../public")));
     app.use(
       "/static",
@@ -17,10 +16,12 @@ module.exports = {
     app.use(express.static(path.resolve(__dirname, "../public/dist")));
     app.use(express.static(path.resolve(__dirname, "../public/dist/assets")));
 
+
     // logger
     app.use(initLogger);
 
-    // JWT 中间件
+    // 全局应用 JWT 中间件。
+    // 我们将在 jwt.initJWT 内部实现一个白名单，以豁免登录、注册等公开路由。
     app.use(jwt.initJWT);
 
     // File upload middleware

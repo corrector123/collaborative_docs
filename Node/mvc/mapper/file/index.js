@@ -73,11 +73,37 @@ exports.findEditorByFileidMap = async (userid, fileid) =>
 exports.updateFileStateMap = async (data) => {
   try {
     const { userid, fileid, top, favor } = data;
-    // 修复：正确解析favor参数
-    let sql = `UPDATE filestates SET `;
-    if (favor !== undefined) {
-      sql += `favor='${favor}'`;
+    
+    // 检查是否存在记录
+    const existingState = await query(
+      `SELECT * FROM filestates WHERE editor='${userid}' AND fileid='${fileid}'`
+    );
+
+    if (existingState.length === 0) {
+      // 如果不存在记录，先创建一条
+      const fsid = require('uuid').v4();
+      await query(
+        `INSERT INTO filestates(fsid, fileid, editor, favor, top) 
+         VALUES('${fsid}', '${fileid}', '${userid}', '0', '0')`
+      );
     }
+
+    // 然后更新状态
+    let sql = `UPDATE filestates SET `;
+    let updates = [];
+    
+    if (favor !== undefined) {
+      updates.push(`favor='${favor}'`);
+    }
+    if (top !== undefined) {
+      updates.push(`top='${top}'`);
+    }
+    
+    if (updates.length === 0) {
+      return { affectedRows: 0 };
+    }
+
+    sql += updates.join(', ');
     sql += ` WHERE editor='${userid}' AND fileid='${fileid}'`;
 
     return await query(sql);

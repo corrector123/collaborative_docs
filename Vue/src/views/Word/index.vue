@@ -244,6 +244,14 @@ async function updateUserList() {
     return;
   }
   
+  // 增加 YMap 监听器用于调试
+  ydoc.ymap.observe((event, transaction) => {
+    console.log('YMap event:', event);
+    event.changes.keys.forEach((change, key) => {
+      console.log(`Key changed: ${key}`, change);
+    });
+  });
+
   try {
     const userList = [];
     const currentUser = JSON.parse(sessionStorage.getItem("user"));

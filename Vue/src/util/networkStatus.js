@@ -20,7 +20,7 @@ class NetworkStatus {
   }
 
   handleOnline() {
-    if (this.manualOverride) return; // 如果被手动覆盖，忽略浏览器事件
+    // if (this.manualOverride) return; // 如果被手动覆盖，忽略浏览器事件
     
     console.log('[NetworkStatus] 浏览器网络已连接');
     this.isOnline = true;
@@ -33,7 +33,7 @@ class NetworkStatus {
   }
 
   handleOffline() {
-    if (this.manualOverride) return; // 如果被手动覆盖，忽略浏览器事件
+    // if (this.manualOverride) return; // 如果被手动覆盖，忽略浏览器事件
     
     console.log('[NetworkStatus] 浏览器网络已断开');
     this.isOnline = false;

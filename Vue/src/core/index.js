@@ -1,15 +1,18 @@
 // 封装用户请求axios
 import axios from "axios";
-import router from "@/router";
 import { ElMessage } from "element-plus";
+import { http_server_url } from "../../default.config";
+import router from "../router";
 
-/**
- * 生产环境与开发环境的请求前缀是不一样的
- * 通过vite的环境变量处理该问题
- */
+const dev_env = import.meta.env.DEV;
 
-const dev_env = import.meta.env.MODE === "development";
-axios.defaults.baseURL = dev_env ? "/baseURL" : "";
+// 我们不再需要根据dev_env来切换baseURL。
+// 无论是开发环境（通过vite.config.js的proxy）还是生产环境（通过Nginx代理），
+// 我们都希望使用一个统一的基础路径。这个路径已经从环境变量中读取了。
+axios.defaults.baseURL = http_server_url;
+
+// 请求超时时间
+axios.defaults.timeout = 10000;
 
 export const fetch = (options) => {
   // 添加请求日志

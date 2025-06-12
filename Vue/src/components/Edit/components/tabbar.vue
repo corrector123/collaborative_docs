@@ -125,16 +125,6 @@
         >
           {{ isSyncing ? '同步中...' : '立即同步' }}
         </button>
-        
-        <!-- 测试按钮 - 仅开发模式显示 -->
-        <button 
-          v-if="isDevelopment"
-          @click.stop="toggleWebSocketConnection" 
-          class="test-button"
-          :title="websocketConnected ? '断开WebSocket测试离线' : '重连WebSocket'"
-        >
-          {{ websocketConnected ? '断开' : '重连' }}
-        </button>
       </div>
     </div>
     
@@ -202,11 +192,11 @@ import {
   getVersionSnapshot_API,
   deleteVersion_API
 } from "@/api/version";
-import { utf16toEntities } from "@/util/utf16";
+import { utf16toEntities, entitiestoUtf16 } from "@/util/utf16";
 import { ElMessage, ElMessageBox, ElDialog, ElButton } from "element-plus";
 import * as Y from "yjs";
 import { diffChars } from 'diff';
-import { http_server_url } from "/default.config";
+import { http_server_url } from "/default.config.js";
 import { useStore } from 'vuex';
 
 const emit = defineEmits(["editor-updated"]);
@@ -256,16 +246,6 @@ const networkStatusColor = computed(() => store.getters.networkStatusColor);
 const needsSync = computed(() => store.getters.needsSync);
 const isSyncing = computed(() => store.state.isSyncing);
 const isOnline = computed(() => store.state.isOnline);
-const websocketConnected = computed(() => {
-  return yjsInstance?.websocketProvider?.wsconnected || false;
-});
-
-// 开发模式检测
-const isDevelopment = computed(() => {
-  // 临时强制显示测试按钮以便测试离线功能
-  return true;
-  // return import.meta.env.MODE === "development";
-});
 
 // 网络状态图标
 const networkIconClass = computed(() => {
@@ -298,16 +278,6 @@ const debugNetworkStatus = () => {
   console.log('正在同步:', store.state.isSyncing);
   
   ElMessage.info(`网络状态: ${networkStatusText.value}`);
-};
-
-// 测试按钮处理函数 - 切换WebSocket连接状态
-const toggleWebSocketConnection = () => {
-  if (yjsInstance && typeof yjsInstance.toggleWebSocketConnection === 'function') {
-    yjsInstance.toggleWebSocketConnection();
-  } else {
-    console.warn('[Tabbar] Yjs实例未就绪，无法切换WebSocket连接');
-    ElMessage.warning('无法切换WebSocket连接，Yjs尚未就绪');
-  }
 };
 
 watch(color, (val) => quill.format("color", val));
@@ -355,11 +325,17 @@ const iconClick = (icon) => {
       break;
 
     // 对齐方式
-    case "icon-align-left":
-    case "icon-align-center":
-    case "icon-align-right":
-    case "icon-align-justify":
-      quill.format(icon);
+    case "icon-juzuoduiqi":
+      quill.format("left");
+      break;
+    case "icon-juzhongduiqi":
+      quill.format("center");
+      break;
+    case "icon-juyouduiqi":
+      quill.format("right");
+      break;
+    case "icon-liangduanduiqi1":
+      quill.format("justify");
       break;
 
     // 保存
@@ -371,6 +347,11 @@ const iconClick = (icon) => {
     // 文件上传
     case "icon-tupian":
       uploadRef.value.click();
+      break;
+
+    // 插入表格
+    case "icon-charubiaoge":
+      quill.insertTable(3, 3);
       break;
 
     // 进入全屏
@@ -588,20 +569,43 @@ const rollbackToVersionHandler = async (version) => {
     }
 
     try {
-      let contentToSet = null;
-      if (historicalContent && Array.isArray(historicalContent.ops)) {
-        contentToSet = historicalContent; // Pass the whole Delta object
-      } else if (Array.isArray(historicalContent)) {
-        contentToSet = historicalContent; // Pass the ops array
-      }
+      // 提取 ops 数组, 兼容 {ops: [...]} 和 [...] 两种格式
+      let ops = Array.isArray(historicalContent.ops) ? historicalContent.ops :
+                Array.isArray(historicalContent) ? historicalContent : null;
 
-      if (!contentToSet) {
-        console.error("Invalid historical content format for rollback:", historicalContent);
+      if (!ops) {
+        console.error("回滚失败：无法解析版本数据格式:", historicalContent);
         ElMessage.error("回滚失败：无法解析版本数据格式。");
         loading.value = false;
         return;
       }
-      quill.quill.setContents(contentToSet);
+
+      // 创建深拷贝以避免意外修改版本列表中的原始数据
+      ops = JSON.parse(JSON.stringify(ops));
+
+      // The same parsing logic from Quill.js's init method
+      ops.forEach(op => {
+        if (op.insert && typeof op.insert === 'string') {
+          if (op.insert.includes("#image#")) {
+            const imagePath = op.insert.replace("#image#", "");
+            op.insert = { image: http_server_url + imagePath };
+          } else {
+            // Also handle other special characters for consistency
+            op.insert = entitiestoUtf16(
+              op.insert
+                .toString()
+                .trim()
+                .replace(/#n#/g, "\n")
+                .replace(/#r#/g, "\r")
+                .replace(/#t#/g, "\t")
+                .replace(/#[d]#/g, "'")
+                .replace(/#[s]#/g, '"')
+            );
+          }
+        }
+      });
+
+      quill.quill.setContents(ops);
 
       // quill的变更会自动传播到Yjs，并同步给其他协作者
       console.log(`已回滚到版本: ${version.timestamp}`);
@@ -1332,23 +1336,6 @@ onMounted(() => {
 .icon-list-ordered::before {
   content: "1.";
   font-size: 10px;
-}
-
-.icon-align-left::before {
-  content: "≡";
-}
-
-.icon-align-center::before {
-  content: "≡";
-  text-align: center;
-}
-
-.icon-align-right::before {
-  content: "≡";
-}
-
-.icon-align-justify::before {
-  content: "≡";
 }
 
 .font-size-plus::before {

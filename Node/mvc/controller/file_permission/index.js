@@ -3,7 +3,8 @@ const { httpCode } = require("../../../util");
 const {FindByRecipientImpl} = require("../../serviceImpl/message");
 const {getAcceptPermissionFilesMap} = require("../../mapper/file_permission");
 const {getAcceptPermissionFilesImpl, updatePermissionImpl} = require("../../serviceImpl/file_permission");
-const {findFileByIdImpl} = require("../../serviceImpl/file");
+const {findFileByIdImpl, findEditorByFileidImpl, createFileStateImpl} = require("../../serviceImpl/file");
+const { getNanoid } = require("../../../util");
 
 exports.UpdatePermission = async (req, res, next) => {
     const { userId,fileId, permissionType } = req.body;
@@ -50,6 +51,14 @@ exports.setPermission = async (req, res, next) => {
         } else {
             // 添加新权限
             result = await filePermissionImpl.addPermissionImpl(userId,ownerId,fileId, permissionType);
+            
+            // 检查是否已存在文件状态记录
+            const existingFileState = await findEditorByFileidImpl(userId, fileId);
+            if (!existingFileState || existingFileState.length === 0) {
+                // 创建文件状态记录
+                const fsid = await getNanoid();
+                await createFileStateImpl(fsid, fileId, userId);
+            }
         }
 
         if (result.affectedRows === 1) {
@@ -87,6 +96,14 @@ exports.broadSetPermission = async (req, res, next) => {
         } else {
             // 添加新权限
             result = await filePermissionImpl.addPermissionImpl(userId,sender_Id,fileId, permissionType);
+            
+            // 检查是否已存在文件状态记录
+            const existingFileState = await findEditorByFileidImpl(userId, fileId);
+            if (!existingFileState || existingFileState.length === 0) {
+                // 创建文件状态记录
+                const fsid = await getNanoid();
+                await createFileStateImpl(fsid, fileId, userId);
+            }
         }
 
         if (result.affectedRows === 1) {

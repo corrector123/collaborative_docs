@@ -1,1 +1,0 @@
-import{f as e}from"./index-13f78f5a.js";const r=s=>e({url:"/file_permission/setPermission",method:"post",data:s}),o=s=>e({url:"/file_permission/broadSetPermission",method:"post",data:s}),t=s=>e({url:"/file_permission/getPermission",method:"post",data:s}),n=()=>e({url:"/file_permission/getPermissionFiles",method:"get"});export{t as a,o as b,n as g,r as s};
